@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1C121637CCEA6929F20FC4D2 /* Pods_Metronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */; };
-		E53753F11D036CF0003B297B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53753F01D036CF0003B297B /* AppDelegate.swift */; };
-		E53753F31D036CF0003B297B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53753F21D036CF0003B297B /* ViewController.swift */; };
-		E53753F81D036CF0003B297B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53753F71D036CF0003B297B /* Assets.xcassets */; };
-		E53753FB1D036CF0003B297B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53753F91D036CF0003B297B /* LaunchScreen.storyboard */; };
+		6582B703D9F5675DD4D96670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6582B2F51B8FB392B02F8389 /* AppDelegate.swift */; };
+		6582B80CEA152D8884D8E4F1 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6582B89778D01A51F92F5746 /* MainScreenViewController.swift */; };
+		6582BC8983FE3640891F51E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6582B621C196B3493B3037FE /* LaunchScreen.storyboard */; };
+		6582BF5C926966376B060BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6582BD41A7AF9F6433377886 /* Assets.xcassets */; };
 		E53754061D036CF0003B297B /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754051D036CF0003B297B /* MetronomeTests.swift */; };
+		E53754111D037E8C003B297B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754101D037E8C003B297B /* MainScreenView.swift */; };
 		F0F9848541D6D58784490794 /* Pods_MetronomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,18 +31,19 @@
 		1F1AC7D2C3FB06CAA2E61CD6 /* Pods-MetronomeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetronomeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4CF415F0C84CC6775488DD84 /* Pods-Metronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.release.xcconfig"; sourceTree = "<group>"; };
 		4D6D21EEF20D5CBE6936B442 /* Pods-MetronomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetronomeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6582B0F510CC50092EA901C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Metronome/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		6582B2F51B8FB392B02F8389 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6582B89778D01A51F92F5746 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		6582BD41A7AF9F6433377886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
 		77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetronomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53753ED1D036CF0003B297B /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E53753F01D036CF0003B297B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		E53753F21D036CF0003B297B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E53753F71D036CF0003B297B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E53753FA1D036CF0003B297B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E53753FC1D036CF0003B297B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53754011D036CF0003B297B /* MetronomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53754051D036CF0003B297B /* MetronomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeTests.swift; sourceTree = "<group>"; };
 		E53754071D036CF0003B297B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E53754101D037E8C003B297B /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,81 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6582B017AA47DDA116CDDBC6 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				6582B4E40EF4C256A03A705B /* AudioEngine */,
+				6582B59EF30FD9F3B11C58CB /* MetronomeEngine */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		6582B27BD291FE6027C0D471 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6582B7A268AE8BBA0E176A0A /* Screens */,
+				6582B017AA47DDA116CDDBC6 /* Engine */,
+				6582B2F51B8FB392B02F8389 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		6582B4E40EF4C256A03A705B /* AudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AudioEngine;
+			sourceTree = "<group>";
+		};
+		6582B59EF30FD9F3B11C58CB /* MetronomeEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MetronomeEngine;
+			sourceTree = "<group>";
+		};
+		6582B7A268AE8BBA0E176A0A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6582BB13E40A18804781DD27 /* MainScreen */,
+				6582BC1888109152F966262D /* SettingsScreen */,
+				6582BD5AB8F62E7C8011CB9D /* CustomMetrumScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		6582BB13E40A18804781DD27 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6582B89778D01A51F92F5746 /* MainScreenViewController.swift */,
+				E53754101D037E8C003B297B /* MainScreenView.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		6582BC1888109152F966262D /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		6582BD5AB8F62E7C8011CB9D /* CustomMetrumScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomMetrumScreen;
+			sourceTree = "<group>";
+		};
+		6582BE9CF5F31CB213B4154F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6582BD41A7AF9F6433377886 /* Assets.xcassets */,
+				6582B621C196B3493B3037FE /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E53753E41D036CEF003B297B = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +184,9 @@
 		E53753EF1D036CF0003B297B /* Metronome */ = {
 			isa = PBXGroup;
 			children = (
-				E53753F01D036CF0003B297B /* AppDelegate.swift */,
-				E53753F21D036CF0003B297B /* ViewController.swift */,
-				E53753F71D036CF0003B297B /* Assets.xcassets */,
-				E53753F91D036CF0003B297B /* LaunchScreen.storyboard */,
 				E53753FC1D036CF0003B297B /* Info.plist */,
+				6582B27BD291FE6027C0D471 /* Classes */,
+				6582BE9CF5F31CB213B4154F /* Resources */,
 			);
 			path = Metronome;
 			sourceTree = "<group>";
@@ -212,8 +287,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E53753FB1D036CF0003B297B /* LaunchScreen.storyboard in Resources */,
-				E53753F81D036CF0003B297B /* Assets.xcassets in Resources */,
+				6582BF5C926966376B060BF2 /* Assets.xcassets in Resources */,
+				6582BC8983FE3640891F51E0 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,8 +399,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E53753F31D036CF0003B297B /* ViewController.swift in Sources */,
-				E53753F11D036CF0003B297B /* AppDelegate.swift in Sources */,
+				6582B703D9F5675DD4D96670 /* AppDelegate.swift in Sources */,
+				E53754111D037E8C003B297B /* MainScreenView.swift in Sources */,
+				6582B80CEA152D8884D8E4F1 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,10 +424,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E53753F91D036CF0003B297B /* LaunchScreen.storyboard */ = {
+		6582B621C196B3493B3037FE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E53753FA1D036CF0003B297B /* Base */,
+				6582B0F510CC50092EA901C6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
