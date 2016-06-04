@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C121637CCEA6929F20FC4D2 /* Pods_Metronome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */; };
 		E53753F11D036CF0003B297B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53753F01D036CF0003B297B /* AppDelegate.swift */; };
 		E53753F31D036CF0003B297B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53753F21D036CF0003B297B /* ViewController.swift */; };
 		E53753F81D036CF0003B297B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53753F71D036CF0003B297B /* Assets.xcassets */; };
 		E53753FB1D036CF0003B297B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53753F91D036CF0003B297B /* LaunchScreen.storyboard */; };
 		E53754061D036CF0003B297B /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754051D036CF0003B297B /* MetronomeTests.swift */; };
+		F0F9848541D6D58784490794 /* Pods_MetronomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +27,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F1AC7D2C3FB06CAA2E61CD6 /* Pods-MetronomeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetronomeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests.release.xcconfig"; sourceTree = "<group>"; };
+		4CF415F0C84CC6775488DD84 /* Pods-Metronome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.release.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.release.xcconfig"; sourceTree = "<group>"; };
+		4D6D21EEF20D5CBE6936B442 /* Pods-MetronomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetronomeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
+		77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetronomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53753ED1D036CF0003B297B /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53753F01D036CF0003B297B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E53753F21D036CF0003B297B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C121637CCEA6929F20FC4D2 /* Pods_Metronome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,18 +57,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F9848541D6D58784490794 /* Pods_MetronomeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A73DB82E842D06E7BD43EC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */,
+				DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A012AA8A52033BE7931FE11 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */,
+				4CF415F0C84CC6775488DD84 /* Pods-Metronome.release.xcconfig */,
+				4D6D21EEF20D5CBE6936B442 /* Pods-MetronomeTests.debug.xcconfig */,
+				1F1AC7D2C3FB06CAA2E61CD6 /* Pods-MetronomeTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E53753E41D036CEF003B297B = {
 			isa = PBXGroup;
 			children = (
 				E53753EF1D036CF0003B297B /* Metronome */,
 				E53754041D036CF0003B297B /* MetronomeTests */,
 				E53753EE1D036CF0003B297B /* Products */,
+				5A012AA8A52033BE7931FE11 /* Pods */,
+				0A73DB82E842D06E7BD43EC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,9 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E537540A1D036CF0003B297B /* Build configuration list for PBXNativeTarget "Metronome" */;
 			buildPhases = (
+				ADFEE59B3B90F10922B389C1 /* [CP] Check Pods Manifest.lock */,
 				E53753E91D036CF0003B297B /* Sources */,
 				E53753EA1D036CF0003B297B /* Frameworks */,
 				E53753EB1D036CF0003B297B /* Resources */,
+				70F81F4D3ED0855C592FB3DB /* [CP] Embed Pods Frameworks */,
+				159AC8049CB59C965D8703C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -117,9 +152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E537540D1D036CF0003B297B /* Build configuration list for PBXNativeTarget "MetronomeTests" */;
 			buildPhases = (
+				339146CFBDDA8956B641A427 /* [CP] Check Pods Manifest.lock */,
 				E53753FD1D036CF0003B297B /* Sources */,
 				E53753FE1D036CF0003B297B /* Frameworks */,
 				E53753FF1D036CF0003B297B /* Resources */,
+				F2EFC8215F033708E9AE12B4 /* [CP] Embed Pods Frameworks */,
+				E50994E5966C5BC6C1885554 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,6 +225,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		159AC8049CB59C965D8703C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Metronome/Pods-Metronome-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		339146CFBDDA8956B641A427 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		70F81F4D3ED0855C592FB3DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Metronome/Pods-Metronome-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADFEE59B3B90F10922B389C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E50994E5966C5BC6C1885554 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2EFC8215F033708E9AE12B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E53753E91D036CF0003B297B /* Sources */ = {
@@ -313,6 +444,7 @@
 		};
 		E537540B1D036CF0003B297B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Metronome/Info.plist;
@@ -324,6 +456,7 @@
 		};
 		E537540C1D036CF0003B297B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CF415F0C84CC6775488DD84 /* Pods-Metronome.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Metronome/Info.plist;
@@ -335,6 +468,7 @@
 		};
 		E537540E1D036CF0003B297B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D6D21EEF20D5CBE6936B442 /* Pods-MetronomeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MetronomeTests/Info.plist;
@@ -347,6 +481,7 @@
 		};
 		E537540F1D036CF0003B297B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F1AC7D2C3FB06CAA2E61CD6 /* Pods-MetronomeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = MetronomeTests/Info.plist;
@@ -376,6 +511,7 @@
 				E537540C1D036CF0003B297B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E537540D1D036CF0003B297B /* Build configuration list for PBXNativeTarget "MetronomeTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +520,7 @@
 				E537540F1D036CF0003B297B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
