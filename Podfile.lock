@@ -1,15 +1,18 @@
 PODS:
   - Nimble (4.0.1)
   - Quick (0.9.2)
+  - SnapKit (0.21.0)
 
 DEPENDENCIES:
   - Nimble (~> 4.0.0)
   - Quick (~> 0.9)
+  - SnapKit (~> 0.21)
 
 SPEC CHECKSUMS:
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
+  SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
 
-PODFILE CHECKSUM: af32d8b772a2885e847ece41ec805f743d1d3b5a
+PODFILE CHECKSUM: 6536ea80cc373e4c3c1c0ccedbdf3715ee36b696
 
 COCOAPODS: 1.0.1
