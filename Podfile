@@ -4,6 +4,7 @@ inhibit_all_warnings!
 
 target 'Metronome' do
     pod 'SnapKit', '~> 0.21'
+    pod 'CocoaLumberjack/Swift'
     
   target 'MetronomeTests' do
     inherit! :search_paths
