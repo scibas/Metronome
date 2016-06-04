@@ -14,6 +14,33 @@
 		6582BF5C926966376B060BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6582BD41A7AF9F6433377886 /* Assets.xcassets */; };
 		E53754061D036CF0003B297B /* MetronomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754051D036CF0003B297B /* MetronomeTests.swift */; };
 		E53754111D037E8C003B297B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754101D037E8C003B297B /* MainScreenView.swift */; };
+		E53754181D03815A003B297B /* BEBAS___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E53754151D03815A003B297B /* BEBAS___.TTF */; };
+		E53754191D03815A003B297B /* WeblySleek.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E53754161D03815A003B297B /* WeblySleek.ttf */; };
+		E537541A1D03815A003B297B /* whitrabt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E53754171D03815A003B297B /* whitrabt.ttf */; };
+		E53754341D03816B003B297B /* hi_hat_c_03.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537541C1D03816B003B297B /* hi_hat_c_03.caf */; };
+		E53754351D03816B003B297B /* hi_hat_o_06.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537541D1D03816B003B297B /* hi_hat_o_06.caf */; };
+		E53754361D03816B003B297B /* hiclick.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537541E1D03816B003B297B /* hiclick.caf */; };
+		E53754371D03816B003B297B /* HighTone.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537541F1D03816B003B297B /* HighTone.caf */; };
+		E53754381D03816B003B297B /* loclick.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754201D03816B003B297B /* loclick.caf */; };
+		E53754391D03816B003B297B /* LowTone.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754211D03816B003B297B /* LowTone.caf */; };
+		E537543A1D03816B003B297B /* metronome1a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754221D03816B003B297B /* metronome1a.caf */; };
+		E537543B1D03816B003B297B /* metronome1b.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754231D03816B003B297B /* metronome1b.caf */; };
+		E537543C1D03816B003B297B /* Metronome_hi.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754241D03816B003B297B /* Metronome_hi.caf */; };
+		E537543D1D03816B003B297B /* Metronome_low.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754251D03816B003B297B /* Metronome_low.caf */; };
+		E537543E1D03816B003B297B /* pik.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754261D03816B003B297B /* pik.caf */; };
+		E537543F1D03816B003B297B /* pik_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754271D03816B003B297B /* pik_a.caf */; };
+		E53754401D03816B003B297B /* Ping_Hi.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754281D03816B003B297B /* Ping_Hi.caf */; };
+		E53754411D03816B003B297B /* Ping_Low.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754291D03816B003B297B /* Ping_Low.caf */; };
+		E53754421D03816B003B297B /* samp9.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542A1D03816B003B297B /* samp9.caf */; };
+		E53754431D03816B003B297B /* samp9_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542B1D03816B003B297B /* samp9_a.caf */; };
+		E53754441D03816B003B297B /* ss.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542C1D03816B003B297B /* ss.caf */; };
+		E53754451D03816B003B297B /* ss_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542D1D03816B003B297B /* ss_a.caf */; };
+		E53754461D03816B003B297B /* triangle_01.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542E1D03816B003B297B /* triangle_01.caf */; };
+		E53754471D03816B003B297B /* triangle_02.caf in Resources */ = {isa = PBXBuildFile; fileRef = E537542F1D03816B003B297B /* triangle_02.caf */; };
+		E53754481D03816B003B297B /* woodstick.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754301D03816B003B297B /* woodstick.caf */; };
+		E53754491D03816B003B297B /* woodstick2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754311D03816B003B297B /* woodstick2.caf */; };
+		E537544A1D03816B003B297B /* woodstick2_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754321D03816B003B297B /* woodstick2_a.caf */; };
+		E537544B1D03816B003B297B /* woodstick_a.caf in Resources */ = {isa = PBXBuildFile; fileRef = E53754331D03816B003B297B /* woodstick_a.caf */; };
 		F0F9848541D6D58784490794 /* Pods_MetronomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +71,33 @@
 		E53754051D036CF0003B297B /* MetronomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetronomeTests.swift; sourceTree = "<group>"; };
 		E53754071D036CF0003B297B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53754101D037E8C003B297B /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		E53754151D03815A003B297B /* BEBAS___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEBAS___.TTF"; sourceTree = "<group>"; };
+		E53754161D03815A003B297B /* WeblySleek.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = WeblySleek.ttf; sourceTree = "<group>"; };
+		E53754171D03815A003B297B /* whitrabt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whitrabt.ttf; sourceTree = "<group>"; };
+		E537541C1D03816B003B297B /* hi_hat_c_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hi_hat_c_03.caf; sourceTree = "<group>"; };
+		E537541D1D03816B003B297B /* hi_hat_o_06.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hi_hat_o_06.caf; sourceTree = "<group>"; };
+		E537541E1D03816B003B297B /* hiclick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = hiclick.caf; sourceTree = "<group>"; };
+		E537541F1D03816B003B297B /* HighTone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HighTone.caf; sourceTree = "<group>"; };
+		E53754201D03816B003B297B /* loclick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = loclick.caf; sourceTree = "<group>"; };
+		E53754211D03816B003B297B /* LowTone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LowTone.caf; sourceTree = "<group>"; };
+		E53754221D03816B003B297B /* metronome1a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metronome1a.caf; sourceTree = "<group>"; };
+		E53754231D03816B003B297B /* metronome1b.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = metronome1b.caf; sourceTree = "<group>"; };
+		E53754241D03816B003B297B /* Metronome_hi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Metronome_hi.caf; sourceTree = "<group>"; };
+		E53754251D03816B003B297B /* Metronome_low.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Metronome_low.caf; sourceTree = "<group>"; };
+		E53754261D03816B003B297B /* pik.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pik.caf; sourceTree = "<group>"; };
+		E53754271D03816B003B297B /* pik_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pik_a.caf; sourceTree = "<group>"; };
+		E53754281D03816B003B297B /* Ping_Hi.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ping_Hi.caf; sourceTree = "<group>"; };
+		E53754291D03816B003B297B /* Ping_Low.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ping_Low.caf; sourceTree = "<group>"; };
+		E537542A1D03816B003B297B /* samp9.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = samp9.caf; sourceTree = "<group>"; };
+		E537542B1D03816B003B297B /* samp9_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = samp9_a.caf; sourceTree = "<group>"; };
+		E537542C1D03816B003B297B /* ss.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ss.caf; sourceTree = "<group>"; };
+		E537542D1D03816B003B297B /* ss_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ss_a.caf; sourceTree = "<group>"; };
+		E537542E1D03816B003B297B /* triangle_01.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = triangle_01.caf; sourceTree = "<group>"; };
+		E537542F1D03816B003B297B /* triangle_02.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = triangle_02.caf; sourceTree = "<group>"; };
+		E53754301D03816B003B297B /* woodstick.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = woodstick.caf; sourceTree = "<group>"; };
+		E53754311D03816B003B297B /* woodstick2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = woodstick2.caf; sourceTree = "<group>"; };
+		E53754321D03816B003B297B /* woodstick2_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = woodstick2_a.caf; sourceTree = "<group>"; };
+		E53754331D03816B003B297B /* woodstick_a.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = woodstick_a.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +209,8 @@
 		6582BE9CF5F31CB213B4154F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E537541B1D03816B003B297B /* Sounds */,
+				E53754141D03815A003B297B /* Fonts */,
 				6582BD41A7AF9F6433377886 /* Assets.xcassets */,
 				6582B621C196B3493B3037FE /* LaunchScreen.storyboard */,
 			);
@@ -198,6 +254,47 @@
 				E53754071D036CF0003B297B /* Info.plist */,
 			);
 			path = MetronomeTests;
+			sourceTree = "<group>";
+		};
+		E53754141D03815A003B297B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E53754151D03815A003B297B /* BEBAS___.TTF */,
+				E53754161D03815A003B297B /* WeblySleek.ttf */,
+				E53754171D03815A003B297B /* whitrabt.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E537541B1D03816B003B297B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E537541C1D03816B003B297B /* hi_hat_c_03.caf */,
+				E537541D1D03816B003B297B /* hi_hat_o_06.caf */,
+				E537541E1D03816B003B297B /* hiclick.caf */,
+				E537541F1D03816B003B297B /* HighTone.caf */,
+				E53754201D03816B003B297B /* loclick.caf */,
+				E53754211D03816B003B297B /* LowTone.caf */,
+				E53754221D03816B003B297B /* metronome1a.caf */,
+				E53754231D03816B003B297B /* metronome1b.caf */,
+				E53754241D03816B003B297B /* Metronome_hi.caf */,
+				E53754251D03816B003B297B /* Metronome_low.caf */,
+				E53754261D03816B003B297B /* pik.caf */,
+				E53754271D03816B003B297B /* pik_a.caf */,
+				E53754281D03816B003B297B /* Ping_Hi.caf */,
+				E53754291D03816B003B297B /* Ping_Low.caf */,
+				E537542A1D03816B003B297B /* samp9.caf */,
+				E537542B1D03816B003B297B /* samp9_a.caf */,
+				E537542C1D03816B003B297B /* ss.caf */,
+				E537542D1D03816B003B297B /* ss_a.caf */,
+				E537542E1D03816B003B297B /* triangle_01.caf */,
+				E537542F1D03816B003B297B /* triangle_02.caf */,
+				E53754301D03816B003B297B /* woodstick.caf */,
+				E53754311D03816B003B297B /* woodstick2.caf */,
+				E53754321D03816B003B297B /* woodstick2_a.caf */,
+				E53754331D03816B003B297B /* woodstick_a.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,8 +384,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E537543C1D03816B003B297B /* Metronome_hi.caf in Resources */,
+				E53754381D03816B003B297B /* loclick.caf in Resources */,
+				E537543B1D03816B003B297B /* metronome1b.caf in Resources */,
+				E537544B1D03816B003B297B /* woodstick_a.caf in Resources */,
+				E537543E1D03816B003B297B /* pik.caf in Resources */,
+				E537543F1D03816B003B297B /* pik_a.caf in Resources */,
+				E53754461D03816B003B297B /* triangle_01.caf in Resources */,
+				E537543D1D03816B003B297B /* Metronome_low.caf in Resources */,
+				E53754451D03816B003B297B /* ss_a.caf in Resources */,
+				E53754341D03816B003B297B /* hi_hat_c_03.caf in Resources */,
+				E53754431D03816B003B297B /* samp9_a.caf in Resources */,
+				E53754441D03816B003B297B /* ss.caf in Resources */,
+				E53754401D03816B003B297B /* Ping_Hi.caf in Resources */,
+				E53754481D03816B003B297B /* woodstick.caf in Resources */,
+				E53754181D03815A003B297B /* BEBAS___.TTF in Resources */,
+				E537543A1D03816B003B297B /* metronome1a.caf in Resources */,
+				E53754361D03816B003B297B /* hiclick.caf in Resources */,
+				E53754411D03816B003B297B /* Ping_Low.caf in Resources */,
+				E537544A1D03816B003B297B /* woodstick2_a.caf in Resources */,
+				E53754191D03815A003B297B /* WeblySleek.ttf in Resources */,
+				E53754371D03816B003B297B /* HighTone.caf in Resources */,
+				E537541A1D03815A003B297B /* whitrabt.ttf in Resources */,
 				6582BF5C926966376B060BF2 /* Assets.xcassets in Resources */,
 				6582BC8983FE3640891F51E0 /* LaunchScreen.storyboard in Resources */,
+				E53754351D03816B003B297B /* hi_hat_o_06.caf in Resources */,
+				E53754391D03816B003B297B /* LowTone.caf in Resources */,
+				E53754471D03816B003B297B /* triangle_02.caf in Resources */,
+				E53754421D03816B003B297B /* samp9.caf in Resources */,
+				E53754491D03816B003B297B /* woodstick2.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
