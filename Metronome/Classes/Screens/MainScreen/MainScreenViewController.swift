@@ -18,7 +18,7 @@ class MainScreenViewController: UIViewController {
     
 	override func loadView() {
 		let mainView = MainScreenView()
-        mainView.button.addTarget(self, action: #selector(MainScreenViewController.btnDidTap), forControlEvents: .TouchUpInside)
+        
 		self.view = mainView
 	}
 	
@@ -31,6 +31,10 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
 
