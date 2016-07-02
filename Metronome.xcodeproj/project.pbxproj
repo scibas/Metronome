@@ -21,6 +21,8 @@
 		E50D4D161D27CABF0087CE1E /* LCDDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D151D27CABF0087CE1E /* LCDDisplay.swift */; };
 		E50D4D181D27CDCD0087CE1E /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D171D27CDCD0087CE1E /* Fonts.swift */; };
 		E50D4D1A1D27DD940087CE1E /* LCDDisplayTextBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D191D27DD940087CE1E /* LCDDisplayTextBadge.swift */; };
+		E50D4D1C1D27E6CE0087CE1E /* MetreButtonsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D1B1D27E6CE0087CE1E /* MetreButtonsPanel.swift */; };
+		E50D4D1E1D286A2A0087CE1E /* MetreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D1D1D286A2A0087CE1E /* MetreButton.swift */; };
 		E53754111D037E8C003B297B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754101D037E8C003B297B /* MainScreenView.swift */; };
 		E53754181D03815A003B297B /* BEBAS___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E53754151D03815A003B297B /* BEBAS___.TTF */; };
 		E53754191D03815A003B297B /* WeblySleek.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E53754161D03815A003B297B /* WeblySleek.ttf */; };
@@ -58,7 +60,7 @@
 		4D6D21EEF20D5CBE6936B442 /* Pods-MetronomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetronomeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MetronomeTests/Pods-MetronomeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6582B0F510CC50092EA901C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Metronome/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		6582B2F51B8FB392B02F8389 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6582B89778D01A51F92F5746 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		6582B89778D01A51F92F5746 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		6582BD41A7AF9F6433377886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
 		77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,8 @@
 		E50D4D151D27CABF0087CE1E /* LCDDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCDDisplay.swift; sourceTree = "<group>"; };
 		E50D4D171D27CDCD0087CE1E /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E50D4D191D27DD940087CE1E /* LCDDisplayTextBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCDDisplayTextBadge.swift; sourceTree = "<group>"; };
+		E50D4D1B1D27E6CE0087CE1E /* MetreButtonsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreButtonsPanel.swift; sourceTree = "<group>"; };
+		E50D4D1D1D286A2A0087CE1E /* MetreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreButton.swift; sourceTree = "<group>"; };
 		E53753ED1D036CF0003B297B /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53753FC1D036CF0003B297B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E53754011D036CF0003B297B /* MetronomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MetronomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +237,8 @@
 				E5033F661D0D83DE005193E2 /* JogView.swift */,
 				E50D4D151D27CABF0087CE1E /* LCDDisplay.swift */,
 				E50D4D191D27DD940087CE1E /* LCDDisplayTextBadge.swift */,
+				E50D4D1D1D286A2A0087CE1E /* MetreButton.swift */,
+				E50D4D1B1D27E6CE0087CE1E /* MetreButtonsPanel.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -513,11 +519,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6582B703D9F5675DD4D96670 /* AppDelegate.swift in Sources */,
+				E50D4D1E1D286A2A0087CE1E /* MetreButton.swift in Sources */,
 				E54985441D08A90F003F947A /* SequenceComposer.swift in Sources */,
 				E50D4D101D27C23A0087CE1E /* ImageAssets.swift in Sources */,
 				E53754531D0386BF003B297B /* SoundsBank.swift in Sources */,
 				E537544F1D038325003B297B /* MetronomeEngineProtocol.swift in Sources */,
 				E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */,
+				E50D4D1C1D27E6CE0087CE1E /* MetreButtonsPanel.swift in Sources */,
 				E53754111D037E8C003B297B /* MainScreenView.swift in Sources */,
 				E5D234FD1D04150C00E567D6 /* AudioEngine.swift in Sources */,
 				E537544D1D0382D5003B297B /* AudioEngineProtocol.swift in Sources */,

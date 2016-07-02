@@ -24,6 +24,14 @@ extension UIColor {
     class func displayBadgeYellowColor() -> UIColor {
         return UIColor(hex:0xC28F3B)
     }
+    
+    class func metreButtonNormalStateColor() -> UIColor {
+        return UIColor.darkGrayColor()
+    }
+    
+    class func metreButtonSelectedStateColor() -> UIColor {
+        return UIColor(hex:0xc7c8c1)
+    }
 }
 
 extension UIColor {
