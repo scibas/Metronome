@@ -2,8 +2,8 @@ import UIKit
 
 class JogView: UIControl {
 	
-	private let backgroundImageView = UIImageView(withImageNamed: "jog_bkg")
-	private let knobeImageView = UIImageView(withImageNamed: "jog")
+	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
+	private let knobeImageView = UIImageView(asset: .Jog)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)

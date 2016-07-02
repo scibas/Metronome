@@ -1,8 +1,10 @@
 import UIKit
 
 extension UIImageView {
-    convenience init(withImageNamed imageName: String) {
-        let image = UIImage(named: imageName)
+    convenience init(asset: Asset) {
+        let image = UIImage(asset: asset)
         self.init(image: image)
     }
+    
+    
 }
