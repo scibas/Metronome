@@ -34,7 +34,7 @@ class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
 		if let oldPoint = oldPoint, newPoint = newPoint, middlePoint = viewMiddlePoint() {
 			let angle = angleBetweenPoints(oldPoint, point2: newPoint, regardToPoint: middlePoint)
 			
-			rotationAngle += normalizeAngle(angle)
+			rotationAngle += angle
 			
 			state = .Changed
 		}
@@ -55,19 +55,7 @@ private extension SingleFingerRotationGestureRecognizer {
 		let c = point2.x - middlePoint.x
 		let d = point2.y - middlePoint.y
 		
-		let radians = Double(atan2(a, b) - atan2(c, d))
-		
-		return radians * 180.0 / M_PI
-	}
-	
-	private func normalizeAngle(angle: Double) -> Double {
-		if (angle > 180) {
-			return angle - 360.0
-		} else if (angle < -180) {
-			return angle + 360.0
-		}
-		
-		return angle
+		return Double(atan2(a, b) - atan2(c, d))
 	}
 	
 	private func isPointInsideKnobArea(point: CGPoint) -> Bool {
