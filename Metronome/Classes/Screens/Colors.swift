@@ -1,15 +1,29 @@
 import UIKit
 
 extension UIColor {
-    static func metronomeBackgroundColor() -> UIColor {
+    class func metronomeBackgroundColor() -> UIColor {
         return UIColor(hex: 0x131313)
     }
     
-    static func metronomeConsoleColor() -> UIColor {
+    class func metronomeConsoleColor() -> UIColor {
         return UIColor(hex: 0x272727)
     }
     
+    class func displayTextColor() -> UIColor {
+        return UIColor(hex:0xc7c8c1)
+    }
     
+    class func displayBadgeGreenColor() -> UIColor {
+        return UIColor(hex:0x008000)
+    }
+    
+    class func displayBadgeRedColor() -> UIColor {
+        return UIColor(hex:0xB75152)
+    }
+    
+    class func displayBadgeYellowColor() -> UIColor {
+        return UIColor(hex:0xC28F3B)
+    }
 }
 
 extension UIColor {

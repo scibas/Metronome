@@ -9,6 +9,7 @@
 #endif
 
 enum Asset: String {
+  case Display_bkg = "display_bkg"
   case Jog = "jog"
   case Jog_bkg = "jog_bkg"
 

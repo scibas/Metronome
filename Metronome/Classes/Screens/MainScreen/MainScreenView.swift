@@ -4,6 +4,7 @@ import SnapKit
 class MainScreenView: UIView {
 	
 	let consoleView = ConsoleView()
+    let displayView = LCDDisplay()
 	let jogView = JogView()
     
 	override init(frame: CGRect) {
@@ -11,6 +12,9 @@ class MainScreenView: UIView {
         backgroundColor = UIColor.metronomeBackgroundColor()
 		
         addSubview(consoleView)
+        
+        addSubview(displayView)
+        
         addSubview(jogView)
         
 		setupCustomConstraints()
@@ -26,6 +30,12 @@ class MainScreenView: UIView {
             make.trailing.equalTo(self).offset(-20)
             make.top.equalTo(self)
             make.bottom.equalTo(self).offset(-50)
+        }
+        
+        displayView.snp_makeConstraints { (make) in
+            make.leading.equalTo(self).offset(22)
+            make.trailing.equalTo(self).offset(-22)
+            make.top.equalTo(self).offset(20)
         }
         
         jogView.snp_makeConstraints { make in
