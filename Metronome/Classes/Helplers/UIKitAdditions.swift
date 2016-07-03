@@ -5,6 +5,13 @@ extension UIImageView {
         let image = UIImage(asset: asset)
         self.init(image: image)
     }
-    
-    
+}
+
+extension UIButton {
+    convenience init(backgroundImageAsset: Asset) {
+        self.init(frame: .zero)
+        
+        let image = UIImage(asset: backgroundImageAsset)
+        setBackgroundImage(image, forState: .Normal)
+    }
 }

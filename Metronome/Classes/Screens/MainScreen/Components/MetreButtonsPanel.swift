@@ -21,7 +21,7 @@ class MetreButtonsPanel: UIControl {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func setupCustomConstraints() {
+	private func setupCustomConstraints() {
 		buttonStackView.snp_makeConstraints { (make) in
 			make.edges.equalTo(self)
 		}

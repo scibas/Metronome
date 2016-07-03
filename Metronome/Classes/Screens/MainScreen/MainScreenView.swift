@@ -6,6 +6,10 @@ class MainScreenView: UIView {
 	let consoleView = ConsoleView()
     let displayView = LCDDisplay()
     let metreButtonsPanel = MetreButtonsPanel()
+    let settingsButton = UIButton(backgroundImageAsset: .Settings_btn)
+    let autoBpmButton = UIButton(backgroundImageAsset: .Autobpm_btn_off)
+    let increaseTempoButton = UIButton(backgroundImageAsset: .Tempo_plus_btn)
+    let decreaseTempoButton = UIButton(backgroundImageAsset: .Tempo_minus_btn)
 	let jogView = JogView()
     
 	override init(frame: CGRect) {
@@ -23,7 +27,15 @@ class MainScreenView: UIView {
         metreButtonsPanel.addButton(MetreButton(title: "CUSTOM"))
         addSubview(metreButtonsPanel)
         
+        addSubview(settingsButton)
+        
+        addSubview(autoBpmButton)
+        
         addSubview(jogView)
+        
+        addSubview(decreaseTempoButton)
+        
+        addSubview(increaseTempoButton)
         
 		setupCustomConstraints()
 	}
@@ -32,7 +44,7 @@ class MainScreenView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func setupCustomConstraints() {
+	private func setupCustomConstraints() {
         consoleView.snp_makeConstraints { make in
             make.leading.equalTo(self).offset(20)
             make.trailing.equalTo(self).offset(-20)
@@ -44,6 +56,7 @@ class MainScreenView: UIView {
             make.leading.equalTo(self).offset(22)
             make.trailing.equalTo(self).offset(-22)
             make.top.equalTo(self).offset(20)
+            make.height.equalTo(150)
         }
         
         metreButtonsPanel.snp_makeConstraints { (make) in
@@ -53,11 +66,33 @@ class MainScreenView: UIView {
             make.height.equalTo(54)
         }
         
+        settingsButton.snp_makeConstraints { (make) in
+            make.top.equalTo(jogView)
+            make.leading.equalTo(jogView)
+        }
+        
+        autoBpmButton.snp_makeConstraints { (make) in
+            make.top.equalTo(jogView)
+            make.trailing.equalTo(jogView)
+        }
+        
         jogView.snp_makeConstraints { make in
             make.centerX.equalTo(self)
             make.bottom.equalTo(self).offset(-60)
             make.width.equalTo(320)
             make.height.equalTo(jogView.snp_width)
+        }
+        
+        decreaseTempoButton.snp_makeConstraints { (make) in
+            make.leading.equalTo(consoleView)
+            make.trailing.equalTo(self.snp_centerX).offset(-5)
+            make.top.equalTo(jogView.snp_bottom)
+        }
+        
+        increaseTempoButton.snp_makeConstraints { (make) in
+            make.leading.equalTo(self.snp_centerX).offset(5)
+            make.trailing.equalTo(consoleView)
+            make.top.equalTo(jogView.snp_bottom)
         }
 	}
 }

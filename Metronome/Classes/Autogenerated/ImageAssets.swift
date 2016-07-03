@@ -9,10 +9,15 @@
 #endif
 
 enum Asset: String {
+  case Autobpm_btn_off = "autobpm_btn_off"
+  case Autobpm_btn_on = "autobpm_btn_on"
   case Display_bkg = "display_bkg"
   case Jog = "jog"
   case Jog_bkg = "jog_bkg"
   case Metre_btn = "metre_btn"
+  case Settings_btn = "settings_btn"
+  case Tempo_minus_btn = "tempo_minus_btn"
+  case Tempo_plus_btn = "tempo_plus_btn"
 
   var image: Image {
     return Image(asset: self)

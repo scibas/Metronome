@@ -30,7 +30,7 @@ class LCDDisplay: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func setupCustomConstraints() {
+	private func setupCustomConstraints() {
 		backgroundImageView.snp_makeConstraints { make in
 			make.edges.equalTo(self)
 		}
