@@ -36,5 +36,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>whitrabt.ttf</string>
+		<string>BEBAS___.TTF</string>
+		<string>WeblySleek.ttf</string>
+	</array>
 </dict>
 </plist>
