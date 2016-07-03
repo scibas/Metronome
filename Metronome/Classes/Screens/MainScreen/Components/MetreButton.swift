@@ -5,6 +5,7 @@ class MetreButton: UIButton {
         super.init(frame: CGRect.zero)
         
         titleLabel?.font = UIFont.metreButtonsFont()
+        titleLabel?.numberOfLines = 2
         
         setTitle(title, forState: .Normal)
         setTitleColor(UIColor.metreButtonNormalStateColor(), forState: .Normal)

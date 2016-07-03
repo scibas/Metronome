@@ -42,6 +42,8 @@ class LCDDisplay: UIView {
         
 		bpmValueLabel.snp_makeConstraints { make in
 			make.center.equalTo(self)
+            make.top.greaterThanOrEqualTo(self).offset(5)
+            make.bottom.lessThanOrEqualTo(self).offset(-5)
 		}
 	}
 	
