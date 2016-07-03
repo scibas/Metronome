@@ -1,27 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
-      "filename" : "tempo_plus_btn_iphone.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "iphone",
-      "filename" : "tempo_plus_btn_iphone@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "ipad",
+      "idiom" : "universal",
       "filename" : "tempo_plus_btn.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
+      "idiom" : "universal",
+      "filename" : "tempo_plus_btn@2x.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "tempo_plus_btn@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
