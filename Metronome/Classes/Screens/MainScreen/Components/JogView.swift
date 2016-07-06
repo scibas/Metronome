@@ -4,7 +4,8 @@ class JogView: UIControl {
 	
 	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
 	private let knobeImageView = UIImageView(asset: .Jog)
-	
+    private weak var tapGestureRecognizer: UIGestureRecognizer?
+    
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -13,9 +14,14 @@ class JogView: UIControl {
 		knobeImageView.userInteractionEnabled = true
 		addSubview(knobeImageView)
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JogView.tapGestureDidDetect(_:)))
+        knobeImageView.addGestureRecognizer(tapGestureRecognizer)
+        self.tapGestureRecognizer = tapGestureRecognizer
+        
         let rotationGestureRecognizer = SingleFingerRotationGestureRecognizer(target: self, action: #selector(JogView.gestureRecognizerDidDetectRotation(_:)))
+        rotationGestureRecognizer.delegate = self
         knobeImageView.addGestureRecognizer(rotationGestureRecognizer)
-		
+        
 		setupCustomConstraints()
 	}
 	
@@ -39,6 +45,10 @@ class JogView: UIControl {
         sendActionsForControlEvents(.ValueChanged)
 	}
     
+    func tapGestureDidDetect(sender: UITapGestureRecognizer){
+        sendActionsForControlEvents(.TouchUpInside)
+    }
+    
     override func pointInside(touchPoint: CGPoint, withEvent event: UIEvent?) -> Bool {
         let centerPoint = CGPoint(x: bounds.midX, y: bounds.midY)
         let distanceFromCenter = distatanceBetweenPoints(touchPoint, point2: centerPoint)
@@ -54,5 +64,11 @@ class JogView: UIControl {
         let dy = point1.y - point2.y
         
         return sqrt(dx * dx + dy * dy)
+    }
+}
+
+extension JogView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return otherGestureRecognizer == tapGestureRecognizer
     }
 }
