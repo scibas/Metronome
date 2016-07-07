@@ -45,7 +45,8 @@ class MainScreenViewController: UIViewController {
         let bankIndex = sender.selectedButtonIndex!
         
         let beat = Int(arc4random_uniform(12))
-        let noteKindOf = NoteKindOf(rawValue: 2 ^ Int(arc4random_uniform(3)))!
+        let exp = pow(2.0, Double(arc4random_uniform(4)))
+        let noteKindOf = NoteKindOf(rawValue: Int(exp))!
         let metre = Metre(beat: beat, noteKindOf: noteKindOf)
         
 		viewModel.storeMetre(metre, forBankIndex: bankIndex)
@@ -55,4 +56,3 @@ class MainScreenViewController: UIViewController {
 		return .LightContent
 	}
 }
-

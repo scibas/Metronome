@@ -22,7 +22,7 @@ class MainScreenViewModel {
         metreBank.setMetre(.twoByFour(), forIndex: 0)
         metreBank.setMetre(.threeByFour(), forIndex: 1)
         metreBank.setMetre(.fourByFour(), forIndex: 2)
-        metreBank.setMetre(.sixByEight(), forIndex: 4)
+        metreBank.setMetre(.sixByEight(), forIndex: 3)
 	}
 	
 	func restoreUserSettingsFromStorage(storage: UserSettingsStorage) {
