@@ -3,7 +3,7 @@ import UIKit
 class MetreButtonsPanel: UIControl {
 	private let buttonStackView = UIStackView()
 	private(set) var buttons = [UIButton]()
-    private(set) var selectedButton: UIButton?
+    private(set) var selectedButtonIndex: Int?
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -40,12 +40,12 @@ class MetreButtonsPanel: UIControl {
             button.selected = isTappedButton
         }
         
-        selectedButton = sender
+        selectedButtonIndex = buttons.indexOf(sender)
         sendActionsForControlEvents(.ValueChanged)
 	}
     
     func metreButtonDidLongTap(sender: UIButton) {
-        metreButtonDidTap(sender)
+        selectedButtonIndex = buttons.indexOf(sender)
         sendActionsForControlEvents(.LongTouchDown)
     }
 }

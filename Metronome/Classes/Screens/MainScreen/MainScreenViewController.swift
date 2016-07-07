@@ -36,11 +36,19 @@ class MainScreenViewController: UIViewController {
 	}
 	
 	func metreButtonDidTap(sender: MetreButtonsPanel) {
-		print("Metre button did tap")
+        let buttonIndex = sender.selectedButtonIndex!
+		viewModel.setMetreFromBankIndex(buttonIndex)
 	}
 	
 	func metreButtonDidLongTap(sender: MetreButtonsPanel) {
-		print("Metre button did LONG tap")
+        
+        let bankIndex = sender.selectedButtonIndex!
+        
+        let beat = Int(arc4random_uniform(12))
+        let noteKindOf = NoteKindOf(rawValue: 2 ^ Int(arc4random_uniform(3)))!
+        let metre = Metre(beat: beat, noteKindOf: noteKindOf)
+        
+		viewModel.storeMetre(metre, forBankIndex: bankIndex)
 	}
 	
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {

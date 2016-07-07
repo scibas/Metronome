@@ -37,6 +37,8 @@
 		E55520BC1D0C533F0072B783 /* MetreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55520BA1D0C53350072B783 /* MetreSpecs.swift */; };
 		E55F3C661D07351100402903 /* UserSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F3C651D07351100402903 /* UserSettingsStorage.swift */; };
 		E58D56E71D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D56E61D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift */; };
+		E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C3DB321D2EB39D00823FA0 /* MetreBank.swift */; };
+		E5C3DB351D2EC6C500823FA0 /* MetreBankSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C3DB341D2EC6C500823FA0 /* MetreBankSpec.swift */; };
 		E5D234FD1D04150C00E567D6 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D234FC1D04150C00E567D6 /* AudioEngine.swift */; };
 		E5D234FF1D04222600E567D6 /* AudioSessionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D234FE1D04222600E567D6 /* AudioSessionConfigurator.swift */; };
 		E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D235001D04317900E567D6 /* MetronomeEngine.swift */; };
@@ -95,6 +97,8 @@
 		E55520BA1D0C53350072B783 /* MetreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetreSpecs.swift; path = ../Metronome/Classes/Engine/MetronomeEngine/MetreSpecs.swift; sourceTree = "<group>"; };
 		E55F3C651D07351100402903 /* UserSettingsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsStorage.swift; sourceTree = "<group>"; };
 		E58D56E61D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFingerRotationGestureRecognizer.swift; sourceTree = "<group>"; };
+		E5C3DB321D2EB39D00823FA0 /* MetreBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreBank.swift; sourceTree = "<group>"; };
+		E5C3DB341D2EC6C500823FA0 /* MetreBankSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreBankSpec.swift; sourceTree = "<group>"; };
 		E5D234FC1D04150C00E567D6 /* AudioEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 		E5D234FE1D04222600E567D6 /* AudioSessionConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSessionConfigurator.swift; sourceTree = "<group>"; };
 		E5D235001D04317900E567D6 /* MetronomeEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEngine.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				6582B89778D01A51F92F5746 /* MainScreenViewController.swift */,
 				E53754101D037E8C003B297B /* MainScreenView.swift */,
 				E50D4D1F1D297C3E0087CE1E /* MainScreenViewModel.swift */,
+				E5C3DB321D2EB39D00823FA0 /* MetreBank.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				E55520BA1D0C53350072B783 /* MetreSpecs.swift */,
+				E5C3DB341D2EC6C500823FA0 /* MetreBankSpec.swift */,
 				E55520B71D0C32F20072B783 /* SequenceComposerSpecs.swift */,
 				E53754071D036CF0003B297B /* Info.plist */,
 			);
@@ -533,6 +539,7 @@
 				E53754111D037E8C003B297B /* MainScreenView.swift in Sources */,
 				E5D234FD1D04150C00E567D6 /* AudioEngine.swift in Sources */,
 				E537544D1D0382D5003B297B /* AudioEngineProtocol.swift in Sources */,
+				E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */,
 				E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */,
 				E5033F621D0D66A8005193E2 /* Colors.swift in Sources */,
 				E5033F671D0D83DE005193E2 /* JogView.swift in Sources */,
@@ -553,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E55520BC1D0C533F0072B783 /* MetreSpecs.swift in Sources */,
+				E5C3DB351D2EC6C500823FA0 /* MetreBankSpec.swift in Sources */,
 				E55520B91D0C32FD0072B783 /* SequenceComposerSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
