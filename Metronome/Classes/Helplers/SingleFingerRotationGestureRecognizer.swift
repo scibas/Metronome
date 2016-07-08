@@ -1,8 +1,8 @@
 import UIKit.UIGestureRecognizerSubclass
 
 class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
-	private(set) var rotationAngle: Double = 0.0
-	
+	private(set) var rotationAngle = 0.0
+    private(set) var initialAngle = 0.0
 	override init(target: AnyObject?, action: Selector) {
 		super.init(target: target, action: action)
 	}
@@ -23,6 +23,8 @@ class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
 			state = .Failed
 			return
 		}
+        
+        initialAngle = rotationAngle
 	}
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {

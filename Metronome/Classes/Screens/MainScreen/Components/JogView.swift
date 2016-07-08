@@ -5,6 +5,8 @@ class JogView: UIControl {
 	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
 	private let knobeImageView = UIImageView(asset: .Jog)
     private weak var tapGestureRecognizer: UIGestureRecognizer?
+    private(set) var initialAngle = 0.0
+    private(set) var rotationAngle = 0.0
     
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -41,7 +43,8 @@ class JogView: UIControl {
 	
 	func gestureRecognizerDidDetectRotation(sender: SingleFingerRotationGestureRecognizer) {
 		knobeImageView.transform = CGAffineTransformMakeRotation(CGFloat(sender.rotationAngle))
-
+        initialAngle = sender.initialAngle
+        rotationAngle = sender.rotationAngle
         sendActionsForControlEvents(.ValueChanged)
 	}
     
