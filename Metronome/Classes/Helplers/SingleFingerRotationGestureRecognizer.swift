@@ -33,13 +33,13 @@ class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
 		let newPoint = touches.first?.locationInView(view)
 		
 		if let oldPoint = oldPoint, newPoint = newPoint, middlePoint = viewMiddlePoint() {
-			let angle = angleBetweenPoints(oldPoint, point2: newPoint, regardToPoint: middlePoint)
-			
-			rotationAngle += angle
-			
+			rotationAngle = angleBetweenPoints(oldPoint, point2: newPoint, regardToPoint: middlePoint)
 			state = .Changed
 		}
 	}
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
+        state = .Ended
+    }
 }
 
 private extension SingleFingerRotationGestureRecognizer {

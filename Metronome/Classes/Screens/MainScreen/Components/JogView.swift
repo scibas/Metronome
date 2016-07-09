@@ -1,30 +1,32 @@
 import UIKit
 
 enum JogRotationDirection {
-    case Increase
-    case Decrease
-    case None
-    
-    init(delta: Double) {
-        if delta > 0 {
-            self = .Increase
-        } else if delta < 0 {
-            self = .Decrease
-        } else {
-            self = None
-        }
-    }
+	case Increase
+	case Decrease
+	case None
+
+	init(delta: Double) {
+		if delta > 0 {
+			self = .Increase
+		} else if delta < 0 {
+			self = .Decrease
+		} else {
+			self = None
+		}
+	}
 }
 
 class JogView: UIControl {
-    var sensitivity = 0.1 //radians per event
-    
+	var sensitivity = 0.1 // radians per event
+
 	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
 	private let knobeImageView = UIImageView(asset: .Jog)
 	private weak var tapGestureRecognizer: UIGestureRecognizer?
-    private var initialRotationAngle = 0.0
-    private(set) var rotationDirection: JogRotationDirection?
-    
+	private(set) var currentRotationAngle = 0.0
+	private(set) var rotationDirection: JogRotationDirection?
+
+	var rotGR: SingleFingerRotationGestureRecognizer?
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
@@ -40,6 +42,7 @@ class JogView: UIControl {
 		let rotationGestureRecognizer = SingleFingerRotationGestureRecognizer(target: self, action: #selector(JogView.gestureRecognizerDidDetectRotation(_:)))
 		rotationGestureRecognizer.delegate = self
 		knobeImageView.addGestureRecognizer(rotationGestureRecognizer)
+		self.rotGR = rotationGestureRecognizer
 
 		setupCustomConstraints()
 	}
@@ -57,24 +60,20 @@ class JogView: UIControl {
 			make.edges.equalTo(backgroundImageView)
 		}
 	}
-    
-	func gestureRecognizerDidDetectRotation(senderGestureRecognizer: SingleFingerRotationGestureRecognizer) {
-        let rotationAngle = senderGestureRecognizer.rotationAngle
-		switch senderGestureRecognizer.state {
-		case .Began:
-            initialRotationAngle = rotationAngle
-		case .Changed:
-			knobeImageView.transform = CGAffineTransformMakeRotation(CGFloat(rotationAngle))
 
-            let deltaAngle = rotationAngle - initialRotationAngle
-            if abs(deltaAngle) > sensitivity {
-                rotationDirection = JogRotationDirection(delta: deltaAngle)
-                initialRotationAngle = rotationAngle
-				
-                sendActionsForControlEvents(.ValueChanged)
-            }
-		default:
-			break
+	private var cumulativeAngle = 0.0
+	func gestureRecognizerDidDetectRotation(senderGestureRecognizer: SingleFingerRotationGestureRecognizer) {
+		let rotationAngle = senderGestureRecognizer.rotationAngle
+
+		if senderGestureRecognizer.state == .Changed {
+            rotateJogByAngle(rotationAngle)
+			
+			cumulativeAngle += rotationAngle
+			if abs(cumulativeAngle) > sensitivity {
+				rotationDirection = JogRotationDirection(delta: cumulativeAngle)
+				sendActionsForControlEvents(.ValueChanged)
+				cumulativeAngle = 0.0
+			}
 		}
 	}
 
@@ -97,6 +96,11 @@ class JogView: UIControl {
 		let dy = point1.y - point2.y
 
 		return sqrt(dx * dx + dy * dy)
+	}
+
+	func rotateJogByAngle(angle: Double) {
+		currentRotationAngle += angle
+		knobeImageView.transform = CGAffineTransformMakeRotation(CGFloat(currentRotationAngle))
 	}
 }
 

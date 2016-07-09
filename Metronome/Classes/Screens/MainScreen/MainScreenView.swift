@@ -5,7 +5,7 @@ class MainScreenView: UIView {
 	
 	let consoleView = ConsoleView()
     let displayView = LCDDisplay()
-    let metreButtonsPanel = MetreButtonsPanel()
+    let metreButtonsPanel = MetreButtonsPanel(numberOfButtons: 5)
     let settingsButton = UIButton(backgroundImageAsset: .Settings_btn)
     let autoBpmButton = UIButton(backgroundImageAsset: .Autobpm_btn_off)
     let increaseTempoButton = UIButton(backgroundImageAsset: .Tempo_plus_btn)
@@ -23,12 +23,6 @@ class MainScreenView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
         backgroundColor = UIColor.metronomeBackgroundColor()
-        
-        metreButtonsPanel.addButton(MetreButton(title: "2/4"))
-        metreButtonsPanel.addButton(MetreButton(title: "3/4"))
-        metreButtonsPanel.addButton(MetreButton(title: "4/4"))
-        metreButtonsPanel.addButton(MetreButton(title: "6/8"))
-        metreButtonsPanel.addButton(MetreButton(title: "NOT\nSET"))
         
         addSubview(consoleView)
         addSubview(displayView)

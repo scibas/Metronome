@@ -1,13 +1,13 @@
 import UIKit
 
 class MetreButton: UIButton {
-	init(title: String) {
+	init() {
 		super.init(frame: CGRect.zero)
 		
 		titleLabel?.font = UIFont.metreButtonsFont()
 		titleLabel?.numberOfLines = 2
 		
-		setTitle(title, forState: .Normal)
+        setTitleFromMetre(nil)
 		setTitleColor(UIColor.metreButtonNormalStateColor(), forState: .Normal)
 		setTitleColor(UIColor.metreButtonSelectedStateColor(), forState: .Selected)
 		setBackgroundImage(UIImage(asset: .Metre_btn), forState: .Normal)
@@ -26,6 +26,15 @@ class MetreButton: UIButton {
 			sendActionsForControlEvents(.LongTouchDown)
 		}
 	}
+    
+    func setTitleFromMetre(metre: Metre?) {
+        if let metre = metre {
+            let title = "\(metre.beat)/\(metre.noteKindOf.rawValue)"
+            setTitle(title, forState: .Normal)
+        } else {
+            setTitle("Empty", forState: .Normal)
+        }
+    }
 }
 
 extension UIControlEvents {
