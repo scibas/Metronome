@@ -17,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let audioEngine = AudioEngine()
         metronomeEngine = MetronomeEngine(withAudioEngine: audioEngine, andSoundBank: SoundsBank())
     
-        let maiViewController = MainScreenViewController(metronomeEngine: metronomeEngine!, ae: audioEngine)
+        let viewModel = MainScreenViewModel(metronomeEngine: metronomeEngine!, userSettingsStorage: UserSettingsStorageClass())
+        let maiViewController = MainScreenViewController(viewModel: viewModel)
 		
 		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
 		window.rootViewController = maiViewController

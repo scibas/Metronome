@@ -1,8 +1,7 @@
 import UIKit.UIGestureRecognizerSubclass
 
 class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
-	private(set) var rotationAngle: Double = 0.0
-	
+	private(set) var rotationAngle = 0.0
 	override init(target: AnyObject?, action: Selector) {
 		super.init(target: target, action: action)
 	}
@@ -23,6 +22,8 @@ class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
 			state = .Failed
 			return
 		}
+        
+        state = .Began
 	}
 	
 	override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
@@ -32,13 +33,13 @@ class SingleFingerRotationGestureRecognizer: UIGestureRecognizer {
 		let newPoint = touches.first?.locationInView(view)
 		
 		if let oldPoint = oldPoint, newPoint = newPoint, middlePoint = viewMiddlePoint() {
-			let angle = angleBetweenPoints(oldPoint, point2: newPoint, regardToPoint: middlePoint)
-			
-			rotationAngle += angle
-			
+			rotationAngle = angleBetweenPoints(oldPoint, point2: newPoint, regardToPoint: middlePoint)
 			state = .Changed
 		}
 	}
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
+        state = .Ended
+    }
 }
 
 private extension SingleFingerRotationGestureRecognizer {

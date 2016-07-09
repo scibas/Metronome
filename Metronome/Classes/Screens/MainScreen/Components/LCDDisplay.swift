@@ -2,9 +2,8 @@ import UIKit
 
 class LCDDisplay: UIView {
 	private let backgroundImageView = UIImageView(asset: .Display_bkg)
-	private let bpmValueLabel = UILabel()
+    let bpmValueLabel = UILabel()
 	private let metreBadge = DisplayTextBadge(badgeColor: .Yellow)
-    
     
 	override init(frame: CGRect) {
 		super.init(frame: frame)

@@ -16,10 +16,13 @@ class AudioEngine: AudioEngineProtocol {
 		
 		let audioSession = AVAudioSession.sharedInstance()
 		AudioSessionConfigurator.configureAudioSession(audioSession)
+        
+        try! audioEngine.start()
 	}
 	
 	func playMusicSequence(musicSequence: MusicSequence) throws {
-		
+        sequencer.currentPositionInBeats = 0
+        
 		var data: Unmanaged<CFData>?
 		MusicSequenceFileCreateData(musicSequence, .MIDIType, .EraseFile, 480, &data)
 		
@@ -32,13 +35,11 @@ class AudioEngine: AudioEngineProtocol {
 			track.numberOfLoops = AVMusicTrackLoopCount.Forever.rawValue
 		}
 		
-		try audioEngine.start()
 		try sequencer.start()
 	}
 	
 	func stopMusicSequence() {
 		sequencer.stop()
-		audioEngine.stop()
 	}
 	
 	var isPlaying: Bool { return sequencer!.playing }
