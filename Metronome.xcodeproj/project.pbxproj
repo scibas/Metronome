@@ -12,6 +12,8 @@
 		6582B80CEA152D8884D8E4F1 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6582B89778D01A51F92F5746 /* MainScreenViewController.swift */; };
 		6582BC8983FE3640891F51E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6582B621C196B3493B3037FE /* LaunchScreen.storyboard */; };
 		6582BF5C926966376B060BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6582BD41A7AF9F6433377886 /* Assets.xcassets */; };
+		A88155671D311DDD008673B2 /* CustomMetreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88155661D311DDD008673B2 /* CustomMetreViewController.swift */; };
+		A88155691D311DF5008673B2 /* CustomMetreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88155681D311DF5008673B2 /* CustomMetreView.swift */; };
 		E5033F621D0D66A8005193E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F611D0D66A8005193E2 /* Colors.swift */; };
 		E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F641D0D68BB005193E2 /* ConsoleView.swift */; };
 		E5033F671D0D83DE005193E2 /* JogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F661D0D83DE005193E2 /* JogView.swift */; };
@@ -67,6 +69,8 @@
 		6582BD41A7AF9F6433377886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65EA75F629BDF32F14D52967 /* Pods-Metronome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Metronome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Metronome/Pods-Metronome.debug.xcconfig"; sourceTree = "<group>"; };
 		77A3F7C2C869451929EAA326 /* Pods_Metronome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Metronome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A88155661D311DDD008673B2 /* CustomMetreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMetreViewController.swift; sourceTree = "<group>"; };
+		A88155681D311DF5008673B2 /* CustomMetreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMetreView.swift; sourceTree = "<group>"; };
 		DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetronomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5033F611D0D66A8005193E2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Screens/Colors.swift; sourceTree = "<group>"; };
 		E5033F641D0D68BB005193E2 /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
@@ -193,9 +197,9 @@
 		6582B7A268AE8BBA0E176A0A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A88155651D311DB8008673B2 /* CustomMetreScreen */,
 				6582BB13E40A18804781DD27 /* MainScreen */,
 				6582BC1888109152F966262D /* SettingsScreen */,
-				6582BD5AB8F62E7C8011CB9D /* CustomMetrumScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -219,13 +223,6 @@
 			path = SettingsScreen;
 			sourceTree = "<group>";
 		};
-		6582BD5AB8F62E7C8011CB9D /* CustomMetrumScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomMetrumScreen;
-			sourceTree = "<group>";
-		};
 		6582BE9CF5F31CB213B4154F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +233,15 @@
 				6582B621C196B3493B3037FE /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A88155651D311DB8008673B2 /* CustomMetreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A88155661D311DDD008673B2 /* CustomMetreViewController.swift */,
+				A88155681D311DF5008673B2 /* CustomMetreView.swift */,
+			);
+			path = CustomMetreScreen;
 			sourceTree = "<group>";
 		};
 		E5033F631D0D68A3005193E2 /* Components */ = {
@@ -548,8 +554,10 @@
 				6582B80CEA152D8884D8E4F1 /* MainScreenViewController.swift in Sources */,
 				E53754511D0383A7003B297B /* Metre.swift in Sources */,
 				E50D4D181D27CDCD0087CE1E /* Fonts.swift in Sources */,
+				A88155671D311DDD008673B2 /* CustomMetreViewController.swift in Sources */,
 				E5D234FF1D04222600E567D6 /* AudioSessionConfigurator.swift in Sources */,
 				E58D56E71D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift in Sources */,
+				A88155691D311DF5008673B2 /* CustomMetreView.swift in Sources */,
 				E55F3C661D07351100402903 /* UserSettingsStorage.swift in Sources */,
 				E50D4D1A1D27DD940087CE1E /* LCDDisplayTextBadge.swift in Sources */,
 			);
