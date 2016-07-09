@@ -1,6 +1,12 @@
 import Foundation
 
+protocol MainScreenViewModelDelegate: class {
+    func viewModel(viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM)
+}
+
 class MainScreenViewModel {
+    weak var delegate: MainScreenViewModelDelegate?
+    
 	private var metronomeEngine: MetronomeEngineProtocol
 	private var userSettingsStorage: UserSettingsStorage
     private var metreBank = MetreBank()
@@ -55,14 +61,16 @@ class MainScreenViewModel {
         metreBank.setMetre(metre, forIndex: bankIndex)
     }
 	
-	var tempo: BPM? {
+	var tempo: BPM {
 		set(newBpmValue) {
 			metronomeEngine.tempo = newBpmValue
 			userSettingsStorage.tempo = newBpmValue
+            
+            delegate?.viewModel(self, didChangeTemp: newBpmValue)
 		}
 		
 		get {
-			return metronomeEngine.tempo
+			return metronomeEngine.tempo! //FixMe: find out if can resign of optional in metronome engine
 		}
 	}
 	

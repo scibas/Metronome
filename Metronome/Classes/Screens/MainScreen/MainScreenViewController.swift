@@ -6,6 +6,8 @@ class MainScreenViewController: UIViewController {
 	init(viewModel: MainScreenViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
+        
+        viewModel.delegate = self
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -25,7 +27,7 @@ class MainScreenViewController: UIViewController {
 		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidTap(_:)), forControlEvents: .ValueChanged)
 		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidLongTap(_:)), forControlEvents: .LongTouchDown)
 		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidTap(_:)), forControlEvents: .TouchUpInside)
-		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidRotate(_:)), forControlEvents: .ValueChanged)
+        mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidChangeRotateAngle(_:)), forControlEvents: .ValueChanged)
 	}
 	
 	func jogViewDidTap(sender: UIView) {
@@ -35,15 +37,16 @@ class MainScreenViewController: UIViewController {
 			print("Start metronome error: \(error)")
 		}
 	}
-	var bpm = 120.0
-	func jogViewDidRotate(jogView: JogView) {
-		let initialDeg = 180 * jogView.initialAngle / M_PI
-		let deg = 180 * jogView.rotationAngle / M_PI
-		
-		let delta = deg - initialDeg
-		bpm = bpm + deg
-//        print("Jog did rotate: \(deg) - \(initialDeg)")
-		print("BPM \(bpm) \(delta)")
+
+    func jogViewDidChangeRotateAngle(jogView: JogView) {
+        switch jogView.rotationDirection! {
+        case .Increase:
+            viewModel.tempo += 1
+        case .Decrease:
+            viewModel.tempo -= 1
+        default:
+            break
+        }
 	}
 	
 	func metreButtonDidTap(sender: MetreButtonsPanel) {
@@ -66,4 +69,10 @@ class MainScreenViewController: UIViewController {
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return .LightContent
 	}
+}
+
+extension MainScreenViewController: MainScreenViewModelDelegate {
+    func viewModel(viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM) {
+        mainView.displayView.bpmValueLabel.text = NSString(format: "%.0f", newTempo) as String
+    }
 }
