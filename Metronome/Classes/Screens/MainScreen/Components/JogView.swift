@@ -21,8 +21,8 @@ class JogView: UIControl {
 
 	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
 	private let knobeImageView = UIImageView(asset: .Jog)
-	private weak var tapGestureRecognizer: UIGestureRecognizer?
-	private(set) var currentRotationAngle = 0.0
+    private var tampCumulativeAngle = 0.0
+    private weak var tapGestureRecognizer: UIGestureRecognizer?
 	private(set) var rotationDirection: JogRotationDirection?
 
 	var rotGR: SingleFingerRotationGestureRecognizer?
@@ -61,18 +61,17 @@ class JogView: UIControl {
 		}
 	}
 
-	private var cumulativeAngle = 0.0
 	func gestureRecognizerDidDetectRotation(senderGestureRecognizer: SingleFingerRotationGestureRecognizer) {
 		let rotationAngle = senderGestureRecognizer.rotationAngle
 
 		if senderGestureRecognizer.state == .Changed {
             rotateJogByAngle(rotationAngle)
 			
-			cumulativeAngle += rotationAngle
-			if abs(cumulativeAngle) > sensitivity {
-				rotationDirection = JogRotationDirection(delta: cumulativeAngle)
+			tampCumulativeAngle += rotationAngle
+			if abs(tampCumulativeAngle) > sensitivity {
+				rotationDirection = JogRotationDirection(delta: tampCumulativeAngle)
 				sendActionsForControlEvents(.ValueChanged)
-				cumulativeAngle = 0.0
+				tampCumulativeAngle = 0.0
 			}
 		}
 	}
@@ -99,8 +98,7 @@ class JogView: UIControl {
 	}
 
 	func rotateJogByAngle(angle: Double) {
-		currentRotationAngle += angle
-		knobeImageView.transform = CGAffineTransformMakeRotation(CGFloat(currentRotationAngle))
+        knobeImageView.transform = CGAffineTransformRotate(knobeImageView.transform, CGFloat(angle))
 	}
 }
 
