@@ -6,12 +6,11 @@ class MetronomeEngine: MetronomeEngineProtocol {
 	var currentMusicSequence: MusicSequence?
 	
 	var audioEngine: AudioEngineProtocol
-    let soundBank: SoundsBank
-    
-    init(withAudioEngine audioEngine: AudioEngineProtocol, andSoundBank soundBank: SoundsBank) {
+	let soundBank: SoundsBank
+	
+	init(withAudioEngine audioEngine: AudioEngineProtocol, andSoundBank soundBank: SoundsBank) {
 		self.audioEngine = audioEngine
-        self.soundBank = soundBank
-		self.tempo = 60
+		self.soundBank = soundBank
 	}
 	
 	func start() throws {
@@ -20,7 +19,7 @@ class MetronomeEngine: MetronomeEngineProtocol {
 	}
 	
 	func start(withSequence musicSequence: MusicSequence) throws {
-        self.currentMusicSequence = musicSequence
+		self.currentMusicSequence = musicSequence
 		try audioEngine.playMusicSequence(musicSequence)
 	}
 	
@@ -52,13 +51,15 @@ class MetronomeEngine: MetronomeEngineProtocol {
 			try! reloadSequenceAndPlayIfWasPlayingBefore(newMusicSequence)
 		}
 	}
-    
-    var tempo: BPM {
-        didSet {
-            let playbackRate = tempo / SequenceComposer.defaultTempoForQuaterNote
-            self.audioEngine.playbackRate = playbackRate
-        }
-    }
+	
+	var tempo: BPM? {
+		didSet {
+			if let tempo = tempo {
+				let playbackRate = tempo / SequenceComposer.defaultTempoForQuaterNote
+				self.audioEngine.playbackRate = playbackRate
+			}
+		}
+	}
 	
 	func reloadSequenceAndPlayIfWasPlayingBefore(musicSequence: MusicSequence) throws {
 		let wasPlaying = self.isPlaying
