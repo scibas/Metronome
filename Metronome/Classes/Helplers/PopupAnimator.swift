@@ -4,9 +4,9 @@ class PopupAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 	private let dimmViewTag = 123418923
 
 	struct PopupMargins {
-		static let side = 30.0
-		static let top = 84.0
-		static let bottom = 40.0
+		static let side = 50.0
+		static let top = 150.0
+		static let bottom = 100.0
 	}
 
 	func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
@@ -31,7 +31,7 @@ private extension PopupAnimator {
 
 		let dimmingView = UIView()
 		dimmingView.tag = dimmViewTag
-		dimmingView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.9)
+		dimmingView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
 		dimmingView.alpha = 0
 		dimmingView.frame = containerView!.bounds
 		containerView?.addSubview(dimmingView)
@@ -42,8 +42,8 @@ private extension PopupAnimator {
 		childViewController.view.snp_remakeConstraints { (make) in
 			make.top.equalTo(containerView!).offset(PopupMargins.top)
 			make.bottom.equalTo(containerView!).offset(-PopupMargins.bottom)
-			make.leading.equalTo(containerView!).offset(50)
-			make.trailing.equalTo(containerView!).offset(-50)
+			make.leading.equalTo(containerView!).offset(PopupMargins.side)
+			make.trailing.equalTo(containerView!).offset(-PopupMargins.side)
 		}
 
 		UIView.animateWithDuration(self.transitionDuration(transitionContext),

@@ -23,7 +23,7 @@ class DialogPresenter: NSObject, UIViewControllerTransitioningDelegate {
     }
     
     private func applyPopupThemeToViewController(viewController: UIViewController) {
-        viewController.view.layer.borderColor = UIColor.lightGrayColor().CGColor
+        viewController.view.layer.borderColor = UIColor.darkGrayColor().CGColor
         viewController.view.layer.borderWidth = 1.0
     }
 }

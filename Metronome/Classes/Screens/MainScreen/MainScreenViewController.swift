@@ -2,7 +2,8 @@ import UIKit
 
 class MainScreenViewController: UIViewController {
 	let viewModel: MainScreenViewModel
-
+    let dialogPresenter = DialogPresenter()
+    
 	init(viewModel: MainScreenViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
@@ -61,12 +62,12 @@ class MainScreenViewController: UIViewController {
 	func metreButtonDidLongTap(sender: MetreButtonsPanel) {
 		let bankIndex = sender.selectedButtonIndex!
 
-		let beat = Int(arc4random_uniform(12))
-		let exp = pow(2.0, Double(arc4random_uniform(4)))
-		let noteKindOf = NoteKindOf(rawValue: Int(exp))!
-		let metre = Metre(beat: beat, noteKindOf: noteKindOf)
-
-		viewModel.storeMetre(metre, forBankIndex: bankIndex)
+        let m = CustomMetreModel(withMetronomeEngine: viewModel.metronomeEngine)
+        let vm = CustomMetreViewModel(withModel: m)
+        let customMetreViewController = CustomMetreViewController(withViewModel: vm)
+        dialogPresenter.presentDialogViewController(customMetreViewController, formViewController: self, animated: true, completion: nil)
+        
+//		viewModel.storeMetre(metre, forBankIndex: bankIndex)
 	}
 
 	func increaseTempoButtonDidTap(sender: UIButton) {

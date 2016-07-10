@@ -9,7 +9,7 @@ protocol MainScreenViewModelDelegate: class {
 class MainScreenViewModel {
 	weak var delegate: MainScreenViewModelDelegate?
 
-	private var metronomeEngine: MetronomeEngineProtocol
+    var metronomeEngine: MetronomeEngineProtocol // fixMe: meke private again
 	private var userSettingsStorage: UserSettingsStorage
     let metreBank = MetreBank()
 

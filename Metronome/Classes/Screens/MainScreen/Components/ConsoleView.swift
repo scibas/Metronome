@@ -6,13 +6,12 @@ class ConsoleView: UIView {
 		super.init(frame: frame)
 		
         shapeLayer.fillColor = UIColor.metronomeConsoleColor().CGColor
-        shapeLayer.strokeColor = UIColor(hex: 0x34322e).CGColor
-        shapeLayer.lineWidth = 1.0
         
         shapeLayer.shadowColor = UIColor.blackColor().CGColor
-        shapeLayer.shadowOffset = CGSize(width: 0, height: 0)
-        shapeLayer.shadowOpacity = 1.0
+        shapeLayer.shadowOffset = CGSize(width: 0, height: 2)
+        shapeLayer.shadowOpacity = 0.5
         shapeLayer.masksToBounds = false
+        shapeLayer.shadowRadius = 1.0
 	}
 	
 	override class func layerClass() -> AnyClass {
