@@ -10,10 +10,6 @@ class LCDDisplay: UIView {
 		
 		addSubview(backgroundImageView)
 		
-		layer.shadowOffset = CGSize(width: 1, height: 1)
-		layer.shadowOpacity = 1
-		layer.shadowColor = UIColor.blackColor().CGColor
-		
 		bpmValueLabel.text = "120"
 		bpmValueLabel.textColor = UIColor.displayTextColor()
 		bpmValueLabel.font = UIFont.displayBpmFont()
