@@ -7,7 +7,7 @@ class AudioEngine: AudioEngineProtocol {
 	private var sampler: AVAudioUnitSampler!
 	private var sequencer: AVAudioSequencer!
 	
-	init() {
+	init() { //FixMe: inject audion session
 		audioEngine = AVAudioEngine()
 		setupCoreAudioEngine(audioEngine)
 		
@@ -17,7 +17,7 @@ class AudioEngine: AudioEngineProtocol {
 		let audioSession = AVAudioSession.sharedInstance()
 		AudioSessionConfigurator.configureAudioSession(audioSession)
         
-        try! audioEngine.start()
+        try! audioEngine.start()  //FixMe: extract to separate method that can trows, same with `try!` above
 	}
 	
 	func playMusicSequence(musicSequence: MusicSequence) throws {

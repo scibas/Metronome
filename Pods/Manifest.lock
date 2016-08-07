@@ -9,19 +9,22 @@ PODS:
   - Nimble (4.0.1)
   - Quick (0.9.2)
   - SnapKit (0.21.0)
+  - Swinject (1.1.2)
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift
   - Nimble (~> 4.0.0)
   - Quick (~> 0.9)
   - SnapKit (~> 0.21)
+  - Swinject (~> 1.1.0)
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
   SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
+  Swinject: 3debc5ac926dcd1be00947265a9db7a5f31b272a
 
-PODFILE CHECKSUM: 2bb5c34627e5fe7fa7fff2fd216d8a13d365ea3f
+PODFILE CHECKSUM: eaa979841bf895709abf2a8a5b58054d9febafa8
 
 COCOAPODS: 1.0.1

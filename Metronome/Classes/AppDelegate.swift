@@ -4,28 +4,38 @@
 //
 
 import UIKit
+import Swinject
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+private final class AppDelegate: UIResponder, UIApplicationDelegate {
+	@objc var window: UIWindow?
+    var assembler: Assembler?
+    var flowController: FlowController?
 	
-	var window: UIWindow?
-    var metronomeEngine: MetronomeEngine?
-    
-    
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		
-		let audioEngine = AudioEngine()
-        metronomeEngine = MetronomeEngine(withAudioEngine: audioEngine, andSoundBank: SoundsBank())
-    
-        let viewModel = MainScreenViewModel(metronomeEngine: metronomeEngine!, userSettingsStorage: UserSettingsStorageClass())
-        let maiViewController = MainScreenViewController(viewModel: viewModel)
-		
-		let window = UIWindow(frame: UIScreen.mainScreen().bounds)
-		window.rootViewController = maiViewController
-		window.makeKeyAndVisible()
-		self.window = window
-		
+	@objc func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        setupDependencyInjectionFramework()
+        
+        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        flowController = FlowController(withWindow: window)
+        flowController?.showMainScren()
+        
 		return true
+	}
+	
+	func setupDependencyInjectionFramework() {
+		assembler = try! Assembler(assemblies: [
+			CoreAssembly(),
+			ScreensAssembly()
+		])
 	}
 }
 
+protocol WithResolver {
+    func resolver() -> Resolvable
+}
+
+extension WithResolver {
+    func resolver() -> Resolvable {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).assembler!.resolver
+    }
+}

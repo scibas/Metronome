@@ -1,8 +1,14 @@
 import UIKit
 
+protocol MainScreenViewControllerFlowDelegate: class {
+    func showSettingsScreen(senderViewController: MainScreenViewController)
+    func showCustomMetreScreenForMetreBank(metreBankIndex: Int, senderViewController: MainScreenViewController)
+}
+
 class MainScreenViewController: UIViewController {
+    weak var flowDelegate: MainScreenViewControllerFlowDelegate?
+    
 	let viewModel: MainScreenViewModel
-    let dialogPresenter = DialogPresenter()
     
 	init(viewModel: MainScreenViewModel) {
 		self.viewModel = viewModel
@@ -61,13 +67,7 @@ class MainScreenViewController: UIViewController {
 
 	func metreButtonDidLongTap(sender: MetreButtonsPanel) {
 		let bankIndex = sender.selectedButtonIndex!
-
-        let m = CustomMetreModel(withMetronomeEngine: viewModel.metronomeEngine)
-        let vm = CustomMetreViewModel(withModel: m)
-        let customMetreViewController = CustomMetreViewController(withViewModel: vm)
-        dialogPresenter.presentDialogViewController(customMetreViewController, formViewController: self, animated: true, completion: nil)
-        
-//		viewModel.storeMetre(metre, forBankIndex: bankIndex)
+        flowDelegate?.showCustomMetreScreenForMetreBank(bankIndex, senderViewController: self)
 	}
 
 	func increaseTempoButtonDidTap(sender: UIButton) {
