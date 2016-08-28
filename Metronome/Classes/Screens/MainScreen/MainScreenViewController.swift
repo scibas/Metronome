@@ -39,9 +39,17 @@ class MainScreenViewController: UIViewController {
 		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidChangeRotateAngle(_:)), forControlEvents: .ValueChanged)
 		mainView.increaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.increaseTempoButtonDidTap(_:)), forControlEvents: .TouchUpInside)
 		mainView.decreaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.decreaseTempoButtonDidTap(_:)), forControlEvents: .TouchUpInside)
-		
+        mainView.settingsButton.addTarget(self, action: #selector(MainScreenViewController.settingsButtonDidTap), forControlEvents: .TouchUpInside)
+        
+        title = "Metronome"
+        
 		updateViewState()
 	}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 	
 	func jogViewDidTap(sender: UIView) {
 		do {
@@ -90,6 +98,10 @@ class MainScreenViewController: UIViewController {
 		let r = mainView.jogView.sensitivity
 		mainView.jogView.rotateJogByAngle(-r)
 	}
+    
+    func settingsButtonDidTap() {
+        flowDelegate?.showSettingsScreen(self)
+    }
 	
 	func updateViewState() {
 		for (metreBankButtonIndex, button) in mainView.metreButtonsPanel.buttons.enumerate() {

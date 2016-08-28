@@ -6,6 +6,8 @@ class FlowController: WithResolver {
 	private let dialogPresenter = DialogPresenter()
 	private var setMetreClosure: SetMetreClosure?
     
+    private weak var navigationController: MetronomeNavigationController?
+    
 	init(withWindow window: UIWindow) {
 		self.window = window
 	}
@@ -14,18 +16,18 @@ class FlowController: WithResolver {
 		let mainViewController = resolver().resolve(MainScreenViewController.self)!
 		mainViewController.flowDelegate = self
 		
-        self.mainViewController = mainViewController
+        let navigationController = MetronomeNavigationController(rootViewController: mainViewController)
+        self.navigationController = navigationController
         
-		window.rootViewController = mainViewController
+		window.rootViewController = navigationController
 		window.makeKeyAndVisible()
 	}
-    
-    private weak var mainViewController: MainScreenViewController?
-    private var bankIndex: Int?
 }
 
 extension FlowController: MainScreenViewControllerFlowDelegate {
 	func showSettingsScreen(senderViewController: MainScreenViewController) {
+        let settingsViewController = resolver().resolve(SettingsViewController.self)!
+        navigationController?.pushViewController(settingsViewController, animated: true)
 	}
 	
     func showCustomMetreScreenForMetre(currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: SetMetreClosure) {

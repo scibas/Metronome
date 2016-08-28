@@ -16,6 +16,10 @@
 		A88155691D311DF5008673B2 /* CustomMetreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88155681D311DF5008673B2 /* CustomMetreView.swift */; };
 		A881556D1D324455008673B2 /* DialogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A881556C1D324455008673B2 /* DialogPresenter.swift */; };
 		A881556F1D324496008673B2 /* PopupAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A881556E1D324496008673B2 /* PopupAnimator.swift */; };
+		E50227311D733AA300973D9D /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227301D733AA300973D9D /* SettingsModel.swift */; };
+		E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227321D733AB500973D9D /* SettingsViewModel.swift */; };
+		E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227341D733AC200973D9D /* SettingsViewController.swift */; };
+		E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227361D73526200973D9D /* MetronomeNavigationController.swift */; };
 		E5033F621D0D66A8005193E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F611D0D66A8005193E2 /* Colors.swift */; };
 		E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F641D0D68BB005193E2 /* ConsoleView.swift */; };
 		E5033F671D0D83DE005193E2 /* JogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F661D0D83DE005193E2 /* JogView.swift */; };
@@ -83,6 +87,10 @@
 		A881556C1D324455008673B2 /* DialogPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogPresenter.swift; sourceTree = "<group>"; };
 		A881556E1D324496008673B2 /* PopupAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupAnimator.swift; sourceTree = "<group>"; };
 		DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetronomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50227301D733AA300973D9D /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		E50227321D733AB500973D9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		E50227341D733AC200973D9D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E50227361D73526200973D9D /* MetronomeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeNavigationController.swift; sourceTree = "<group>"; };
 		E5033F611D0D66A8005193E2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Screens/Colors.swift; sourceTree = "<group>"; };
 		E5033F641D0D68BB005193E2 /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		E5033F661D0D83DE005193E2 /* JogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogView.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -218,6 +226,7 @@
 		6582B7A268AE8BBA0E176A0A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E50227361D73526200973D9D /* MetronomeNavigationController.swift */,
 				A88155651D311DB8008673B2 /* CustomMetreScreen */,
 				6582BB13E40A18804781DD27 /* MainScreen */,
 				6582BC1888109152F966262D /* SettingsScreen */,
@@ -240,6 +249,9 @@
 		6582BC1888109152F966262D /* SettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				E50227301D733AA300973D9D /* SettingsModel.swift */,
+				E50227321D733AB500973D9D /* SettingsViewModel.swift */,
+				E50227341D733AC200973D9D /* SettingsViewController.swift */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -589,10 +601,12 @@
 				E54985441D08A90F003F947A /* SequenceComposer.swift in Sources */,
 				E50D4D101D27C23A0087CE1E /* ImageAssets.swift in Sources */,
 				E51C38EF1D56381600DEA1D5 /* CustomMetreViewModel.swift in Sources */,
+				E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */,
 				E53754531D0386BF003B297B /* SoundsBank.swift in Sources */,
 				E50D4D201D297C3E0087CE1E /* MainScreenViewModel.swift in Sources */,
 				E537544F1D038325003B297B /* MetronomeEngineProtocol.swift in Sources */,
 				E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */,
+				E50227311D733AA300973D9D /* SettingsModel.swift in Sources */,
 				A881556D1D324455008673B2 /* DialogPresenter.swift in Sources */,
 				E50D4D1C1D27E6CE0087CE1E /* MetreButtonsPanel.swift in Sources */,
 				E53754111D037E8C003B297B /* MainScreenView.swift in Sources */,
@@ -605,6 +619,7 @@
 				E5033F671D0D83DE005193E2 /* JogView.swift in Sources */,
 				E534C08B1D57542A00C05EA6 /* ScreensAssembly.swift in Sources */,
 				E5C073F61D56068B00B498F2 /* VarticalStepper.swift in Sources */,
+				E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */,
 				E50D4D0D1D27B5AD0087CE1E /* UIKitAdditions.swift in Sources */,
 				E50D4D161D27CABF0087CE1E /* LCDDisplay.swift in Sources */,
 				E572067A1D730A3900CDBC23 /* NoteKind.swift in Sources */,
@@ -613,6 +628,7 @@
 				A881556F1D324496008673B2 /* PopupAnimator.swift in Sources */,
 				E50D4D181D27CDCD0087CE1E /* Fonts.swift in Sources */,
 				A88155671D311DDD008673B2 /* CustomMetreViewController.swift in Sources */,
+				E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */,
 				E51C38F11D56393700DEA1D5 /* CustomMetreModel.swift in Sources */,
 				E534C0891D57516F00C05EA6 /* CoreAssembly.swift in Sources */,
 				E5D234FF1D04222600E567D6 /* AudioSessionConfigurator.swift in Sources */,

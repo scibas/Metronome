@@ -20,7 +20,7 @@ class ScreensAssembly: AssemblyType {
 	}
 	
 	private func registerCustomMetreScreenInContainter(container: Container) {
-        container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
+		container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
 			let metronomeEngine = r.resolve(MetronomeEngine.self)!
 			let model = CustomMetreModel(withMetronomeEngine: metronomeEngine)
 			let viewModel = CustomMetreViewModel(withModel: model, currentMetre: currentMetre)
@@ -29,5 +29,10 @@ class ScreensAssembly: AssemblyType {
 	}
 	
 	private func registerSettingsScreenInContainter(container: Container) {
+		container.register(SettingsViewController.self) { resolver in
+			let model = SettingsModel()
+			let viewModel = SettingsViewModel(withModel: model)
+			return SettingsViewController(withViewModel: viewModel)
+		}
 	}
 }
