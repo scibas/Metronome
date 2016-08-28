@@ -12,7 +12,7 @@ class CoreAssembly: AssemblyType {
     private func registerAudioEngineInConteiner(container: Container) {
         container.register(AudioEngine.self) { r in
             return AudioEngine()
-        }
+        }.inObjectScope(.Container)
     }
 
     private func registerMetronomeEngineInConteiner(container: Container) {
@@ -21,13 +21,13 @@ class CoreAssembly: AssemblyType {
             let soundBank = SoundsBank()
             
             return MetronomeEngine(withAudioEngine: audioEngine, andSoundBank: soundBank)
-        }
+        }.inObjectScope(.Container)
     }
     
     private func registerUserSettingsStoregeInConteiner(container: Container) {
         container.register(UserSettingsStorageClass.self) { r in
             return UserSettingsStorageClass()
-        }
+        }.inObjectScope(.Container)
     }
 }
 

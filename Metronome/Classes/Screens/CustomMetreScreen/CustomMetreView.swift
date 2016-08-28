@@ -2,7 +2,7 @@ import UIKit
 
 class CustomMetreView: UIView {
     let metreLabel = UILabel()
-    let noteKindOfLabel = UILabel()
+    let noteKindLabel = UILabel()
     let byLabel = UILabel()
     
     let metreStepperButton = VarticalStepper()
@@ -23,14 +23,14 @@ class CustomMetreView: UIView {
         metreLabel.textColor = UIColor.metreButtonSelectedStateColor()
         metreLabel.font = UIFont.customMetreFont()
         
-        noteKindOfLabel.textColor = UIColor.metreButtonSelectedStateColor()
-        noteKindOfLabel.font = UIFont.customMetreFont()
+        noteKindLabel.textColor = UIColor.metreButtonSelectedStateColor()
+        noteKindLabel.font = UIFont.customMetreFont()
         
         applyButton.setTitle("APPLY", forState: .Normal)
         cancelButton.setTitle("Cancel", forState: .Normal)
         
         addSubview(metreLabel)
-        addSubview(noteKindOfLabel)
+        addSubview(noteKindLabel)
         addSubview(byLabel)
         addSubview(applyButton)
         addSubview(cancelButton)
@@ -59,7 +59,7 @@ class CustomMetreView: UIView {
             make.trailing.equalTo(byLabel.snp_leading)
         }
         
-        noteKindOfLabel.snp_makeConstraints { (make) in
+        noteKindLabel.snp_makeConstraints { (make) in
             make.centerY.equalTo(byLabel)
             make.leading.equalTo(self.byLabel.snp_trailing)
         }
@@ -70,7 +70,7 @@ class CustomMetreView: UIView {
         }
         
         noteKingOfStepperButton.snp_makeConstraints { (make) in
-            make.centerY.equalTo(noteKindOfLabel)
+            make.centerY.equalTo(noteKindLabel)
             make.trailing.equalTo(self).offset(-15)
         }
 

@@ -29,7 +29,7 @@ class MetreButton: UIButton {
     
     func setTitleFromMetre(metre: Metre?) {
         if let metre = metre {
-            let title = "\(metre.beat)/\(metre.noteKindOf.rawValue)"
+            let title = "\(metre.beat)/\(metre.noteKind.rawValue)"
             setTitle(title, forState: .Normal)
         } else {
             setTitle("Empty", forState: .Normal)

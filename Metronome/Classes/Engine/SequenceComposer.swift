@@ -3,7 +3,7 @@ import AVFoundation
 
 class SequenceComposer {
 	static var defaultTempoForQuaterNote: Double { return 120.0 }
-    static var noteForDefaultTempo: NoteKindOf = .QuarterNote
+    static var noteForDefaultTempo: NoteKind = .QuarterNote
 	
 	static func prepareSequenceForMetre(metre: Metre, soundSample: SoundSample, emphasisEnabled: Bool) -> MusicSequence {
 		var musicSequence: MusicSequence = nil
@@ -14,7 +14,7 @@ class SequenceComposer {
 		result = MusicSequenceNewTrack(musicSequence, &musicTrack)
 		assert(result == noErr, "Creating track in sequence error: \(result)")
         
-        let noteDuration = noteDurationForNoteKind(metre.noteKindOf)
+        let noteDuration = noteDurationForNoteKind(metre.noteKind)
         
 		let normalNote = midiMessageForNote(soundSample.normalMidiNote, withDuration: noteDuration)
 		let emphasisNote = midiMessageForNote(soundSample.emphasedMidiNote, withDuration: noteDuration)
@@ -34,7 +34,7 @@ class SequenceComposer {
 		return musicSequence
 	}
 	
-    private static func noteDurationForNoteKind(noteKind: NoteKindOf) -> Float32{
+    private static func noteDurationForNoteKind(noteKind: NoteKind) -> Float32{
         return Float32(noteForDefaultTempo.rawValue) / Float32(noteKind.rawValue)
     }
     

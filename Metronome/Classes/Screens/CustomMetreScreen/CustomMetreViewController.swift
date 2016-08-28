@@ -1,6 +1,17 @@
 import UIKit
 
+enum CustomMetreViewControllerAction {
+    case Dismiss
+    case SelectMetre(metre: Metre)
+}
+
+protocol CustomMetreViewControllerDelegate: class {
+    func customMetreViewController(viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction)
+}
+
 class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateProtocol {
+    weak var delegate: CustomMetreViewControllerDelegate?
+    
 	private let viewModel: CustomMetreViewModel
 	
 	init(withViewModel viewModel: CustomMetreViewModel) {
@@ -31,7 +42,7 @@ class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateP
 		displayMetre(viewModel.currentMetre)
         
         updateMetreStepperButtonState()
-        updateNoteKindOfStepperButtonState()
+        updateNoteKindStepperButtonState()
 	}
 	
 	func customMetreViewModel(viewModel: CustomMetreViewModel, didChangeMetre newMetre: Metre) {
@@ -40,7 +51,7 @@ class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateP
 	
 	func displayMetre(metre: Metre) {
 		mainView.metreLabel.text = "\(metre.beat)"
-		mainView.noteKindOfLabel.text = "\(metre.noteKindOf.rawValue)"
+		mainView.noteKindLabel.text = "\(metre.noteKind.rawValue)"
 	}
 	
 	func increaseMetreButtonDidTap() {
@@ -55,29 +66,31 @@ class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateP
 	
 	func increaseNoteKindButtonDidTap() {
 		viewModel.increaseNoteKind()
-        updateNoteKindOfStepperButtonState()
+        updateNoteKindStepperButtonState()
 	}
 	
 	func decreaseNoteKindButtonDidTap() {
 		viewModel.decreaseNoteKind()
-        updateNoteKindOfStepperButtonState()
+        updateNoteKindStepperButtonState()
 	}
 	
-	func updateMetreStepperButtonState() {
+	private func updateMetreStepperButtonState() {
 		mainView.metreStepperButton.increaseButton.enabled = viewModel.canIncreaseMetre()
         mainView.metreStepperButton.decreaseButton.enabled = viewModel.canDecreaseMetre()
 	}
 	
-	func updateNoteKindOfStepperButtonState() {
-        mainView.noteKingOfStepperButton.increaseButton.enabled = viewModel.canIncreaseNoteKing()
-        mainView.noteKingOfStepperButton.decreaseButton.enabled = viewModel.canDecreaseNoteKing()
+	private func updateNoteKindStepperButtonState() {
+        mainView.noteKingOfStepperButton.increaseButton.enabled = viewModel.canIncreaseNoteKind()
+        mainView.noteKingOfStepperButton.decreaseButton.enabled = viewModel.canDecreaseNoteKind()
 	}
     
     func applyButtonDidTap() {
         viewModel.applyNewMetrum()
+        delegate?.customMetreViewController(self, didSelectAction: .SelectMetre(metre: viewModel.currentMetre))
+        delegate?.customMetreViewController(self, didSelectAction: .Dismiss)
     }
     
     func cancelButtonDidTap() {
-        
+        delegate?.customMetreViewController(self, didSelectAction: .Dismiss)
     }
 }

@@ -20,10 +20,10 @@ class ScreensAssembly: AssemblyType {
 	}
 	
 	private func registerCustomMetreScreenInContainter(container: Container) {
-		container.register(CustomMetreViewController.self) { r in
+        container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
 			let metronomeEngine = r.resolve(MetronomeEngine.self)!
 			let model = CustomMetreModel(withMetronomeEngine: metronomeEngine)
-			let viewModel = CustomMetreViewModel(withModel: model)
+			let viewModel = CustomMetreViewModel(withModel: model, currentMetre: currentMetre)
 			return CustomMetreViewController(withViewModel: viewModel)
 		}
 	}

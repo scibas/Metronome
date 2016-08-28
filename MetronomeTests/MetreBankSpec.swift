@@ -14,7 +14,7 @@ class MetreBankSpecs: QuickSpec {
             sut.setMetre(metreToStore, forIndex: 0)
             
             expect(sut.metreForIndex(0)?.beat).to(equal(metreToStore.beat))
-            expect(sut.metreForIndex(0)?.noteKindOf).to(equal(metreToStore.noteKindOf))
+            expect(sut.metreForIndex(0)?.noteKind).to(equal(metreToStore.noteKind))
         }
         
         it("Should overwrite metre") {
@@ -26,7 +26,7 @@ class MetreBankSpecs: QuickSpec {
             sut.setMetre(metreToStore, forIndex: 0)
             
             expect(sut.metreForIndex(0)?.beat).to(equal(metreToStore.beat))
-            expect(sut.metreForIndex(0)?.noteKindOf).to(equal(metreToStore.noteKindOf))
+            expect(sut.metreForIndex(0)?.noteKind).to(equal(metreToStore.noteKind))
         }
         
         it("Should clear metre") {

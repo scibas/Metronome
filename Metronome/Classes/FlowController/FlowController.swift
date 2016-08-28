@@ -24,7 +24,21 @@ extension FlowController: MainScreenViewControllerFlowDelegate {
 	}
 	
 	func showCustomMetreScreenForMetreBank(metreBankIndex: Int, senderViewController: MainScreenViewController) {
-		let customMetreViewController = resolver().resolve(CustomMetreViewController.self)!
+		let metre: Metre? = nil
+		let customMetreViewController = resolver().resolve(CustomMetreViewController.self, argument: metre)!
+		customMetreViewController.delegate = self
 		dialogPresenter.presentDialogViewController(customMetreViewController, formViewController: senderViewController, animated: true, completion: nil)
+	}
+}
+
+extension FlowController: CustomMetreViewControllerDelegate {
+	func customMetreViewController(viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction) {
+		switch action {
+		case .Dismiss:
+			dialogPresenter.dismissDialogViewControllerFromPresentationViewController(viewController.presentingViewController!, animated: false, completion: nil)
+		case .SelectMetre(let metre):
+            print("New metre: \(metre)")
+			break
+		}
 	}
 }
