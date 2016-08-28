@@ -20,6 +20,7 @@
 		E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227321D733AB500973D9D /* SettingsViewModel.swift */; };
 		E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227341D733AC200973D9D /* SettingsViewController.swift */; };
 		E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227361D73526200973D9D /* MetronomeNavigationController.swift */; };
+		E50227391D735A9900973D9D /* MetronomeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227381D735A9900973D9D /* MetronomeSettingCell.swift */; };
 		E5033F621D0D66A8005193E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F611D0D66A8005193E2 /* Colors.swift */; };
 		E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F641D0D68BB005193E2 /* ConsoleView.swift */; };
 		E5033F671D0D83DE005193E2 /* JogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F661D0D83DE005193E2 /* JogView.swift */; };
@@ -91,6 +92,7 @@
 		E50227321D733AB500973D9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E50227341D733AC200973D9D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E50227361D73526200973D9D /* MetronomeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeNavigationController.swift; sourceTree = "<group>"; };
+		E50227381D735A9900973D9D /* MetronomeSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeSettingCell.swift; sourceTree = "<group>"; };
 		E5033F611D0D66A8005193E2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Screens/Colors.swift; sourceTree = "<group>"; };
 		E5033F641D0D68BB005193E2 /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		E5033F661D0D83DE005193E2 /* JogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogView.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -252,6 +254,7 @@
 				E50227301D733AA300973D9D /* SettingsModel.swift */,
 				E50227321D733AB500973D9D /* SettingsViewModel.swift */,
 				E50227341D733AC200973D9D /* SettingsViewController.swift */,
+				E50227381D735A9900973D9D /* MetronomeSettingCell.swift */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */,
 				E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */,
 				E5033F621D0D66A8005193E2 /* Colors.swift in Sources */,
+				E50227391D735A9900973D9D /* MetronomeSettingCell.swift in Sources */,
 				E5033F671D0D83DE005193E2 /* JogView.swift in Sources */,
 				E534C08B1D57542A00C05EA6 /* ScreensAssembly.swift in Sources */,
 				E5C073F61D56068B00B498F2 /* VarticalStepper.swift in Sources */,
