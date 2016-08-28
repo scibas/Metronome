@@ -97,7 +97,7 @@
 		E50D4D1F1D297C3E0087CE1E /* MainScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		E51C38EE1D56381600DEA1D5 /* CustomMetreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMetreViewModel.swift; sourceTree = "<group>"; };
 		E51C38F01D56393700DEA1D5 /* CustomMetreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMetreModel.swift; sourceTree = "<group>"; };
-		E534C0851D574F8700C05EA6 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		E534C0851D574F8700C05EA6 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E534C0881D57516F00C05EA6 /* CoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreAssembly.swift; sourceTree = "<group>"; };
 		E534C08A1D57542A00C05EA6 /* ScreensAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreensAssembly.swift; sourceTree = "<group>"; };
 		E53753ED1D036CF0003B297B /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
