@@ -24,7 +24,7 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func setupDependencyInjectionFramework() {
 		assembler = try! Assembler(assemblies: [
-			CoreAssembly(),
+			AudioEngineAssembly(),
 			ScreensAssembly()
 		])
 	}

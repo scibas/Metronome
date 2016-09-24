@@ -1,6 +1,11 @@
 import UIKit
 
+protocol SettingsViewControllerFlowDelegate: class {
+    func settingsViewControllerDidSelectChangeSoundAction(settingsViewController: SettingsViewController)
+}
+
 class SettingsViewController: UITableViewController {
+    weak var flowDelegate: SettingsViewControllerFlowDelegate?
 	private let viewModel: SettingsViewModel
 	
 	struct Constants {
@@ -46,6 +51,10 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if(indexPath.section == 0 && indexPath.row == 0) {  //FixMe: Temporary code, remove
+            flowDelegate?.settingsViewControllerDidSelectChangeSoundAction(self)
+        }
     }
 }
 

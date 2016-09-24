@@ -1,14 +1,16 @@
 import Foundation
 import Swinject
 
-class ScreensAssembly: AssemblyType {
-	
+final class ScreensAssembly: AssemblyType {
 	func assemble(container: Container) {
 		registerMainScreenInContainter(container)
-		registerSettingsScreenInContainter(container)
 		registerCustomMetreScreenInContainter(container)
+		registerSettingsScreenInContainter(container)
+		registerSelectSoundScreenInContainer(container)
 	}
-	
+}
+
+private extension ScreensAssembly {
 	private func registerMainScreenInContainter(container: Container) {
 		container.register(MainScreenViewController.self) { r in
 			
@@ -33,6 +35,16 @@ class ScreensAssembly: AssemblyType {
 			let model = SettingsModel()
 			let viewModel = SettingsViewModel(withModel: model)
 			return SettingsViewController(withViewModel: viewModel)
+		}
+	}
+	
+	private func registerSelectSoundScreenInContainer(container: Container) {
+		container.register(SelectSoundViewController.self) { r in
+			let soundBank = r.resolve(SoundsBank.self)!
+			let metronomeEngine = r.resolve(MetronomeEngine.self)!
+			let model = SelectSoundModel(withSoundBank: soundBank, andMetronomeEngine: metronomeEngine)
+			let viewModel = SelectSoundViewModel(withModel: model)
+			return SelectSoundViewController(withViewModel: viewModel)
 		}
 	}
 }
