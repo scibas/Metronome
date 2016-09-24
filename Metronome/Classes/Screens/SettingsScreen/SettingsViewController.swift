@@ -1,7 +1,13 @@
 import UIKit
 
+enum SettingsViewControllerAction {
+    case ShowChangeSound
+    case ShowRateApp
+    case ShowReportBug
+}
+
 protocol SettingsViewControllerFlowDelegate: class {
-    func settingsViewControllerDidSelectChangeSoundAction(settingsViewController: SettingsViewController)
+    func settingsViewController(settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction)
 }
 
 class SettingsViewController: UITableViewController {
@@ -51,9 +57,21 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        if(indexPath.section == 0 && indexPath.row == 0) {  //FixMe: Temporary code, remove
-            flowDelegate?.settingsViewControllerDidSelectChangeSoundAction(self)
+    
+        let action = viewModel.settingItemForIndexPath(indexPath).action
+        handleAction(action)
+    }
+    
+    private func handleAction(action: SettingItemAction) {
+        switch action {
+        case .ChangeSound:
+            flowDelegate?.settingsViewController(self, didSelectAction: .ShowChangeSound)
+        case .EnableEmphasis: break
+        case .PlayInBackground: break
+        case .RateApp:
+            flowDelegate?.settingsViewController(self, didSelectAction: .ShowRateApp)
+        case .ReportBug:
+            flowDelegate?.settingsViewController(self, didSelectAction: .ShowReportBug)
         }
     }
 }

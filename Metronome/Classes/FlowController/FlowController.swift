@@ -1,5 +1,6 @@
 import UIKit
 import Swinject
+import CocoaLumberjack
 
 class FlowController: WithResolver {
 	private let window: UIWindow
@@ -53,8 +54,15 @@ extension FlowController: CustomMetreViewControllerDelegate {
 }
 
 extension FlowController: SettingsViewControllerFlowDelegate {
-	func settingsViewControllerDidSelectChangeSoundAction(settingsViewController: SettingsViewController) {
-		let selectSoundViewController = resolver().resolve(SelectSoundViewController.self)!
-		navigationController!.pushViewController(selectSoundViewController, animated: true)
+	func settingsViewController(settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction) {
+		switch action {
+		case .ShowChangeSound:
+			let selectSoundViewController = resolver().resolve(SelectSoundViewController.self)!
+			navigationController!.pushViewController(selectSoundViewController, animated: true)
+		case .ShowRateApp:
+			DDLogError("Action not supported yet")
+		case .ShowReportBug:
+			DDLogError("Action not supported yet")
+		}
 	}
 }
