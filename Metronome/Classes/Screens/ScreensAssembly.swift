@@ -31,9 +31,10 @@ private extension ScreensAssembly {
 	}
 	
 	private func registerSettingsScreenInContainter(container: Container) {
-		container.register(SettingsViewController.self) { resolver in
+		container.register(SettingsViewController.self) { r in
 			let model = SettingsModel()
-			let viewModel = SettingsViewModel(withModel: model)
+            let metronomeEngine = r.resolve(MetronomeEngine.self)!
+			let viewModel = SettingsViewModel(withModel: model, metronomeEngine: metronomeEngine)
 			return SettingsViewController(withViewModel: viewModel)
 		}
 	}

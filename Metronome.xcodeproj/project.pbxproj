@@ -20,7 +20,6 @@
 		E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227321D733AB500973D9D /* SettingsViewModel.swift */; };
 		E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227341D733AC200973D9D /* SettingsViewController.swift */; };
 		E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227361D73526200973D9D /* MetronomeNavigationController.swift */; };
-		E50227391D735A9900973D9D /* MetronomeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227381D735A9900973D9D /* MetronomeSettingCell.swift */; };
 		E5033F621D0D66A8005193E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F611D0D66A8005193E2 /* Colors.swift */; };
 		E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F641D0D68BB005193E2 /* ConsoleView.swift */; };
 		E5033F671D0D83DE005193E2 /* JogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F661D0D83DE005193E2 /* JogView.swift */; };
@@ -56,6 +55,7 @@
 		E5A4A2011D96BA3F00F5D7D4 /* SelectSoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A2001D96BA3F00F5D7D4 /* SelectSoundCell.swift */; };
 		E5A4A2031D96BBD300F5D7D4 /* ScreensAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A2021D96BBD300F5D7D4 /* ScreensAssembly.swift */; };
 		E5A4A2051D96BBDE00F5D7D4 /* AudioEngineAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A2041D96BBDE00F5D7D4 /* AudioEngineAssembly.swift */; };
+		E5A4A2071D970A3500F5D7D4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A2061D970A3500F5D7D4 /* SettingCell.swift */; };
 		E5C073F61D56068B00B498F2 /* VarticalStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C073F51D56068B00B498F2 /* VarticalStepper.swift */; };
 		E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C3DB321D2EB39D00823FA0 /* MetreBank.swift */; };
 		E5C3DB351D2EC6C500823FA0 /* MetreBankSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C3DB341D2EC6C500823FA0 /* MetreBankSpec.swift */; };
@@ -96,7 +96,6 @@
 		E50227321D733AB500973D9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E50227341D733AC200973D9D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E50227361D73526200973D9D /* MetronomeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeNavigationController.swift; sourceTree = "<group>"; };
-		E50227381D735A9900973D9D /* MetronomeSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeSettingCell.swift; sourceTree = "<group>"; };
 		E5033F611D0D66A8005193E2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Screens/Colors.swift; sourceTree = "<group>"; };
 		E5033F641D0D68BB005193E2 /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		E5033F661D0D83DE005193E2 /* JogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogView.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -136,6 +135,7 @@
 		E5A4A2001D96BA3F00F5D7D4 /* SelectSoundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSoundCell.swift; sourceTree = "<group>"; };
 		E5A4A2021D96BBD300F5D7D4 /* ScreensAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreensAssembly.swift; sourceTree = "<group>"; };
 		E5A4A2041D96BBDE00F5D7D4 /* AudioEngineAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEngineAssembly.swift; sourceTree = "<group>"; };
+		E5A4A2061D970A3500F5D7D4 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E5C073F51D56068B00B498F2 /* VarticalStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarticalStepper.swift; sourceTree = "<group>"; };
 		E5C3DB321D2EB39D00823FA0 /* MetreBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreBank.swift; sourceTree = "<group>"; };
 		E5C3DB341D2EC6C500823FA0 /* MetreBankSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreBankSpec.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				E50227301D733AA300973D9D /* SettingsModel.swift */,
 				E50227321D733AB500973D9D /* SettingsViewModel.swift */,
 				E50227341D733AC200973D9D /* SettingsViewController.swift */,
-				E50227381D735A9900973D9D /* MetronomeSettingCell.swift */,
+				E5A4A2061D970A3500F5D7D4 /* SettingCell.swift */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -635,7 +635,6 @@
 				E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */,
 				E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */,
 				E5033F621D0D66A8005193E2 /* Colors.swift in Sources */,
-				E50227391D735A9900973D9D /* MetronomeSettingCell.swift in Sources */,
 				E5033F671D0D83DE005193E2 /* JogView.swift in Sources */,
 				E5A4A1FF1D96B90A00F5D7D4 /* SelectSoundModel.swift in Sources */,
 				E5C073F61D56068B00B498F2 /* VarticalStepper.swift in Sources */,
@@ -645,6 +644,7 @@
 				E572067A1D730A3900CDBC23 /* NoteKind.swift in Sources */,
 				6582B80CEA152D8884D8E4F1 /* MainScreenViewController.swift in Sources */,
 				E53754511D0383A7003B297B /* Metre.swift in Sources */,
+				E5A4A2071D970A3500F5D7D4 /* SettingCell.swift in Sources */,
 				A881556F1D324496008673B2 /* PopupAnimator.swift in Sources */,
 				E50D4D181D27CDCD0087CE1E /* Fonts.swift in Sources */,
 				E5A4A1F91D96B8CB00F5D7D4 /* SelectSoundViewController.swift in Sources */,

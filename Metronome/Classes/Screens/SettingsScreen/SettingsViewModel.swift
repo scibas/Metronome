@@ -1,10 +1,12 @@
 import Foundation
 
-class SettingsViewModel {
+final class SettingsViewModel {
     private let model: SettingsModel
+    private let metronomeEngine: MetronomeEngineProtocol
     
-    init(withModel model: SettingsModel) {
+    init(withModel model: SettingsModel, metronomeEngine: MetronomeEngineProtocol) {
         self.model = model
+        self.metronomeEngine = metronomeEngine
     }
     
     func numberOfSections() -> Int {
@@ -18,5 +20,13 @@ class SettingsViewModel {
     func settingItemForIndexPath(indexPath: NSIndexPath) -> SettingItem {
         let section = model.settings[indexPath.section]
         return section.items[indexPath.item]
+    }
+    
+    func setEmphasisEnabled(emphasisEnabled: Bool) {
+        metronomeEngine.emphasisEnabled = emphasisEnabled
+    }
+    
+    func pauseMetronomeOnEnterBackground(pause: Bool) {
+        //FixMe:
     }
 }

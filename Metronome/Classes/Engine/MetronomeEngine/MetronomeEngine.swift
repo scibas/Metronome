@@ -4,7 +4,7 @@ import CocoaLumberjack
 
 class MetronomeEngine: MetronomeEngineProtocol {
 	var currentMusicSequence: MusicSequence?
-	
+	var pauseOnAppExit = false //FixMe: handle metronome pausing
 	var audioEngine: AudioEngineProtocol
 	let soundBank: SoundsBank
 	

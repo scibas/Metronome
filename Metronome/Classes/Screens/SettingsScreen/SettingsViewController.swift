@@ -1,21 +1,21 @@
 import UIKit
 
 enum SettingsViewControllerAction {
-    case ShowChangeSound
-    case ShowRateApp
-    case ShowReportBug
+	case ShowChangeSound
+	case ShowRateApp
+	case ShowReportBug
 }
 
 protocol SettingsViewControllerFlowDelegate: class {
-    func settingsViewController(settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction)
+	func settingsViewController(settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction)
 }
 
 class SettingsViewController: UITableViewController {
-    weak var flowDelegate: SettingsViewControllerFlowDelegate?
+	weak var flowDelegate: SettingsViewControllerFlowDelegate?
 	private let viewModel: SettingsViewModel
 	
 	struct Constants {
-		static let cellReuseIdentifier = "CellReuseIdentifier"
+		static let settingsCellReuseIdentifier = "SettingsCellReuseIdentifier"
 	}
 	
 	init(withViewModel viewModel: SettingsViewModel) {
@@ -29,7 +29,7 @@ class SettingsViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.registerClass(MetronomeSettingCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+		tableView.registerClass(SettingCell.self, forCellReuseIdentifier: Constants.settingsCellReuseIdentifier)
 		
 		title = "Settings"
 	}
@@ -50,40 +50,68 @@ class SettingsViewController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let settingsItem = viewModel.settingItemForIndexPath(indexPath)
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier(Constants.cellReuseIdentifier, forIndexPath: indexPath) as! MetronomeSettingCell
+		let cell = tableView.dequeueReusableCellWithIdentifier(Constants.settingsCellReuseIdentifier, forIndexPath: indexPath) as! SettingCell
 		cell.bindWithSettingItem(settingsItem)
+		cell.configureCellForSettingItem(settingsItem)
+		cell.switchButtonActionClosure = handleCellSwitchActionClosure
 		return cell
 	}
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    
-        let action = viewModel.settingItemForIndexPath(indexPath).action
-        handleAction(action)
-    }
-    
-    private func handleAction(action: SettingItemAction) {
-        switch action {
-        case .ChangeSound:
-            flowDelegate?.settingsViewController(self, didSelectAction: .ShowChangeSound)
-        case .EnableEmphasis: break
-        case .PlayInBackground: break
-        case .RateApp:
-            flowDelegate?.settingsViewController(self, didSelectAction: .ShowRateApp)
-        case .ReportBug:
-            flowDelegate?.settingsViewController(self, didSelectAction: .ShowReportBug)
-        }
-    }
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		
+		let action = viewModel.settingItemForIndexPath(indexPath).action
+		handleCellAction(action, value: nil)
+	}
+	
+    private func handleCellAction(action: SettingItemAction?, value: Bool?) {
+        guard let action = action else { return }
+        
+		switch action {
+		case .ChangeSound:
+			flowDelegate?.settingsViewController(self, didSelectAction: .ShowChangeSound)
+		case .RateApp:
+			flowDelegate?.settingsViewController(self, didSelectAction: .ShowRateApp)
+		case .ReportBug:
+			flowDelegate?.settingsViewController(self, didSelectAction: .ShowReportBug)
+		case .EnableEmphasis:
+            viewModel.setEmphasisEnabled(value!)
+		case .PlayInBackground:
+            viewModel.pauseMetronomeOnEnterBackground(value!)
+		}
+	}
+	
+	private lazy var handleCellSwitchActionClosure: SwitchActionClosure = {
+		return { [weak self] newValue, senderCell in
+			let indexPath = self?.tableView.indexPathForCell(senderCell)
+			
+			if let indexPath = indexPath {
+				let action = self?.viewModel.settingItemForIndexPath(indexPath).action
+                self?.handleCellAction(action, value: newValue)
+			}
+		}
+	}()
 }
 
-extension MetronomeSettingCell {
+extension SettingCell {
 	func bindWithSettingItem(settingItem: SettingItem) {
-		textLabel?.text = settingItem.title
-		
-		let showAccesor = (settingItem.type == .Subitems)
-		accessoryType = showAccesor ? .DisclosureIndicator : .None
-		
-		let canSelect = (settingItem.type != .Boolean)
-		selectionStyle = canSelect ? .Gray : .None
+		titleLabel.text = settingItem.title
+	}
+	
+	func configureCellForSettingItem(settingItem: SettingItem) {
+		switch settingItem.type {
+		case .Simple:
+			accessoryType = .None
+			selectionStyle = .Gray
+			showSwitchButton = false
+		case .SimpleWithSubitems:
+			accessoryType = .DisclosureIndicator
+			selectionStyle = .Gray
+			showSwitchButton = false
+		case .TrueFalse:
+			accessoryType = .None
+			selectionStyle = .None
+			showSwitchButton = true
+		}
 	}
 }
