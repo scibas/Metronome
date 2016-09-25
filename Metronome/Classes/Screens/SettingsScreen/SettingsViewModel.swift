@@ -27,6 +27,6 @@ final class SettingsViewModel {
     }
     
     func pauseMetronomeOnEnterBackground(pause: Bool) {
-        //FixMe:
+        metronomeEngine.pauseOnAppExit = pause
     }
 }

@@ -21,8 +21,9 @@ private extension AudioEngineAssembly {
 		container.register(MetronomeEngine.self) { r in
 			let audioEngine = r.resolve(AudioEngine.self) as! AudioEngineProtocol
 			let soundBank = r.resolve(SoundsBank.self)!
-			
-			return MetronomeEngine(withAudioEngine: audioEngine, andSoundBank: soundBank)
+			let appLifeCycleEvantBroadcaster = r.resolve(AppLifeCycleEventBroadcaster.self)!
+            
+			return MetronomeEngine(withAudioEngine: audioEngine, andSoundBank: soundBank, appLifeCycleEventBroadcaster: appLifeCycleEvantBroadcaster)
 		}.inObjectScope(.Container)
 	}
 	

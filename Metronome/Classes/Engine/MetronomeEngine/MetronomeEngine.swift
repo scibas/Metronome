@@ -2,15 +2,23 @@ import Foundation
 import AVFoundation
 import CocoaLumberjack
 
-class MetronomeEngine: MetronomeEngineProtocol {
+class MetronomeEngine: MetronomeEngineProtocol, AppLifeCycleEventObserver {
 	var currentMusicSequence: MusicSequence?
-	var pauseOnAppExit = false //FixMe: handle metronome pausing
+	var pauseOnAppExit = false
 	var audioEngine: AudioEngineProtocol
 	let soundBank: SoundsBank
+	let appLifeCycleEventBroadcaster: AppLifeCycleEventBroadcaster
 	
-	init(withAudioEngine audioEngine: AudioEngineProtocol, andSoundBank soundBank: SoundsBank) {
+	init(withAudioEngine audioEngine: AudioEngineProtocol, andSoundBank soundBank: SoundsBank, appLifeCycleEventBroadcaster: AppLifeCycleEventBroadcaster) {
 		self.audioEngine = audioEngine
 		self.soundBank = soundBank
+		self.appLifeCycleEventBroadcaster = appLifeCycleEventBroadcaster
+		
+		appLifeCycleEventBroadcaster.registerObserver(self)
+	}
+	
+	deinit {
+		appLifeCycleEventBroadcaster.removeObserver(self)
 	}
 	
 	func start() throws {
@@ -76,5 +84,11 @@ class MetronomeEngine: MetronomeEngineProtocol {
 		let emphasisEnabled = emphasisEnabled ?? true
 		
 		return SequenceComposer.prepareSequenceForMetre(metre, soundSample: soundSample, emphasisEnabled: emphasisEnabled)
+	}
+	
+	func didReciveAppLifeCycleEvent(event: AppLifeCycleEvents) {
+        if (event == .DidEnterBackground && pauseOnAppExit) {
+            stop()
+        }
 	}
 }

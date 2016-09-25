@@ -7,11 +7,13 @@ import UIKit
 import Swinject
 
 @UIApplicationMain
-private final class AppDelegate: UIResponder, UIApplicationDelegate {
-	@objc var window: UIWindow?
+private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolver {
     var assembler: Assembler?
+    lazy var appLifeCycleEventBroadcaster: AppLifeCycleEventBroadcaster = self.resolver().resolve(AppLifeCycleEventBroadcaster.self)!
+
+    @objc var window: UIWindow?
     var flowController: FlowController?
-	
+    
 	@objc func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         setupDependencyInjectionFramework()
         
@@ -22,12 +24,21 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate {
 		return true
 	}
 	
-	func setupDependencyInjectionFramework() {
+	private func setupDependencyInjectionFramework() {
 		assembler = try! Assembler(assemblies: [
+            GeneralAssembly(),
 			AudioEngineAssembly(),
 			ScreensAssembly()
 		])
 	}
+    
+    @objc private func applicationWillEnterForeground(application: UIApplication) {
+        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.WillEnterForeground)
+    }
+    
+    @objc private func applicationDidEnterBackground(application: UIApplication) {
+        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.DidEnterBackground)
+    }
 }
 
 protocol WithResolver {

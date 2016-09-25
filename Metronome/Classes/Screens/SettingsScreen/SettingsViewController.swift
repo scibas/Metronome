@@ -77,7 +77,7 @@ class SettingsViewController: UITableViewController {
 		case .EnableEmphasis:
             viewModel.setEmphasisEnabled(value!)
 		case .PlayInBackground:
-            viewModel.pauseMetronomeOnEnterBackground(value!)
+            viewModel.pauseMetronomeOnEnterBackground(!value!)
 		}
 	}
 	
