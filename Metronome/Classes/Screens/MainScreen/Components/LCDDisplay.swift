@@ -26,16 +26,16 @@ class LCDDisplay: UIView {
 	}
 	
 	fileprivate func setupCustomConstraints() {
-		backgroundImageView.snp_makeConstraints { make in
+		backgroundImageView.snp.makeConstraints { make in
 			make.edges.equalTo(self)
 		}
 		
-        metreBadge.snp_makeConstraints { (make) in
+        metreBadge.snp.makeConstraints { (make) in
             make.top.equalTo(self).offset(10)
             make.leading.equalTo(self).offset(10)
         }
         
-		bpmValueLabel.snp_makeConstraints { make in
+		bpmValueLabel.snp.makeConstraints { make in
 			make.center.equalTo(self)
             make.top.greaterThanOrEqualTo(self).offset(5)
             make.bottom.lessThanOrEqualTo(self).offset(-5)

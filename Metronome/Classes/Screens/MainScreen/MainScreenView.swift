@@ -44,56 +44,56 @@ class MainScreenView: UIView {
 	}
 	
 	fileprivate func setupCustomConstraints() {
-        consoleView.snp_makeConstraints { make in
+        consoleView.snp.makeConstraints { make in
             make.leading.equalTo(jogView).offset(-Constants.consoleMargin)
             make.trailing.equalTo(jogView).offset(Constants.consoleMargin)
             make.top.equalTo(self).offset(Constants.statusBarHeight)
             make.bottom.equalTo(jogView).offset(Constants.consoleMargin)
         }
         
-        displayView.snp_makeConstraints { (make) in
+        displayView.snp.makeConstraints { (make) in
             make.leading.equalTo(consoleView)
             make.trailing.equalTo(consoleView)
             make.top.equalTo(self).offset(Constants.statusBarHeight + 2)
         }
         
-        metreButtonsPanel.snp_makeConstraints { (make) in
+        metreButtonsPanel.snp.makeConstraints { (make) in
             make.leading.equalTo(self).offset(Constants.defaultSideMargin)
             make.trailing.equalTo(self).offset(-Constants.defaultSideMargin)
-            make.top.equalTo(displayView.snp_bottom).offset(Constants.defaultVerticalMargin).priorityMedium()
-            make.top.greaterThanOrEqualTo(displayView.snp_bottom).offset(Constants.minimumVerticalMargin)
+            make.top.equalTo(displayView.snp.bottom).offset(Constants.defaultVerticalMargin).priority(UILayoutPriorityDefaultLow)
+            make.top.greaterThanOrEqualTo(displayView.snp.bottom).offset(Constants.minimumVerticalMargin)
         }
         
-        settingsButton.snp_makeConstraints { (make) in
+        settingsButton.snp.makeConstraints { (make) in
             make.top.equalTo(jogView)
             make.leading.equalTo(jogView)
         }
         
-        autoBpmButton.snp_makeConstraints { (make) in
+        autoBpmButton.snp.makeConstraints { (make) in
             make.top.equalTo(jogView)
             make.trailing.equalTo(jogView)
         }
         
-        jogView.snp_makeConstraints { make in
-            make.top.equalTo(metreButtonsPanel.snp_bottom).offset(Constants.defaultVerticalMargin).priorityMedium()
-            make.top.greaterThanOrEqualTo(metreButtonsPanel.snp_bottom).offset(Constants.minimumVerticalMargin)
+        jogView.snp.makeConstraints { make in
+            make.top.equalTo(metreButtonsPanel.snp.bottom).offset(Constants.defaultVerticalMargin).priority(UILayoutPriorityDefaultLow)
+            make.top.greaterThanOrEqualTo(metreButtonsPanel.snp.bottom).offset(Constants.minimumVerticalMargin)
             make.leading.equalTo(self).offset(Constants.defaultSideMargin)
             make.trailing.equalTo(self).offset(-Constants.defaultSideMargin)
-            make.height.equalTo(jogView.snp_width)
+            make.height.equalTo(jogView.snp.width)
         }
         
-        decreaseTempoButton.snp_makeConstraints { (make) in
+        decreaseTempoButton.snp.makeConstraints { (make) in
             make.leading.equalTo(consoleView)
-            make.trailing.equalTo(self.snp_centerX)
+            make.trailing.equalTo(self.snp.centerX)
             make.top.equalTo(increaseTempoButton)
             make.bottom.equalTo(increaseTempoButton)
         }
         
-        increaseTempoButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(self.snp_centerX)
+        increaseTempoButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(self.snp.centerX)
             make.trailing.equalTo(consoleView)
-            make.top.equalTo(jogView.snp_bottom)
-            make.bottom.equalTo(self).offset(-Constants.defaultSideMargin).priorityMedium()
+            make.top.equalTo(jogView.snp.bottom)
+            make.bottom.equalTo(self).offset(-Constants.defaultSideMargin).priority(UILayoutPriorityDefaultLow)
             make.bottom.lessThanOrEqualTo(self).offset(-Constants.minimumVerticalMargin)
         }
 	}

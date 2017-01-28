@@ -26,21 +26,21 @@ class VarticalStepper: UIView {
 	
 	func setupCustomConstraints() {
 		
-		increaseButton.snp_makeConstraints { (make) in
+		increaseButton.snp.makeConstraints { (make) in
 			make.leading.equalTo(self)
 			make.trailing.equalTo(self)
 			make.top.equalTo(self)
 			make.height.equalTo(self).dividedBy(2)
 		}
 		
-		decreaseButton.snp_makeConstraints { (make) in
+		decreaseButton.snp.makeConstraints { (make) in
 			make.leading.equalTo(self)
 			make.trailing.equalTo(self)
 			make.bottom.equalTo(self)
 			make.height.equalTo(self).dividedBy(2)
 		}
 		
-		dividerView.snp_makeConstraints { (make) in
+		dividerView.snp.makeConstraints { (make) in
 			make.leading.equalTo(self)
 			make.trailing.equalTo(self)
 			make.height.equalTo(1)
@@ -64,16 +64,16 @@ class VarticalStepper: UIView {
 	}
 }
 
-private extension UIButton {
+public extension UIButton {
 	convenience init(withTitle title: String) {
 		self.init(frame: .zero)
 		
-		setTitle(title, for: UIControlState())
+		setTitle(title, for: .normal)
 		titleLabel?.font = UIFont.customMetreIncreaseDecreaseButtonFont()
 	}
 	
-    open override func tintColorDidChange() {
-		setTitleColor(self.tintColor, for: UIControlState())
+    override open func tintColorDidChange() {
+		setTitleColor(self.tintColor, for: .normal)
 		setTitleColor(self.tintColor.withAlphaComponent(0.3), for: .disabled)
 		setTitleColor(self.tintColor.withAlphaComponent(0.5), for: .highlighted)
 	}

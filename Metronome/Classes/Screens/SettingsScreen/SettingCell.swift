@@ -40,15 +40,15 @@ final class SettingCell: UITableViewCell {
 	}
 	
 	fileprivate func setupCustomConstraints() {
-		titleLabel.snp_makeConstraints { make in
+		titleLabel.snp.makeConstraints { make in
 			make.centerY.equalTo(contentView)
-			make.leading.equalTo(contentView.snp_leadingMargin)
+			make.leading.equalTo(contentView.snp.leadingMargin)
 		}
 		
-		switchButton.snp_makeConstraints { make in
+		switchButton.snp.makeConstraints { make in
 			make.centerY.equalTo(contentView)
-			make.trailing.equalTo(contentView.snp_trailingMargin)
-			make.leading.equalTo(titleLabel.snp_trailing)
+			make.trailing.equalTo(contentView.snp.trailingMargin)
+			make.leading.equalTo(titleLabel.snp.trailing)
 		}
 	}
 	

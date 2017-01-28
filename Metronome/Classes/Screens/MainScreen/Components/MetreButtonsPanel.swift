@@ -26,7 +26,7 @@ class MetreButtonsPanel: UIControl {
 	}
 
 	fileprivate func setupCustomConstraints() {
-		buttonStackView.snp_makeConstraints { (make) in
+		buttonStackView.snp.makeConstraints { (make) in
 			make.edges.equalTo(self)
 		}
 	}

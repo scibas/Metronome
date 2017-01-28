@@ -26,8 +26,8 @@ class CustomMetreView: UIView {
         noteKindLabel.textColor = UIColor.metreButtonSelectedStateColor()
         noteKindLabel.font = UIFont.customMetreFont()
         
-        applyButton.setTitle("APPLY", for: UIControlState())
-        cancelButton.setTitle("Cancel", for: UIControlState())
+        applyButton.setTitle("APPLY", for: .normal)
+        cancelButton.setTitle("Cancel", for: .normal)
         
         addSubview(metreLabel)
         addSubview(noteKindLabel)
@@ -49,43 +49,43 @@ class CustomMetreView: UIView {
     }
     
     func setupCustomConstraints() {
-        byLabel.snp_makeConstraints { (make) in
-            make.centerX.equalTo(self.snp_centerX)
+        byLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self).offset(-80)
         }
         
-        metreLabel.snp_makeConstraints { (make) in
+        metreLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(byLabel)
-            make.trailing.equalTo(byLabel.snp_leading)
+            make.trailing.equalTo(byLabel.snp.leading)
         }
         
-        noteKindLabel.snp_makeConstraints { (make) in
+        noteKindLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(byLabel)
-            make.leading.equalTo(self.byLabel.snp_trailing)
+            make.leading.equalTo(self.byLabel.snp.trailing)
         }
         
-        metreStepperButton.snp_makeConstraints { (make) in
+        metreStepperButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(metreLabel)
             make.leading.equalTo(self).offset(15)
         }
         
-        noteKingOfStepperButton.snp_makeConstraints { (make) in
+        noteKingOfStepperButton.snp.makeConstraints { (make) in
             make.centerY.equalTo(noteKindLabel)
             make.trailing.equalTo(self).offset(-15)
         }
 
-        cancelButton.snp_makeConstraints { (make) in
+        cancelButton.snp.makeConstraints { (make) in
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
             make.height.equalTo(44)
             make.bottom.equalTo(self).offset(-10)
         }
         
-        applyButton.snp_makeConstraints { (make) in
+        applyButton.snp.makeConstraints { (make) in
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
             make.height.equalTo(44)
-            make.bottom.equalTo(cancelButton.snp_top)
+            make.bottom.equalTo(cancelButton.snp.top)
 
         }
         

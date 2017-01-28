@@ -52,11 +52,11 @@ class JogView: UIControl {
 	}
 
 	fileprivate func setupCustomConstraints() {
-		backgroundImageView.snp_makeConstraints { make in
+		backgroundImageView.snp.makeConstraints { make in
 			make.edges.equalTo(self)
 		}
 
-		knobeImageView.snp_makeConstraints { make in
+		knobeImageView.snp.makeConstraints { make in
 			make.edges.equalTo(backgroundImageView)
 		}
 	}

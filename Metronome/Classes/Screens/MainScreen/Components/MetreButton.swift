@@ -8,9 +8,9 @@ class MetreButton: UIButton {
 		titleLabel?.numberOfLines = 2
 		
         setTitleFromMetre(nil)
-		setTitleColor(UIColor.metreButtonNormalStateColor(), for: UIControlState())
+		setTitleColor(UIColor.metreButtonNormalStateColor(), for: .normal)
 		setTitleColor(UIColor.metreButtonSelectedStateColor(), for: .selected)
-		setBackgroundImage(UIImage(asset: .Metre_btn), for: UIControlState())
+		setBackgroundImage(UIImage(asset: .Metre_btn), for: .normal)
 		
 		let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MetreButton.didLongPress(_:)))
 		longPressGestureRecognizer.allowableMovement = 0
@@ -30,9 +30,9 @@ class MetreButton: UIButton {
     func setTitleFromMetre(_ metre: Metre?) {
         if let metre = metre {
             let title = "\(metre.beat)/\(metre.noteKind.rawValue)"
-            setTitle(title, for: UIControlState())
+            setTitle(title, for: .normal)
         } else {
-            setTitle("Empty", for: UIControlState())
+            setTitle("Empty", for: .normal)
         }
     }
 }
