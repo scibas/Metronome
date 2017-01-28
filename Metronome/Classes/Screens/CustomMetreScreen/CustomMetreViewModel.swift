@@ -1,10 +1,10 @@
 protocol CustomMetreViewModelDelegateProtocol: class {
-	func customMetreViewModel(viewModel: CustomMetreViewModel, didChangeMetre newMetre: Metre)
+	func customMetreViewModel(_ viewModel: CustomMetreViewModel, didChangeMetre newMetre: Metre)
 }
 
 class CustomMetreViewModel {
 	weak var delegate: CustomMetreViewModelDelegateProtocol?
-	private let model: CustomMetreModel
+	fileprivate let model: CustomMetreModel
 	
     struct Defaults {
         static let defaultMatre = Metre.threeByFour()
@@ -12,7 +12,7 @@ class CustomMetreViewModel {
         static let maximumMetre = 12
     }
     
-	private(set) var currentMetre: Metre {
+	fileprivate(set) var currentMetre: Metre {
 		didSet { delegate?.customMetreViewModel(self, didChangeMetre: currentMetre) }
 	}
 	
@@ -64,24 +64,24 @@ class CustomMetreViewModel {
 
 private extension NoteKind{
 	func successor() -> NoteKind? {
-		let curentIndex = NoteKind.allValues().indexOf(self)
+		let curentIndex = NoteKind.allValues().index(of: self)
 		guard self.hasSuccessor() else { return nil }
 		return NoteKind.allValues()[curentIndex! + 1]
 	}
 	
 	func predecessor() -> NoteKind? {
-		let curentIndex = NoteKind.allValues().indexOf(self)
+		let curentIndex = NoteKind.allValues().index(of: self)
 		guard self.hasPredecessor() else { return nil }
 		return NoteKind.allValues()[curentIndex! - 1]
 	}
 	
 	func hasSuccessor() -> Bool {
-		let curentIndex = NoteKind.allValues().indexOf(self)
-		return curentIndex < NoteKind.allValues().count - 1
+		let curentIndex = NoteKind.allValues().index(of: self)
+		return curentIndex! < NoteKind.allValues().count - 1
 	}
 	
 	func hasPredecessor() -> Bool {
-		let curentIndex = NoteKind.allValues().indexOf(self)
-		return curentIndex > 0
+		let curentIndex = NoteKind.allValues().index(of: self)
+		return curentIndex! > 0
 	}
 }

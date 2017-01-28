@@ -3,11 +3,11 @@ import Swinject
 import CocoaLumberjack
 
 class FlowController: WithResolver {
-	private let window: UIWindow
-	private let dialogPresenter = DialogPresenter()
-	private var setMetreClosure: SetMetreClosure?
+	fileprivate let window: UIWindow
+	fileprivate let dialogPresenter = DialogPresenter()
+	fileprivate var setMetreClosure: SetMetreClosure?
 	
-	private weak var navigationController: MetronomeNavigationController?
+	fileprivate weak var navigationController: MetronomeNavigationController?
 	
 	init(withWindow window: UIWindow) {
 		self.window = window
@@ -26,13 +26,13 @@ class FlowController: WithResolver {
 }
 
 extension FlowController: MainScreenViewControllerFlowDelegate {
-	func showSettingsScreen(senderViewController: MainScreenViewController) {
+    func showSettingsScreen(_ senderViewController: MainScreenViewController) {
 		let settingsViewController = resolver().resolve(SettingsViewController.self)!
 		settingsViewController.flowDelegate = self
 		navigationController!.pushViewController(settingsViewController, animated: true)
 	}
 	
-	func showCustomMetreScreenForMetre(currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: SetMetreClosure) {
+    func showCustomMetreScreenForMetre(_ currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: @escaping (Metre) -> ()) {
 		self.setMetreClosure = setMetreClosure
 		
 		let customMetreViewController = resolver().resolve(CustomMetreViewController.self, argument: currentMetre)!
@@ -42,26 +42,26 @@ extension FlowController: MainScreenViewControllerFlowDelegate {
 }
 
 extension FlowController: CustomMetreViewControllerDelegate {
-	func customMetreViewController(viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction) {
+	func customMetreViewController(_ viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction) {
 		switch action {
-		case .Dismiss:
+		case .dismiss:
 			dialogPresenter.dismissDialogViewControllerFromPresentationViewController(viewController.presentingViewController!, animated: false, completion: nil)
-		case .SelectMetre(let metre):
-			setMetreClosure?(newMetre: metre)
+		case .selectMetre(let metre):
+			setMetreClosure?(metre)
 			break
 		}
 	}
 }
 
 extension FlowController: SettingsViewControllerFlowDelegate {
-	func settingsViewController(settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction) {
+	func settingsViewController(_ settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction) {
 		switch action {
-		case .ShowChangeSound:
+		case .showChangeSound:
 			let selectSoundViewController = resolver().resolve(SelectSoundViewController.self)!
 			navigationController!.pushViewController(selectSoundViewController, animated: true)
-		case .ShowRateApp:
+		case .showRateApp:
 			DDLogError("Action not supported yet")
-		case .ShowReportBug:
+		case .showReportBug:
 			DDLogError("Action not supported yet")
 		}
 	}

@@ -1,12 +1,12 @@
 public enum NoteKind: Int {
-    case WholeNote = 1
-    case HalfNote = 2
-    case QuarterNote = 4
-    case EighthNote = 8
-    case SixteenthNotes = 16
+    case wholeNote = 1
+    case halfNote = 2
+    case quarterNote = 4
+    case eighthNote = 8
+    case sixteenthNotes = 16
     
     static func allValues() -> [NoteKind] {
-        return [WholeNote, HalfNote, QuarterNote, EighthNote, SixteenthNotes]
+        return [wholeNote, halfNote, quarterNote, eighthNote, sixteenthNotes]
     }
 }
 

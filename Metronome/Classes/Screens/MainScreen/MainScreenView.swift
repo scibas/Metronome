@@ -33,8 +33,8 @@ class MainScreenView: UIView {
         addSubview(decreaseTempoButton)
         addSubview(increaseTempoButton)
         
-        displayView.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, forAxis: .Vertical)
-        displayView.setContentHuggingPriority(UILayoutPriorityFittingSizeLevel, forAxis: .Vertical)
+        displayView.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
+        displayView.setContentHuggingPriority(UILayoutPriorityFittingSizeLevel, for: .vertical)
         
 		setupCustomConstraints()
 	}
@@ -43,7 +43,7 @@ class MainScreenView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupCustomConstraints() {
+	fileprivate func setupCustomConstraints() {
         consoleView.snp_makeConstraints { make in
             make.leading.equalTo(jogView).offset(-Constants.consoleMargin)
             make.trailing.equalTo(jogView).offset(Constants.consoleMargin)

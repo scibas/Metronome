@@ -1,17 +1,17 @@
 import UIKit
 
 enum JogRotationDirection {
-	case Increase
-	case Decrease
-	case None
+	case increase
+	case decrease
+	case none
 
 	init(delta: Double) {
 		if delta > 0 {
-			self = .Increase
+			self = .increase
 		} else if delta < 0 {
-			self = .Decrease
+			self = .decrease
 		} else {
-			self = None
+			self = .none
 		}
 	}
 }
@@ -19,11 +19,11 @@ enum JogRotationDirection {
 class JogView: UIControl {
 	var sensitivity = 0.1 // radians per event
 
-	private let backgroundImageView = UIImageView(asset: .Jog_bkg)
-	private let knobeImageView = UIImageView(asset: .Jog)
-    private var tampCumulativeAngle = 0.0
-    private weak var tapGestureRecognizer: UIGestureRecognizer?
-	private(set) var rotationDirection: JogRotationDirection?
+	fileprivate let backgroundImageView = UIImageView(asset: .Jog_bkg)
+	fileprivate let knobeImageView = UIImageView(asset: .Jog)
+    fileprivate var tampCumulativeAngle = 0.0
+    fileprivate weak var tapGestureRecognizer: UIGestureRecognizer?
+	fileprivate(set) var rotationDirection: JogRotationDirection?
 
 	var rotGR: SingleFingerRotationGestureRecognizer?
 
@@ -32,7 +32,7 @@ class JogView: UIControl {
 
 		addSubview(backgroundImageView)
 
-		knobeImageView.userInteractionEnabled = true
+		knobeImageView.isUserInteractionEnabled = true
 		addSubview(knobeImageView)
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(JogView.tapGestureDidDetect(_:)))
@@ -51,7 +51,7 @@ class JogView: UIControl {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	private func setupCustomConstraints() {
+	fileprivate func setupCustomConstraints() {
 		backgroundImageView.snp_makeConstraints { make in
 			make.edges.equalTo(self)
 		}
@@ -61,26 +61,26 @@ class JogView: UIControl {
 		}
 	}
 
-	func gestureRecognizerDidDetectRotation(senderGestureRecognizer: SingleFingerRotationGestureRecognizer) {
+	func gestureRecognizerDidDetectRotation(_ senderGestureRecognizer: SingleFingerRotationGestureRecognizer) {
 		let rotationAngle = senderGestureRecognizer.rotationAngle
 
-		if senderGestureRecognizer.state == .Changed {
+		if senderGestureRecognizer.state == .changed {
             rotateJogByAngle(rotationAngle)
 			
 			tampCumulativeAngle += rotationAngle
 			if abs(tampCumulativeAngle) > sensitivity {
 				rotationDirection = JogRotationDirection(delta: tampCumulativeAngle)
-				sendActionsForControlEvents(.ValueChanged)
+				sendActions(for: .valueChanged)
 				tampCumulativeAngle = 0.0
 			}
 		}
 	}
 
-	func tapGestureDidDetect(sender: UITapGestureRecognizer) {
-		sendActionsForControlEvents(.TouchUpInside)
+	func tapGestureDidDetect(_ sender: UITapGestureRecognizer) {
+		sendActions(for: .touchUpInside)
 	}
 
-	override func pointInside(touchPoint: CGPoint, withEvent event: UIEvent?) -> Bool {
+	override func point(inside touchPoint: CGPoint, with event: UIEvent?) -> Bool {
 		let centerPoint = CGPoint(x: bounds.midX, y: bounds.midY)
 		let distanceFromCenter = distatanceBetweenPoints(touchPoint, point2: centerPoint)
 
@@ -90,20 +90,20 @@ class JogView: UIControl {
 		return isInsideKnobe
 	}
 
-	private func distatanceBetweenPoints(point1: CGPoint, point2: CGPoint) -> CGFloat {
+	fileprivate func distatanceBetweenPoints(_ point1: CGPoint, point2: CGPoint) -> CGFloat {
 		let dx = point1.x - point2.x
 		let dy = point1.y - point2.y
 
 		return sqrt(dx * dx + dy * dy)
 	}
 
-	func rotateJogByAngle(angle: Double) {
-        knobeImageView.transform = CGAffineTransformRotate(knobeImageView.transform, CGFloat(angle))
+	func rotateJogByAngle(_ angle: Double) {
+        knobeImageView.transform = knobeImageView.transform.rotated(by: CGFloat(angle))
 	}
 }
 
 extension JogView: UIGestureRecognizerDelegate {
-	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return otherGestureRecognizer == tapGestureRecognizer
 	}
 }

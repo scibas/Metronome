@@ -26,7 +26,7 @@ extension UIColor {
     }
     
     class func metreButtonNormalStateColor() -> UIColor {
-        return UIColor.darkGrayColor()
+        return UIColor.darkGray
     }
     
     class func metreButtonSelectedStateColor() -> UIColor {

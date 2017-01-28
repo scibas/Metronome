@@ -1,16 +1,16 @@
 import Foundation
 
 protocol MainScreenViewModelDelegate: class {
-	func viewModel(viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM)
-	func viewModel(viewModel: MainScreenViewModel, didChangeSelectedBank bankIndex: Int)
-	func viewModel(viewModel: MainScreenViewModel, didChangeMetre metre: Metre, forBank bankIndex: Int)
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM)
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeSelectedBank bankIndex: Int)
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeMetre metre: Metre, forBank bankIndex: Int)
 }
 
 class MainScreenViewModel {
 	weak var delegate: MainScreenViewModelDelegate?
 
     var metronomeEngine: MetronomeEngineProtocol // fixMe: meke private again
-	private var userSettingsStorage: UserSettingsStorage
+	fileprivate var userSettingsStorage: UserSettingsStorage
     let metreBank = MetreBank()
 
 	struct DefaultSettings {
@@ -31,7 +31,7 @@ class MainScreenViewModel {
 		metreBank.setMetre(.sixByEight(), forIndex: 3)
 	}
 
-	func restoreUserSettingsFromStorage(storage: UserSettingsStorage) {
+	func restoreUserSettingsFromStorage(_ storage: UserSettingsStorage) {
 		tempo = storage.tempo ?? DefaultSettings.tempo
 	}
 
@@ -43,14 +43,14 @@ class MainScreenViewModel {
 		}
 	}
 
-	func setMetreFromBankIndex(bankIndex: Int) {
+	func setMetreFromBankIndex(_ bankIndex: Int) {
 		let metre = metreBank.metreForIndex(bankIndex)
 		metronomeEngine.metre = metre
 
 		delegate?.viewModel(self, didChangeSelectedBank: bankIndex)
 	}
 
-	func storeMetre(metre: Metre, forBankIndex bankIndex: Int) {
+	func storeMetre(_ metre: Metre, forBankIndex bankIndex: Int) {
 		metreBank.setMetre(metre, forIndex: bankIndex)
 
 		delegate?.viewModel(self, didChangeMetre: metre, forBank: bankIndex)

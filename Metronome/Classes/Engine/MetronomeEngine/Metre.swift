@@ -6,10 +6,10 @@ public struct Metre {
 }
 
 extension Metre {
-	static func twoByFour() -> Metre { return Metre(beat: 2, noteKind: .QuarterNote) }
-	static func threeByFour() -> Metre { return Metre(beat: 3, noteKind: .QuarterNote) }
-	static func fourByFour() -> Metre { return Metre(beat: 4, noteKind: .QuarterNote) }
-	static func sixByEight() -> Metre { return Metre(beat: 6, noteKind: .EighthNote) }
+	static func twoByFour() -> Metre { return Metre(beat: 2, noteKind: .quarterNote) }
+	static func threeByFour() -> Metre { return Metre(beat: 3, noteKind: .quarterNote) }
+	static func fourByFour() -> Metre { return Metre(beat: 4, noteKind: .quarterNote) }
+	static func sixByEight() -> Metre { return Metre(beat: 6, noteKind: .eighthNote) }
 }
 
 extension Metre: CustomStringConvertible {

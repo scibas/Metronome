@@ -1,17 +1,17 @@
 import UIKit
 
 class MetreButtonsPanel: UIControl {
-	private let buttonStackView = UIStackView()
-	private(set) var buttons = [MetreButton]()
-	private(set) var selectedButtonIndex: Int?
+	fileprivate let buttonStackView = UIStackView()
+	fileprivate(set) var buttons = [MetreButton]()
+	fileprivate(set) var selectedButtonIndex: Int?
 
 	init(numberOfButtons: Int) {
 		super.init(frame: CGRect.zero)
 
 		buttonStackView.spacing = 5
-		buttonStackView.distribution = .FillEqually
-		buttonStackView.alignment = .Fill
-		buttonStackView.axis = .Horizontal
+		buttonStackView.distribution = .fillEqually
+		buttonStackView.alignment = .fill
+		buttonStackView.axis = .horizontal
 		addSubview(buttonStackView)
 
 		for _ in 0 ..< numberOfButtons {
@@ -25,31 +25,31 @@ class MetreButtonsPanel: UIControl {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	private func setupCustomConstraints() {
+	fileprivate func setupCustomConstraints() {
 		buttonStackView.snp_makeConstraints { (make) in
 			make.edges.equalTo(self)
 		}
 	}
 
-	func addButton(button: MetreButton) {
+	func addButton(_ button: MetreButton) {
 		buttonStackView.addArrangedSubview(button)
 		buttons.append(button)
-		button.addTarget(self, action: #selector(MetreButtonsPanel.metreButtonDidTap(_:)), forControlEvents: .TouchUpInside)
-		button.addTarget(self, action: #selector(MetreButtonsPanel.metreButtonDidLongTap(_:)), forControlEvents: .LongTouchDown)
+		button.addTarget(self, action: #selector(MetreButtonsPanel.metreButtonDidTap(_:)), for: .touchUpInside)
+		button.addTarget(self, action: #selector(MetreButtonsPanel.metreButtonDidLongTap(_:)), for: .LongTouchDown)
 	}
 
-	func metreButtonDidTap(sender: MetreButton) {
+	func metreButtonDidTap(_ sender: MetreButton) {
 		for button in buttons {
 			let isTappedButton = (sender == button)
-			button.selected = isTappedButton
+			button.isSelected = isTappedButton
 		}
 
-		selectedButtonIndex = buttons.indexOf(sender)
-		sendActionsForControlEvents(.ValueChanged)
+		selectedButtonIndex = buttons.index(of: sender)
+		sendActions(for: .valueChanged)
 	}
 
-	func metreButtonDidLongTap(sender: MetreButton) {
-		selectedButtonIndex = buttons.indexOf(sender)
-		sendActionsForControlEvents(.LongTouchDown)
+	func metreButtonDidLongTap(_ sender: MetreButton) {
+		selectedButtonIndex = buttons.index(of: sender)
+		sendActions(for: .LongTouchDown)
 	}
 }

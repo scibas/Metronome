@@ -1,30 +1,30 @@
 PODS:
-  - CocoaLumberjack/Core (2.3.0)
-  - CocoaLumberjack/Default (2.3.0):
+  - CocoaLumberjack/Core (3.0.0)
+  - CocoaLumberjack/Default (3.0.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.3.0):
+  - CocoaLumberjack/Extensions (3.0.0):
     - CocoaLumberjack/Default
-  - CocoaLumberjack/Swift (2.3.0):
+  - CocoaLumberjack/Swift (3.0.0):
     - CocoaLumberjack/Extensions
-  - Nimble (4.0.1)
-  - Quick (0.9.2)
-  - SnapKit (0.21.0)
-  - Swinject (1.1.2)
+  - Nimble (6.0.1)
+  - Quick (1.0.0)
+  - SnapKit (3.1.2)
+  - Swinject (2.0.0)
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift
-  - Nimble (~> 4.0.0)
-  - Quick (~> 0.9)
-  - SnapKit (~> 0.21)
-  - Swinject (~> 1.1.0)
+  - Nimble (~> 6.0.0)
+  - Quick (~> 1.0.0)
+  - SnapKit (~> 3.1.2)
+  - Swinject (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
-  Nimble: 0f3c8b8b084cda391209c3c5efbb48bedeeb920a
-  Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
-  SnapKit: 2756fe24b706367af224c9c508d2f9166d03354c
-  Swinject: 3debc5ac926dcd1be00947265a9db7a5f31b272a
+  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
+  Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
 
-PODFILE CHECKSUM: eaa979841bf895709abf2a8a5b58054d9febafa8
+PODFILE CHECKSUM: f162ae9a37353e14697f6029e83a5e9e2909df8d
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

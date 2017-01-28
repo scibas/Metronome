@@ -1,9 +1,9 @@
 import UIKit
 
 class LCDDisplay: UIView {
-	private let backgroundImageView = UIImageView(asset: .Display_bkg)
+	fileprivate let backgroundImageView = UIImageView(asset: .Display_bkg)
     let bpmValueLabel = UILabel()
-	private let metreBadge = DisplayTextBadge(badgeColor: .Yellow)
+	fileprivate let metreBadge = DisplayTextBadge(badgeColor: .yellow)
     
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -25,7 +25,7 @@ class LCDDisplay: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupCustomConstraints() {
+	fileprivate func setupCustomConstraints() {
 		backgroundImageView.snp_makeConstraints { make in
 			make.edges.equalTo(self)
 		}
@@ -42,7 +42,7 @@ class LCDDisplay: UIView {
 		}
 	}
 	
-	override func intrinsicContentSize() -> CGSize {
+	override var intrinsicContentSize : CGSize {
 		return CGSize(width: UIViewNoIntrinsicMetric, height: 90.0)
 	}
 }

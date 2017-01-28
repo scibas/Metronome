@@ -1,6 +1,7 @@
+#ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#endif
 
-#import "_SwinjectStoryboardBase.h"
 #import "Swinject.h"
 
 FOUNDATION_EXPORT double SwinjectVersionNumber;

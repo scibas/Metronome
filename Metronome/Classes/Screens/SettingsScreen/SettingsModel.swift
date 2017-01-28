@@ -12,17 +12,17 @@ struct SettingItem {
 }
 
 enum SettingItemType {
-    case Simple
-    case SimpleWithSubitems
-    case TrueFalse
+    case simple
+    case simpleWithSubitems
+    case trueFalse
 }
 
 enum SettingItemAction {
-    case ChangeSound
-    case EnableEmphasis
-    case PlayInBackground
-    case RateApp
-    case ReportBug
+    case changeSound
+    case enableEmphasis
+    case playInBackground
+    case rateApp
+    case reportBug
 }
 
 struct SettingsModel {
@@ -30,23 +30,23 @@ struct SettingsModel {
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Change sound", type: .SimpleWithSubitems, action: .ChangeSound),
-				SettingItem(title: "Emphasis enabled", type: .TrueFalse, action: .EnableEmphasis)
+				SettingItem(title: "Change sound", type: .simpleWithSubitems, action: .changeSound),
+				SettingItem(title: "Emphasis enabled", type: .trueFalse, action: .enableEmphasis)
 			]
 		),
 		
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Play in background", type: .TrueFalse, action: .PlayInBackground)
+				SettingItem(title: "Play in background", type: .trueFalse, action: .playInBackground)
 			]
 		),
 		
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Rate app", type: .Simple, action: .RateApp),
-				SettingItem(title: "Raport bug", type: .Simple, action: .ReportBug)
+				SettingItem(title: "Rate app", type: .simple, action: .rateApp),
+				SettingItem(title: "Raport bug", type: .simple, action: .reportBug)
 			]
 		)
 	]

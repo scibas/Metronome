@@ -1,8 +1,8 @@
 import Foundation
 
 final class SettingsViewModel {
-    private let model: SettingsModel
-    private let metronomeEngine: MetronomeEngineProtocol
+    fileprivate let model: SettingsModel
+    fileprivate let metronomeEngine: MetronomeEngineProtocol
     
     init(withModel model: SettingsModel, metronomeEngine: MetronomeEngineProtocol) {
         self.model = model
@@ -13,20 +13,20 @@ final class SettingsViewModel {
         return model.settings.count
     }
     
-    func numberOfItemsInSection(section: Int) -> Int {
+    func numberOfItemsInSection(_ section: Int) -> Int {
         return model.settings[section].items.count
     }
     
-    func settingItemForIndexPath(indexPath: NSIndexPath) -> SettingItem {
+    func settingItemForIndexPath(_ indexPath: IndexPath) -> SettingItem {
         let section = model.settings[indexPath.section]
         return section.items[indexPath.item]
     }
     
-    func setEmphasisEnabled(emphasisEnabled: Bool) {
+    func setEmphasisEnabled(_ emphasisEnabled: Bool) {
         metronomeEngine.emphasisEnabled = emphasisEnabled
     }
     
-    func pauseMetronomeOnEnterBackground(pause: Bool) {
+    func pauseMetronomeOnEnterBackground(_ pause: Bool) {
         metronomeEngine.pauseOnAppExit = pause
     }
 }

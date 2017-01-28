@@ -1,29 +1,29 @@
 import UIKit
 
 class DialogPresenter: NSObject, UIViewControllerTransitioningDelegate {
-    func presentDialogViewController(viewControllerToPresent: UIViewController, formViewController parentViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+    func presentDialogViewController(_ viewControllerToPresent: UIViewController, formViewController parentViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
         viewControllerToPresent.transitioningDelegate = self
-        viewControllerToPresent.modalPresentationStyle = .Custom
+        viewControllerToPresent.modalPresentationStyle = .custom
         
         applyPopupThemeToViewController(viewControllerToPresent)
         
-        parentViewController.presentViewController(viewControllerToPresent, animated: animated, completion: completion)
+        parentViewController.present(viewControllerToPresent, animated: animated, completion: completion)
     }
     
-    func dismissDialogViewControllerFromPresentationViewController(presentationViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
-        presentationViewController.dismissViewControllerAnimated(animated, completion: completion)
+    func dismissDialogViewControllerFromPresentationViewController(_ presentationViewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        presentationViewController.dismiss(animated: animated, completion: completion)
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PopupAnimator()
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PopupAnimator()
     }
     
-    private func applyPopupThemeToViewController(viewController: UIViewController) {
-        viewController.view.layer.borderColor = UIColor.darkGrayColor().CGColor
+    fileprivate func applyPopupThemeToViewController(_ viewController: UIViewController) {
+        viewController.view.layer.borderColor = UIColor.darkGray.cgColor
         viewController.view.layer.borderWidth = 1.0
     }
 }

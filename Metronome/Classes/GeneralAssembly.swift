@@ -6,16 +6,16 @@
 import Foundation
 import Swinject
 
-class GeneralAssembly: AssemblyType {
+class GeneralAssembly: Assembly {
 	func assemble(container: Container) {
 		registerAppLifeCycleBroadcasterInContainer(container)
 	}
 }
 
 private extension GeneralAssembly {
-	private func registerAppLifeCycleBroadcasterInContainer(container: Container) {
+	func registerAppLifeCycleBroadcasterInContainer(_ container: Container) {
 		container.register(AppLifeCycleEventBroadcaster.self) { _ in
 			return AppLifeCycleEventBroadcaster()
-		}.inObjectScope(.Container)
+		}.inObjectScope(.container)
 	}
 }

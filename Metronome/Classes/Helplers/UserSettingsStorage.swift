@@ -7,7 +7,7 @@ protocol UserSettingsStorage: KeyValueStorage {
 }
 
 protocol KeyValueStorage {
-	func storeValue<T>(value: T, forKey key: String)
+	func storeValue<T>(_ value: T, forKey key: String)
 }
 
 
@@ -17,6 +17,6 @@ class UserSettingsStorageClass: UserSettingsStorage {
     var metre: Metre?
     var emphasisEnabled: Bool?
     
-    func storeValue<T>(value: T, forKey key: String) {
+    func storeValue<T>(_ value: T, forKey key: String) {
     }
 }
