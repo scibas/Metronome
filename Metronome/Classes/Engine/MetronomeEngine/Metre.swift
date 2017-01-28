@@ -1,20 +1,19 @@
 import Foundation
 
-struct Metre {
-    var beat: Int
-    var noteKindOf: NoteKindOf
-    
-    static func twoByFour() -> Metre { return Metre(beat: 2, noteKindOf: .QuarterNote) }
-    static func threeByFour() -> Metre { return Metre(beat: 3, noteKindOf: .QuarterNote) }
-    static func fourByFour() -> Metre { return Metre(beat: 4, noteKindOf: .QuarterNote) }
-    static func sixByEight() -> Metre { return Metre(beat: 6, noteKindOf: .EighthNote) }
+public struct Metre {
+	var beat: Int
+	var noteKind: NoteKind
 }
 
-enum NoteKindOf: Int {
-    case WholeNote = 1
-    case HalfNote = 2
-    case QuarterNote = 4
-    case EighthNote = 8
-    case SixteenthNotes = 16
+extension Metre {
+	static func twoByFour() -> Metre { return Metre(beat: 2, noteKind: .QuarterNote) }
+	static func threeByFour() -> Metre { return Metre(beat: 3, noteKind: .QuarterNote) }
+	static func fourByFour() -> Metre { return Metre(beat: 4, noteKind: .QuarterNote) }
+	static func sixByEight() -> Metre { return Metre(beat: 6, noteKind: .EighthNote) }
 }
 
+extension Metre: CustomStringConvertible {
+    public var description: String {
+        return "\(beat)/\(noteKind)"
+    }
+}

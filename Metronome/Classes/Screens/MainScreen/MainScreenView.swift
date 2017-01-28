@@ -47,14 +47,14 @@ class MainScreenView: UIView {
         consoleView.snp_makeConstraints { make in
             make.leading.equalTo(jogView).offset(-Constants.consoleMargin)
             make.trailing.equalTo(jogView).offset(Constants.consoleMargin)
-            make.top.equalTo(self)
+            make.top.equalTo(self).offset(Constants.statusBarHeight)
             make.bottom.equalTo(jogView).offset(Constants.consoleMargin)
         }
         
         displayView.snp_makeConstraints { (make) in
             make.leading.equalTo(consoleView)
             make.trailing.equalTo(consoleView)
-            make.top.equalTo(self).offset(Constants.statusBarHeight)
+            make.top.equalTo(self).offset(Constants.statusBarHeight + 2)
         }
         
         metreButtonsPanel.snp_makeConstraints { (make) in

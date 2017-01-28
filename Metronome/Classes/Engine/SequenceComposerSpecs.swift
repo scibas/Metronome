@@ -24,7 +24,7 @@ class SequenceComposerSpecs: QuickSpec {
 						longestTrackLength = max(longestTrackLength, trackLength)
 					})
 					
-					let expectedLenght = Double(NoteKindOf.QuarterNote.rawValue) / Double(metre.noteKindOf.rawValue) * Double(metre.beat)
+					let expectedLenght = Double(NoteKind.QuarterNote.rawValue) / Double(metre.noteKind.rawValue) * Double(metre.beat)
 					
 					expect(longestTrackLength).to(equal(expectedLenght))
 				}
