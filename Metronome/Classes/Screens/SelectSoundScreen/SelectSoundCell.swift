@@ -7,15 +7,15 @@ import UIKit
 
 class SelectSoundCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .Subtitle, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .None
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func markAsCurrent(mark: Bool) {
-        accessoryType = mark ? .Checkmark : .None
+    func markAsCurrent(_ mark: Bool) {
+        accessoryType = mark ? .checkmark : .none
     }
 }

@@ -1,15 +1,15 @@
 import UIKit
 
 enum BadgeColor {
-	case Green
-	case Yellow
-	case Red
+	case green
+	case yellow
+	case red
 	
 	var color: UIColor {
 		switch self {
-		case .Green: return UIColor.displayBadgeGreenColor()
-		case .Yellow: return UIColor.displayBadgeYellowColor()
-		case .Red: return UIColor.displayBadgeRedColor()
+		case .green: return UIColor.displayBadgeGreenColor()
+		case .yellow: return UIColor.displayBadgeYellowColor()
+		case .red: return UIColor.displayBadgeRedColor()
 		}
 	}
 }
@@ -26,9 +26,9 @@ class DisplayTextBadge: UILabel {
 		
 		font = UIFont.displayBadgesFont()
 		textColor = badgeColor.color
-		textAlignment = .Center
+		textAlignment = .center
 		
-		layer.borderColor = badgeColor.color.CGColor
+		layer.borderColor = badgeColor.color.cgColor
 		layer.borderWidth = 1.0
 		layer.cornerRadius = 2.0
 	}
@@ -37,9 +37,9 @@ class DisplayTextBadge: UILabel {
 		fatalError("init(coder:) has not been implemented")
 	}
     
-	override func textRectForBounds(bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
-		let originalRext = super.textRectForBounds(bounds, limitedToNumberOfLines: numberOfLines)
+	override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+		let originalRext = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
 		
-		return CGRectInset(originalRext, Constants.verticalInset, Constants.horizontalInset)
+		return originalRext.insetBy(dx: Constants.verticalInset, dy: Constants.horizontalInset)
 	}
 }

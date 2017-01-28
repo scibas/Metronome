@@ -6,26 +6,26 @@
 import Foundation
 
 protocol AppLifeCycleEventObserver: class {
-    func didReciveAppLifeCycleEvent(event: AppLifeCycleEvents)
+    func didReciveAppLifeCycleEvent(_ event: AppLifeCycleEvents)
 }
 
 enum AppLifeCycleEvents {
-    case WillEnterForeground
-    case DidEnterBackground
+    case willEnterForeground
+    case didEnterBackground
 }
 
 class AppLifeCycleEventBroadcaster {
-    private var observers = NSHashTable(options: .WeakMemory)
+    fileprivate var observers = NSHashTable<AnyObject>(options: NSPointerFunctions.Options.weakMemory)
     
-    func registerObserver(observer: AppLifeCycleEventObserver) {
-        observers.addObject(observer)
+    func registerObserver(_ observer: AppLifeCycleEventObserver) {
+        observers.add(observer)
     }
     
-    func removeObserver(observer: AppLifeCycleEventObserver) {
-        observers.removeObject(observer)
+    func removeObserver(_ observer: AppLifeCycleEventObserver) {
+        observers.remove(observer)
     }
     
-    func broadcastLifecycleEvent(lifeCycleEvent: AppLifeCycleEvents) {
+    func broadcastLifecycleEvent(_ lifeCycleEvent: AppLifeCycleEvents) {
         for observer in observers.allObjects {
             let appLifecycleEventObserver = observer as! AppLifeCycleEventObserver
             appLifecycleEventObserver.didReciveAppLifeCycleEvent(lifeCycleEvent)

@@ -6,21 +6,21 @@
 import UIKit
 
 class SelectSoundViewModel {
-	private let model: SelectSoundModel
+	fileprivate let model: SelectSoundModel
 	
 	init(withModel model: SelectSoundModel) {
 		self.model = model
 	}
 	
-	func numberOfItemsForSection(section: Int) -> Int {
+	func numberOfItemsForSection(_ section: Int) -> Int {
 		return model.soundBank.count
 	}
     
-    func soundSampleForIndexPath(indexPath: NSIndexPath) -> SoundSample {
+    func soundSampleForIndexPath(_ indexPath: IndexPath) -> SoundSample {
         return model.soundBank[indexPath.item]
     }
     
-    func isSoundSampleCurentlySelected(soundSample: SoundSample) -> Bool {
+    func isSoundSampleCurentlySelected(_ soundSample: SoundSample) -> Bool {
         guard (model.currentSoundSample != nil) else {
             return false
         }
@@ -28,7 +28,7 @@ class SelectSoundViewModel {
         return model.currentSoundSample! == soundSample
     }
     
-    func setSoundSampleToAudioEngine(soundSample: SoundSample) {
+    func setSoundSampleToAudioEngine(_ soundSample: SoundSample) {
         model.setSoundSample(soundSample)
     }
 }

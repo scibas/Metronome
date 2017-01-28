@@ -5,7 +5,7 @@ class CustomMetreModel {
         self.metronomeEngine = metronomeEngine
     }
     
-    func applyMetreToMetronomeEngine(metre: Metre) {
+    func applyMetreToMetronomeEngine(_ metre: Metre) {
         metronomeEngine.metre = metre
     }
 

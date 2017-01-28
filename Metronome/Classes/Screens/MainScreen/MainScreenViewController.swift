@@ -1,10 +1,10 @@
 import UIKit
 
-typealias SetMetreClosure = (newMetre: Metre) -> ()
+typealias SetMetreClosure = (_ newMetre: Metre) -> ()
 
 protocol MainScreenViewControllerFlowDelegate: class {
-	func showSettingsScreen(senderViewController: MainScreenViewController)
-	func showCustomMetreScreenForMetre(currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: SetMetreClosure)
+	func showSettingsScreen(_ senderViewController: MainScreenViewController)
+	func showCustomMetreScreenForMetre(_ currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: @escaping SetMetreClosure)
 }
 
 class MainScreenViewController: UIViewController {
@@ -33,25 +33,25 @@ class MainScreenViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidTap(_:)), forControlEvents: .ValueChanged)
-		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidLongTap(_:)), forControlEvents: .LongTouchDown)
-		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidTap(_:)), forControlEvents: .TouchUpInside)
-		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidChangeRotateAngle(_:)), forControlEvents: .ValueChanged)
-		mainView.increaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.increaseTempoButtonDidTap(_:)), forControlEvents: .TouchUpInside)
-		mainView.decreaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.decreaseTempoButtonDidTap(_:)), forControlEvents: .TouchUpInside)
-        mainView.settingsButton.addTarget(self, action: #selector(MainScreenViewController.settingsButtonDidTap), forControlEvents: .TouchUpInside)
+		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidTap(_:)), for: .valueChanged)
+		mainView.metreButtonsPanel.addTarget(self, action: #selector(MainScreenViewController.metreButtonDidLongTap(_:)), for: .LongTouchDown)
+		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidTap(_:)), for: .touchUpInside)
+		mainView.jogView.addTarget(self, action: #selector(MainScreenViewController.jogViewDidChangeRotateAngle(_:)), for: .valueChanged)
+		mainView.increaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.increaseTempoButtonDidTap(_:)), for: .touchUpInside)
+		mainView.decreaseTempoButton.addTarget(self, action: #selector(MainScreenViewController.decreaseTempoButtonDidTap(_:)), for: .touchUpInside)
+        mainView.settingsButton.addTarget(self, action: #selector(MainScreenViewController.settingsButtonDidTap), for: .touchUpInside)
         
         title = "Metronome"
         
 		updateViewState()
 	}
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 	
-	func jogViewDidTap(sender: UIView) {
+	func jogViewDidTap(_ sender: UIView) {
 		do {
 			try viewModel.toggleStartStop()
 		} catch {
@@ -59,23 +59,23 @@ class MainScreenViewController: UIViewController {
 		}
 	}
 	
-	func jogViewDidChangeRotateAngle(jogView: JogView) {
+	func jogViewDidChangeRotateAngle(_ jogView: JogView) {
 		switch jogView.rotationDirection! {
-		case .Increase:
+		case .increase:
 			viewModel.tempo += 1
-		case .Decrease:
+		case .decrease:
 			viewModel.tempo -= 1
 		default:
 			break
 		}
 	}
 	
-	func metreButtonDidTap(sender: MetreButtonsPanel) {
+	func metreButtonDidTap(_ sender: MetreButtonsPanel) {
 		let buttonIndex = sender.selectedButtonIndex!
 		viewModel.setMetreFromBankIndex(buttonIndex)
 	}
 	
-	func metreButtonDidLongTap(sender: MetreButtonsPanel) {
+	func metreButtonDidLongTap(_ sender: MetreButtonsPanel) {
 		let bankIndex = sender.selectedButtonIndex!
 		let currentBankMetre = viewModel.metreBank.metreForIndex(bankIndex)
 		flowDelegate?.showCustomMetreScreenForMetre(currentBankMetre, senderViewController: self) { [unowned self] newMetre in
@@ -83,17 +83,17 @@ class MainScreenViewController: UIViewController {
 		}
 	}
 	
-	func setMetre(metre: Metre, forBankIndex bankIndex: Int) {
+	func setMetre(_ metre: Metre, forBankIndex bankIndex: Int) {
 		viewModel.storeMetre(metre, forBankIndex: bankIndex)
 	}
 	
-	func increaseTempoButtonDidTap(sender: UIButton) {
+	func increaseTempoButtonDidTap(_ sender: UIButton) {
 		viewModel.tempo += 1
 		let r = mainView.jogView.sensitivity
 		mainView.jogView.rotateJogByAngle(r)
 	}
 	
-	func decreaseTempoButtonDidTap(sender: UIButton) {
+	func decreaseTempoButtonDidTap(_ sender: UIButton) {
 		viewModel.tempo -= 1
 		let r = mainView.jogView.sensitivity
 		mainView.jogView.rotateJogByAngle(-r)
@@ -104,29 +104,29 @@ class MainScreenViewController: UIViewController {
     }
 	
 	func updateViewState() {
-		for (metreBankButtonIndex, button) in mainView.metreButtonsPanel.buttons.enumerate() {
+		for (metreBankButtonIndex, button) in mainView.metreButtonsPanel.buttons.enumerated() {
 			let metre = viewModel.metreBank.metreForIndex(metreBankButtonIndex)
 			button.setTitleFromMetre(metre)
 		}
 	}
 	
-	override func preferredStatusBarStyle() -> UIStatusBarStyle {
-		return .LightContent
+	override var preferredStatusBarStyle : UIStatusBarStyle {
+		return .lightContent
 	}
 }
 
 extension MainScreenViewController: MainScreenViewModelDelegate {
-	func viewModel(viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM) {
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeTemp newTempo: BPM) {
 		mainView.displayView.bpmValueLabel.text = NSString(format: "%.0f", newTempo) as String
 	}
 	
-	func viewModel(viewModel: MainScreenViewModel, didChangeMetre metre: Metre, forBank bankIndex: Int) {
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeMetre metre: Metre, forBank bankIndex: Int) {
 		let metreButton = mainView.metreButtonsPanel.buttons[bankIndex]
 		metreButton.setTitleFromMetre(metre)
 	}
 	
-	func viewModel(viewModel: MainScreenViewModel, didChangeSelectedBank bankIndex: Int) {
+	func viewModel(_ viewModel: MainScreenViewModel, didChangeSelectedBank bankIndex: Int) {
 		let metreButton = mainView.metreButtonsPanel.buttons[bankIndex]
-		metreButton.selected = true
+		metreButton.isSelected = true
 	}
 }

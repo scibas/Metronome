@@ -69,7 +69,7 @@ class MetronomeEngine: MetronomeEngineProtocol, AppLifeCycleEventObserver {
 		}
 	}
 	
-	func reloadSequenceAndPlayIfWasPlayingBefore(musicSequence: MusicSequence) throws {
+	func reloadSequenceAndPlayIfWasPlayingBefore(_ musicSequence: MusicSequence) throws {
 		let wasPlaying = self.isPlaying
 		
 		if wasPlaying {
@@ -78,7 +78,7 @@ class MetronomeEngine: MetronomeEngineProtocol, AppLifeCycleEventObserver {
 		}
 	}
 	
-	func musicSequenceForMetre(metre: Metre?, soundSample: SoundSample?, emphasisEnabled: Bool?) -> MusicSequence {
+	func musicSequenceForMetre(_ metre: Metre?, soundSample: SoundSample?, emphasisEnabled: Bool?) -> MusicSequence {
 		let metre = metre ?? Metre.fourByFour()
 		let soundSample = soundSample ?? soundBank.bank[0]
 		let emphasisEnabled = emphasisEnabled ?? true
@@ -86,8 +86,8 @@ class MetronomeEngine: MetronomeEngineProtocol, AppLifeCycleEventObserver {
 		return SequenceComposer.prepareSequenceForMetre(metre, soundSample: soundSample, emphasisEnabled: emphasisEnabled)
 	}
 	
-	func didReciveAppLifeCycleEvent(event: AppLifeCycleEvents) {
-        if (event == .DidEnterBackground && pauseOnAppExit) {
+	func didReciveAppLifeCycleEvent(_ event: AppLifeCycleEvents) {
+        if (event == .didEnterBackground && pauseOnAppExit) {
             stop()
         }
 	}

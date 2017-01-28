@@ -14,17 +14,17 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
     @objc var window: UIWindow?
     var flowController: FlowController?
     
-	@objc func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	@objc func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupDependencyInjectionFramework()
         
-        let window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let window = UIWindow(frame: UIScreen.main.bounds)
         flowController = FlowController(withWindow: window)
         flowController?.showMainScren()
         
 		return true
 	}
 	
-	private func setupDependencyInjectionFramework() {
+	fileprivate func setupDependencyInjectionFramework() {
 		assembler = try! Assembler(assemblies: [
             GeneralAssembly(),
 			AudioEngineAssembly(),
@@ -32,21 +32,21 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
 		])
 	}
     
-    @objc private func applicationWillEnterForeground(application: UIApplication) {
-        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.WillEnterForeground)
+    @objc fileprivate func applicationWillEnterForeground(_ application: UIApplication) {
+        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.willEnterForeground)
     }
     
-    @objc private func applicationDidEnterBackground(application: UIApplication) {
-        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.DidEnterBackground)
+    @objc fileprivate func applicationDidEnterBackground(_ application: UIApplication) {
+        appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.didEnterBackground)
     }
 }
 
 protocol WithResolver {
-    func resolver() -> Resolvable
+    func resolver() -> Resolver
 }
 
 extension WithResolver {
-    func resolver() -> Resolvable {
-        return (UIApplication.sharedApplication().delegate as! AppDelegate).assembler!.resolver
+    func resolver() -> Resolver {
+        return (UIApplication.shared.delegate as! AppDelegate).assembler!.resolver
     }
 }

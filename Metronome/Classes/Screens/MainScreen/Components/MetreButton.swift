@@ -8,9 +8,9 @@ class MetreButton: UIButton {
 		titleLabel?.numberOfLines = 2
 		
         setTitleFromMetre(nil)
-		setTitleColor(UIColor.metreButtonNormalStateColor(), forState: .Normal)
-		setTitleColor(UIColor.metreButtonSelectedStateColor(), forState: .Selected)
-		setBackgroundImage(UIImage(asset: .Metre_btn), forState: .Normal)
+		setTitleColor(UIColor.metreButtonNormalStateColor(), for: UIControlState())
+		setTitleColor(UIColor.metreButtonSelectedStateColor(), for: .selected)
+		setBackgroundImage(UIImage(asset: .Metre_btn), for: UIControlState())
 		
 		let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MetreButton.didLongPress(_:)))
 		longPressGestureRecognizer.allowableMovement = 0
@@ -21,18 +21,18 @@ class MetreButton: UIButton {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func didLongPress(sender: UILongPressGestureRecognizer) {
-		if (sender.state == .Began) {
-			sendActionsForControlEvents(.LongTouchDown)
+	func didLongPress(_ sender: UILongPressGestureRecognizer) {
+		if (sender.state == .began) {
+			sendActions(for: .LongTouchDown)
 		}
 	}
     
-    func setTitleFromMetre(metre: Metre?) {
+    func setTitleFromMetre(_ metre: Metre?) {
         if let metre = metre {
             let title = "\(metre.beat)/\(metre.noteKind.rawValue)"
-            setTitle(title, forState: .Normal)
+            setTitle(title, for: UIControlState())
         } else {
-            setTitle("Empty", forState: .Normal)
+            setTitle("Empty", for: UIControlState())
         }
     }
 }

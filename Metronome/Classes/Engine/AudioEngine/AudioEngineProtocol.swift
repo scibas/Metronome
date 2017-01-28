@@ -2,7 +2,7 @@ import CoreAudio
 import AudioToolbox
 
 protocol AudioEngineProtocol {
-	func playMusicSequence(musicSequence: MusicSequence) throws
+	func playMusicSequence(_ musicSequence: MusicSequence) throws
 	func stopMusicSequence()
 	
 	var playbackRate: Double { get set }

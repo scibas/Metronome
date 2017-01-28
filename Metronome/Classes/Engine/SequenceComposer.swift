@@ -3,15 +3,15 @@ import AVFoundation
 
 class SequenceComposer {
 	static var defaultTempoForQuaterNote: Double { return 120.0 }
-    static var noteForDefaultTempo: NoteKind = .QuarterNote
+    static var noteForDefaultTempo: NoteKind = .quarterNote
 	
-	static func prepareSequenceForMetre(metre: Metre, soundSample: SoundSample, emphasisEnabled: Bool) -> MusicSequence {
-		var musicSequence: MusicSequence = nil
+	static func prepareSequenceForMetre(_ metre: Metre, soundSample: SoundSample, emphasisEnabled: Bool) -> MusicSequence {
+		var musicSequence: MusicSequence? = nil
 		var result = NewMusicSequence(&musicSequence);
 		assert(result == noErr, "Creating music sequence error: \(result)")
 		
-		var musicTrack: MusicTrack = nil
-		result = MusicSequenceNewTrack(musicSequence, &musicTrack)
+		var musicTrack: MusicTrack? = nil
+		result = MusicSequenceNewTrack(musicSequence!, &musicTrack)
 		assert(result == noErr, "Creating track in sequence error: \(result)")
         
         let noteDuration = noteDurationForNoteKind(metre.noteKind)
@@ -25,20 +25,20 @@ class SequenceComposer {
 			let isFirstNoteInBar = (noteIndex == 0)
 			var noteToAdd = (isFirstNoteInBar && emphasisEnabled) ? emphasisNote : normalNote
 			
-			result = MusicTrackNewMIDINoteEvent(musicTrack, MusicTimeStamp(Float32(noteIndex) * noteDuration), &noteToAdd)
+			result = MusicTrackNewMIDINoteEvent(musicTrack!, MusicTimeStamp(Float32(noteIndex) * noteDuration), &noteToAdd)
 			assert(result == noErr, "Adding event to midi sequence error: \(result)")
 		}
 		
-		CAShow(UnsafeMutablePointer<MusicSequence>(musicSequence))
+		CAShow(UnsafeMutablePointer<MusicSequence>(musicSequence!))
 		
-		return musicSequence
+		return musicSequence!
 	}
 	
-    private static func noteDurationForNoteKind(noteKind: NoteKind) -> Float32{
+    fileprivate static func noteDurationForNoteKind(_ noteKind: NoteKind) -> Float32{
         return Float32(noteForDefaultTempo.rawValue) / Float32(noteKind.rawValue)
     }
     
-    private static func midiMessageForNote(note: UInt8, withDuration duration: Float32) -> MIDINoteMessage {
+    fileprivate static func midiMessageForNote(_ note: UInt8, withDuration duration: Float32) -> MIDINoteMessage {
 		return MIDINoteMessage(
 			channel: 0,
 			note: note,

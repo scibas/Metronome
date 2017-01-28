@@ -5,7 +5,7 @@
 
 final class SelectSoundModel {
     let soundBank: [SoundSample]
-    private let metronomeEngine: MetronomeEngine
+    fileprivate let metronomeEngine: MetronomeEngine
 
     init(withSoundBank soundBank: SoundsBank, andMetronomeEngine metronomeEngine: MetronomeEngine) {
         self.soundBank = soundBank.bank
@@ -18,7 +18,7 @@ final class SelectSoundModel {
         }
     }
     
-    func setSoundSample(soundSample: SoundSample) {
+    func setSoundSample(_ soundSample: SoundSample) {
         metronomeEngine.soundSample = soundSample
     }
 }

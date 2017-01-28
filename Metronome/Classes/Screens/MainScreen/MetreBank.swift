@@ -1,15 +1,15 @@
 class MetreBank {
-    private var bank = [Int: Metre]()
+    fileprivate var bank = [Int: Metre]()
     
-    func metreForIndex(index: Int) -> Metre? {
+    func metreForIndex(_ index: Int) -> Metre? {
         return bank[index]
     }
     
-    func setMetre(metre: Metre, forIndex index: Int) {
+    func setMetre(_ metre: Metre, forIndex index: Int) {
         bank[index] = metre
     }
     
-    func clearMetreAtIndex(index: Int) {
-        bank.removeValueForKey(index)
+    func clearMetreAtIndex(_ index: Int) {
+        bank.removeValue(forKey: index)
     }
 }

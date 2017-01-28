@@ -3,7 +3,7 @@ import UIKit
 class VarticalStepper: UIView {
     let increaseButton = UIButton(withTitle: "+")
     let decreaseButton = UIButton(withTitle: "-")
-	private let dividerView = UIView()
+	fileprivate let dividerView = UIView()
 	
 	init() {
 		super.init(frame: .zero)
@@ -48,14 +48,14 @@ class VarticalStepper: UIView {
 		}
 	}
 	
-	private func setColorTheme(color: UIColor) {
-		layer.borderColor = color.CGColor
+	fileprivate func setColorTheme(_ color: UIColor) {
+		layer.borderColor = color.cgColor
 		dividerView.backgroundColor = color
 		increaseButton.tintColor = color
 		decreaseButton.tintColor = color
 	}
 	
-	override func intrinsicContentSize() -> CGSize {
+	override var intrinsicContentSize : CGSize {
 		return CGSize(width: 44.0, height: 88.0)
 	}
 	
@@ -68,13 +68,13 @@ private extension UIButton {
 	convenience init(withTitle title: String) {
 		self.init(frame: .zero)
 		
-		setTitle(title, forState: .Normal)
+		setTitle(title, for: UIControlState())
 		titleLabel?.font = UIFont.customMetreIncreaseDecreaseButtonFont()
 	}
 	
-    public override func tintColorDidChange() {
-		setTitleColor(self.tintColor, forState: .Normal)
-		setTitleColor(self.tintColor.colorWithAlphaComponent(0.3), forState: .Disabled)
-		setTitleColor(self.tintColor.colorWithAlphaComponent(0.5), forState: .Highlighted)
+    open override func tintColorDidChange() {
+		setTitleColor(self.tintColor, for: UIControlState())
+		setTitleColor(self.tintColor.withAlphaComponent(0.3), for: .disabled)
+		setTitleColor(self.tintColor.withAlphaComponent(0.5), for: .highlighted)
 	}
 }

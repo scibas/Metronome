@@ -26,8 +26,8 @@ class CustomMetreView: UIView {
         noteKindLabel.textColor = UIColor.metreButtonSelectedStateColor()
         noteKindLabel.font = UIFont.customMetreFont()
         
-        applyButton.setTitle("APPLY", forState: .Normal)
-        cancelButton.setTitle("Cancel", forState: .Normal)
+        applyButton.setTitle("APPLY", for: UIControlState())
+        cancelButton.setTitle("Cancel", for: UIControlState())
         
         addSubview(metreLabel)
         addSubview(noteKindLabel)

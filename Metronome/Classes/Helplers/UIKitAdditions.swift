@@ -12,6 +12,6 @@ extension UIButton {
         self.init(frame: .zero)
         
         let image = UIImage(asset: backgroundImageAsset)
-        setBackgroundImage(image, forState: .Normal)
+        setBackgroundImage(image, for: UIControlState())
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import Swinject
 
-final class ScreensAssembly: AssemblyType {
+final class ScreensAssembly: Assembly {
 	func assemble(container: Container) {
 		registerMainScreenInContainter(container)
 		registerCustomMetreScreenInContainter(container)
@@ -11,7 +11,7 @@ final class ScreensAssembly: AssemblyType {
 }
 
 private extension ScreensAssembly {
-	private func registerMainScreenInContainter(container: Container) {
+	func registerMainScreenInContainter(_ container: Container) {
 		container.register(MainScreenViewController.self) { r in
 			
 			let metreonomeEngine = r.resolve(MetronomeEngine.self) as! MetronomeEngineProtocol
@@ -21,7 +21,7 @@ private extension ScreensAssembly {
 		}
 	}
 	
-	private func registerCustomMetreScreenInContainter(container: Container) {
+	func registerCustomMetreScreenInContainter(_ container: Container) {
 		container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
 			let metronomeEngine = r.resolve(MetronomeEngine.self)!
 			let model = CustomMetreModel(withMetronomeEngine: metronomeEngine)
@@ -30,7 +30,7 @@ private extension ScreensAssembly {
 		}
 	}
 	
-	private func registerSettingsScreenInContainter(container: Container) {
+	func registerSettingsScreenInContainter(_ container: Container) {
 		container.register(SettingsViewController.self) { r in
 			let model = SettingsModel()
             let metronomeEngine = r.resolve(MetronomeEngine.self)!
@@ -39,7 +39,7 @@ private extension ScreensAssembly {
 		}
 	}
 	
-	private func registerSelectSoundScreenInContainer(container: Container) {
+	func registerSelectSoundScreenInContainer(_ container: Container) {
 		container.register(SelectSoundViewController.self) { r in
 			let soundBank = r.resolve(SoundsBank.self)!
 			let metronomeEngine = r.resolve(MetronomeEngine.self)!

@@ -5,7 +5,7 @@
 
 import UIKit
 
-typealias SwitchActionClosure = (newValue: Bool, cell: SettingCell) -> ()
+typealias SwitchActionClosure = (_ newValue: Bool, _ cell: SettingCell) -> ()
 
 final class SettingCell: UITableViewCell {
     var switchButtonActionClosure: SwitchActionClosure?
@@ -17,17 +17,17 @@ final class SettingCell: UITableViewCell {
 	
 	lazy var switchButton: UISwitch = {
 		let switchButton = UISwitch()
-        switchButton.addTarget(self, action: #selector(SettingCell.switchButtonDidChangeState(_:)), forControlEvents: .ValueChanged)
+        switchButton.addTarget(self, action: #selector(SettingCell.switchButtonDidChangeState(_:)), for: .valueChanged)
 		return switchButton
 	}()
 	
 	var showSwitchButton: Bool {
-		set { switchButton.hidden = !newValue }
-		get { return !switchButton.hidden }
+		set { switchButton.isHidden = !newValue }
+		get { return !switchButton.isHidden }
 	}
 	
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-		super.init(style: .Default, reuseIdentifier: reuseIdentifier)
+		super.init(style: .default, reuseIdentifier: reuseIdentifier)
 		
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(switchButton)
@@ -39,7 +39,7 @@ final class SettingCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setupCustomConstraints() {
+	fileprivate func setupCustomConstraints() {
 		titleLabel.snp_makeConstraints { make in
 			make.centerY.equalTo(contentView)
 			make.leading.equalTo(contentView.snp_leadingMargin)
@@ -52,7 +52,7 @@ final class SettingCell: UITableViewCell {
 		}
 	}
 	
-	@objc private func switchButtonDidChangeState(sender: UISwitch) {
-        switchButtonActionClosure?(newValue: sender.on, cell: self)
+	@objc fileprivate func switchButtonDidChangeState(_ sender: UISwitch) {
+        switchButtonActionClosure?(sender.isOn, self)
 	}
 }

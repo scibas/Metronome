@@ -104,37 +104,37 @@ class SequenceComposerSpecs: QuickSpec {
 }
 
 extension SequenceComposerSpecs {
-	func enumerateTracksInSequence(sequence: MusicSequence, withClosure closure: (index: Int, track: MusicTrack) -> Void) {
+	func enumerateTracksInSequence(_ sequence: MusicSequence, withClosure closure: (_ index: Int, _ track: MusicTrack) -> Void) {
 		var numberOfTracks: UInt32 = 0
 		MusicSequenceGetTrackCount(sequence, &numberOfTracks)
 		
 		for trackIndex in 0 ..< numberOfTracks {
-			var musicTrack: MusicTrack = nil
+			var musicTrack: MusicTrack? = nil
 			MusicSequenceGetIndTrack(sequence, trackIndex, &musicTrack)
 			
-			closure(index: Int(trackIndex), track: musicTrack)
+			closure(Int(trackIndex), musicTrack!)
 		}
 	}
 	
-	func enumerateMidiEventsInTrack(track: MusicTrack, withClosure closure: (eventIndex: Int, eventType: MusicEventType, eventData: UnsafePointer<()>) -> Void) {
-		var musicEventIterator: MusicEventIterator = nil
+	func enumerateMidiEventsInTrack(_ track: MusicTrack, withClosure closure: (_ eventIndex: Int, _ eventType: MusicEventType, _ eventData: UnsafeRawPointer) -> Void) {
+		var musicEventIterator: MusicEventIterator? = nil
 		NewMusicEventIterator(track, &musicEventIterator)
 		
 		var eventIndex = 0
 		
 		var hasCurrentEvent: DarwinBoolean = false
-		MusicEventIteratorHasCurrentEvent(musicEventIterator, &hasCurrentEvent)
+		MusicEventIteratorHasCurrentEvent(musicEventIterator!, &hasCurrentEvent)
 		
-		while (hasCurrentEvent) {
-			var eventData: UnsafePointer<()> = nil
+		while (hasCurrentEvent).boolValue {
+			var eventData: UnsafeRawPointer? = nil
 			var eventType: MusicEventType = 0
 			
-			MusicEventIteratorGetEventInfo(musicEventIterator, nil, &eventType, &eventData, nil)
-			closure(eventIndex: eventIndex, eventType: eventType, eventData: eventData)
+			MusicEventIteratorGetEventInfo(musicEventIterator!, nil, &eventType, &eventData, nil)
+			closure(eventIndex, eventType, eventData!)
 			eventIndex += 1
 			
-			MusicEventIteratorNextEvent(musicEventIterator)
-			MusicEventIteratorHasCurrentEvent(musicEventIterator, &hasCurrentEvent)
+			MusicEventIteratorNextEvent(musicEventIterator!)
+			MusicEventIteratorHasCurrentEvent(musicEventIterator!, &hasCurrentEvent)
 		}
 	}
 }

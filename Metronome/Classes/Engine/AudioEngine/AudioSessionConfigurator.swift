@@ -2,10 +2,10 @@ import AVFoundation
 import CocoaLumberjack
 
 class AudioSessionConfigurator {
-	static func configureAudioSession(audioSession: AVAudioSession) {
+	static func configureAudioSession(_ audioSession: AVAudioSession) {
 		
 		do {
-			try audioSession.setCategory(AVAudioSessionCategoryPlayback, withOptions: AVAudioSessionCategoryOptions.MixWithOthers)
+			try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.mixWithOthers)
 		} catch {
 			DDLogError("Could not set audio session category: \(error)")
 			return

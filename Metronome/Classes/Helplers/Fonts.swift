@@ -14,10 +14,10 @@ extension UIFont {
     }
     
     class func customMetreFont() -> UIFont {
-        return UIFont.systemFontOfSize(50, weight: UIFontWeightLight)
+        return UIFont.systemFont(ofSize: 50, weight: UIFontWeightLight)
     }
     
     class func customMetreIncreaseDecreaseButtonFont() -> UIFont {
-        return UIFont.systemFontOfSize(30, weight: UIFontWeightThin)
+        return UIFont.systemFont(ofSize: 30, weight: UIFontWeightThin)
     }
 }
