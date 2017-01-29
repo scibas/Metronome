@@ -51,53 +51,38 @@ class SettingsViewController: UITableViewController {
 		let settingsItem = viewModel.settingItemForIndexPath(indexPath)
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: Constants.settingsCellReuseIdentifier, for: indexPath) as! SettingCell
-		cell.bindWithSettingItem(settingsItem)
-		cell.configureCellForSettingItem(settingsItem)
-		cell.switchButtonActionClosure = handleCellSwitchActionClosure
+        cell.titleLabel.text = settingsItem.title
+        cell.settingItemKind = settingsItem.itemKind
+
+        cell.configureCellForSettingItem(settingsItem)
+        cell.delegate = self
 		return cell
 	}
-	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-		
-		let action = viewModel.settingItemForIndexPath(indexPath).action
-		handleCellAction(action, value: nil)
-	}
-	
-    fileprivate func handleCellAction(_ action: SettingItemAction?, value: Bool?) {
-        guard let action = action else { return }
-        
-		switch action {
-		case .changeSound:
-			flowDelegate?.settingsViewController(self, didSelectAction: .showChangeSound)
-		case .rateApp:
-			flowDelegate?.settingsViewController(self, didSelectAction: .showRateApp)
-		case .reportBug:
-			flowDelegate?.settingsViewController(self, didSelectAction: .showReportBug)
-		case .enableEmphasis:
-            viewModel.setEmphasisEnabled(value!)
-		case .playInBackground:
-            viewModel.pauseMetronomeOnEnterBackground(!value!)
-		}
-	}
-	
-	fileprivate lazy var handleCellSwitchActionClosure: SwitchActionClosure = {
-		return { [weak self] newValue, senderCell in
-			let indexPath = self?.tableView.indexPath(for: senderCell)
-			
-			if let indexPath = indexPath {
-				let action = self?.viewModel.settingItemForIndexPath(indexPath).action
-                self?.handleCellAction(action, value: newValue)
-			}
-		}
-	}()
 }
 
+extension SettingsViewController: SettingCellActionDelegate {
+    func settingCell(cell: SettingCell, didPerform action: SettingsCellAction) {
+        let settingItemKind = cell.settingItemKind!
+        
+        switch (settingItemKind, action) {
+        case (.changeSound, .didTap):
+            flowDelegate?.settingsViewController(self, didSelectAction: .showChangeSound)
+        case (.rateApp, .didTap):
+            flowDelegate?.settingsViewController(self, didSelectAction: .showRateApp)
+        case (.reportBug, .didTap):
+            flowDelegate?.settingsViewController(self, didSelectAction: .showReportBug)
+        case (.enableEmphasis, .switchStateDidChange(let switchValue)):
+            viewModel.setEmphasisEnabled(switchValue)
+        case (.playInBackground, .switchStateDidChange(let switchValue)):
+            viewModel.pauseMetronomeOnEnterBackground(!switchValue)
+        default:
+            print("Action \(action) not handled for item kind \(settingItemKind)")
+        }
+    }
+}
+
+
 extension SettingCell {
-	func bindWithSettingItem(_ settingItem: SettingItem) {
-		titleLabel.text = settingItem.title
-	}
-	
 	func configureCellForSettingItem(_ settingItem: SettingItem) {
 		switch settingItem.type {
 		case .simple:

@@ -7,8 +7,19 @@ import UIKit
 
 typealias SwitchActionClosure = (_ newValue: Bool, _ cell: SettingCell) -> ()
 
+enum SettingsCellAction {
+    case switchStateDidChange(Bool)
+    case didTap
+}
+
+protocol SettingCellActionDelegate: class {
+    func settingCell(cell: SettingCell, didPerform action: SettingsCellAction)
+}
+
 final class SettingCell: UITableViewCell {
-    var switchButtonActionClosure: SwitchActionClosure?
+    weak var delegate: SettingCellActionDelegate?
+    
+    var settingItemKind: SettingItemKind!
     
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
@@ -29,6 +40,9 @@ final class SettingCell: UITableViewCell {
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
 		
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SettingCell.cellDidTap(_:)))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+        
 		contentView.addSubview(titleLabel)
 		contentView.addSubview(switchButton)
 		
@@ -52,7 +66,11 @@ final class SettingCell: UITableViewCell {
 		}
 	}
 	
-	@objc fileprivate func switchButtonDidChangeState(_ sender: UISwitch) {
-        switchButtonActionClosure?(sender.isOn, self)
+	@objc private func switchButtonDidChangeState(_ sender: UISwitch) {
+        delegate?.settingCell(cell: self, didPerform: .switchStateDidChange(sender.isOn))
 	}
+    
+    @objc private func cellDidTap(_ sender: UIGestureRecognizer) {
+        delegate?.settingCell(cell: self, didPerform: .didTap)
+    }
 }

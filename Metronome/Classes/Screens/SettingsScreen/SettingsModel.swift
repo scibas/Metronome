@@ -8,7 +8,7 @@ struct SettingsGroup {
 struct SettingItem {
     let title: String
     let type: SettingItemType
-    let action: SettingItemAction
+    let itemKind: SettingItemKind
 }
 
 enum SettingItemType {
@@ -17,7 +17,7 @@ enum SettingItemType {
     case trueFalse
 }
 
-enum SettingItemAction {
+enum SettingItemKind {
     case changeSound
     case enableEmphasis
     case playInBackground
@@ -30,23 +30,23 @@ struct SettingsModel {
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Change sound", type: .simpleWithSubitems, action: .changeSound),
-				SettingItem(title: "Emphasis enabled", type: .trueFalse, action: .enableEmphasis)
+				SettingItem(title: "Change sound", type: .simpleWithSubitems, itemKind: .changeSound),
+				SettingItem(title: "Emphasis enabled", type: .trueFalse, itemKind: .enableEmphasis)
 			]
 		),
 		
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Play in background", type: .trueFalse, action: .playInBackground)
+				SettingItem(title: "Play in background", type: .trueFalse, itemKind: .playInBackground)
 			]
 		),
 		
 		SettingsGroup(
 			name: nil,
 			items: [
-				SettingItem(title: "Rate app", type: .simple, action: .rateApp),
-				SettingItem(title: "Raport bug", type: .simple, action: .reportBug)
+				SettingItem(title: "Rate app", type: .simple, itemKind: .rateApp),
+				SettingItem(title: "Raport bug", type: .simple, itemKind: .reportBug)
 			]
 		)
 	]
