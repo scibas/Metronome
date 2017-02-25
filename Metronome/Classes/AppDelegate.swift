@@ -15,6 +15,8 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
     var flowController: FlowController?
     
 	@objc func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        configureAppApperance()
+        
         setupDependencyInjectionFramework()
         
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -38,6 +40,10 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
     
     @objc fileprivate func applicationDidEnterBackground(_ application: UIApplication) {
         appLifeCycleEventBroadcaster.broadcastLifecycleEvent(.didEnterBackground)
+    }
+    
+    private func configureAppApperance() {
+        UIView.appearance().tintColor = UIColor.metreButtonNormalStateColor() //FixMe: rename to more generic color name
     }
 }
 

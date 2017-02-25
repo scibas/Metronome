@@ -1,45 +1,35 @@
 import UIKit
 
 class CustomMetreView: UIView {
-    let metreLabel = UILabel()
-    let noteKindLabel = UILabel()
-    let byLabel = UILabel()
+    private let allNotesValues: [NoteKind] = [.halfNote, .quarterNote, .eighthNote, .sixteenthNotes]
     
-    let metreStepperButton = VarticalStepper()
-    let noteKingOfStepperButton = VarticalStepper()
+    lazy var applyBarButton = UIBarButtonItem(title: "Apply", style: .plain, target: nil, action: nil)
+    lazy var cancelBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: nil)
     
-    let cancelButton = UIButton()
-    let applyButton = UIButton()
+    lazy var toolbar: UIToolbar = {
+        var barButtonsItems = [self.cancelBarButton, UIBarButtonItem.flexibleSpace(), self.applyBarButton]
+        let toolbar = UIToolbar()
+        toolbar.setItems(barButtonsItems, animated: false)
+        toolbar.barStyle = .blackOpaque
+        return toolbar
+    }()
+    
+    lazy var segmentedControl: UISegmentedControl = {
+        let items = ["half", "quater", "eighth", "sixteenth"]
+        let segmentedControl = UISegmentedControl(items: items)
+        return segmentedControl
+    }()
+    
+    lazy var pickerView = UIPickerView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.metronomeBackgroundColor()
         
-        byLabel.text = "/"
-        byLabel.textColor = UIColor.metreButtonSelectedStateColor()
-        byLabel.font = UIFont.customMetreFont()
-        
-        metreLabel.textColor = UIColor.metreButtonSelectedStateColor()
-        metreLabel.font = UIFont.customMetreFont()
-        
-        noteKindLabel.textColor = UIColor.metreButtonSelectedStateColor()
-        noteKindLabel.font = UIFont.customMetreFont()
-        
-        applyButton.setTitle("APPLY", for: .normal)
-        cancelButton.setTitle("Cancel", for: .normal)
-        
-        addSubview(metreLabel)
-        addSubview(noteKindLabel)
-        addSubview(byLabel)
-        addSubview(applyButton)
-        addSubview(cancelButton)
-        
-        metreStepperButton.tintColor = UIColor.metreButtonSelectedStateColor()
-        noteKingOfStepperButton.tintColor = UIColor.metreButtonSelectedStateColor()
-        
-        addSubview(noteKingOfStepperButton)
-        addSubview(metreStepperButton)
+        addSubview(toolbar)
+        addSubview(segmentedControl)
+        addSubview(pickerView)
         
         setupCustomConstraints()
     }
@@ -49,45 +39,29 @@ class CustomMetreView: UIView {
     }
     
     func setupCustomConstraints() {
-        byLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.snp.centerX)
-            make.centerY.equalTo(self).offset(-80)
+        let defaultMargin = 10.0
+        
+        toolbar.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.top.equalToSuperview()
         }
         
-        metreLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(byLabel)
-            make.trailing.equalTo(byLabel.snp.leading)
+        pickerView.snp.makeConstraints { make in
+            make.top.equalTo(toolbar.snp.bottom)
+            make.leading.equalToSuperview().offset(defaultMargin)
+            make.trailing.equalToSuperview().offset(-defaultMargin)
         }
         
-        noteKindLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(byLabel)
-            make.leading.equalTo(self.byLabel.snp.trailing)
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(pickerView.snp.bottom)
+            make.leading.equalToSuperview().offset(defaultMargin)
+            make.trailing.equalToSuperview().offset(-defaultMargin)
+            make.bottom.equalToSuperview().offset(-defaultMargin)
         }
-        
-        metreStepperButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(metreLabel)
-            make.leading.equalTo(self).offset(15)
-        }
-        
-        noteKingOfStepperButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(noteKindLabel)
-            make.trailing.equalTo(self).offset(-15)
-        }
-
-        cancelButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(self)
-            make.trailing.equalTo(self)
-            make.height.equalTo(44)
-            make.bottom.equalTo(self).offset(-10)
-        }
-        
-        applyButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(self)
-            make.trailing.equalTo(self)
-            make.height.equalTo(44)
-            make.bottom.equalTo(cancelButton.snp.top)
-
-        }
-        
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 300.0)
     }
 }

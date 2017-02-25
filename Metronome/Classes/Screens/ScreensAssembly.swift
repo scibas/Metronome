@@ -23,10 +23,7 @@ private extension ScreensAssembly {
 	
 	func registerCustomMetreScreenInContainter(_ container: Container) {
 		container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
-			let metronomeEngine = r.resolve(MetronomeEngine.self)!
-			let model = CustomMetreModel(withMetronomeEngine: metronomeEngine)
-			let viewModel = CustomMetreViewModel(withModel: model, currentMetre: currentMetre)
-			return CustomMetreViewController(withViewModel: viewModel)
+			return CustomMetreViewController(with: currentMetre)
 		}
 	}
 	

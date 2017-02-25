@@ -4,10 +4,6 @@ public enum NoteKind: Int {
     case quarterNote = 4
     case eighthNote = 8
     case sixteenthNotes = 16
-    
-    static func allValues() -> [NoteKind] {
-        return [wholeNote, halfNote, quarterNote, eighthNote, sixteenthNotes]
-    }
 }
 
 extension NoteKind: CustomStringConvertible {

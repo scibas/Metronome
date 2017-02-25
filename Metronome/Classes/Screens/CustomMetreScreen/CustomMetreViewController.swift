@@ -9,15 +9,18 @@ protocol CustomMetreViewControllerDelegate: class {
     func customMetreViewController(_ viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction)
 }
 
-class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateProtocol {
+class CustomMetreViewController: UIViewController {
     weak var delegate: CustomMetreViewControllerDelegate?
+    private var selectedMetre: Metre
+    private let allNotesValues: [NoteKind] = [.halfNote, .quarterNote, .eighthNote, .sixteenthNotes]
     
-	fileprivate let viewModel: CustomMetreViewModel
-	
-	init(withViewModel viewModel: CustomMetreViewModel) {
-		self.viewModel = viewModel
+    struct Constants {
+        static let defaultMetre = Metre.fourByFour()
+    }
+    
+    init(with selectedMetre: Metre?) {
+        self.selectedMetre = selectedMetre ?? Constants.defaultMetre
 		super.init(nibName: nil, bundle: nil)
-		self.viewModel.delegate = self
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -26,71 +29,84 @@ class CustomMetreViewController: UIViewController, CustomMetreViewModelDelegateP
 	
 	override func loadView() {
 		let mainView = CustomMetreView()
-		mainView.metreStepperButton.increaseButton.addTarget(self, action: #selector(CustomMetreViewController.increaseMetreButtonDidTap), for: .touchUpInside)
-		mainView.metreStepperButton.decreaseButton.addTarget(self, action: #selector(CustomMetreViewController.decreaseMetreButtonDidTap), for: .touchUpInside)
-		mainView.noteKingOfStepperButton.increaseButton.addTarget(self, action: #selector(CustomMetreViewController.increaseNoteKindButtonDidTap), for: .touchUpInside)
-		mainView.noteKingOfStepperButton.decreaseButton.addTarget(self, action: #selector(CustomMetreViewController.decreaseNoteKindButtonDidTap), for: .touchUpInside)
-        mainView.applyButton.addTarget(self, action: #selector(CustomMetreViewController.applyButtonDidTap), for: .touchUpInside)
-        mainView.cancelButton.addTarget(self, action: #selector(CustomMetreViewController.cancelButtonDidTap), for: .touchUpInside)
-		
-		view = mainView
+        mainView.segmentedControl.addTarget(self, action: #selector(noteKindSegmentControlDidChange(_:)), for: .valueChanged)
+        mainView.applyBarButton.addTapTarget(self, action: #selector(applyButtonDidTap))
+        mainView.cancelBarButton.addTapTarget(self, action: #selector(cancelButtonDidTap))
+        mainView.pickerView.delegate = self
+        mainView.pickerView.dataSource = self
+        view = mainView
 	}
 	
 	var mainView: CustomMetreView { return view as! CustomMetreView }
 	
 	override func viewDidLoad() {
-		displayMetre(viewModel.currentMetre)
-        
-        updateMetreStepperButtonState()
-        updateNoteKindStepperButtonState()
+		super.viewDidLoad()
+        selectMetre(selectedMetre)
 	}
 	
-	func customMetreViewModel(_ viewModel: CustomMetreViewModel, didChangeMetre newMetre: Metre) {
-		displayMetre(newMetre)
-	}
-	
-	func displayMetre(_ metre: Metre) {
-		mainView.metreLabel.text = "\(metre.beat)"
-		mainView.noteKindLabel.text = "\(metre.noteKind.rawValue)"
-	}
-	
-	func increaseMetreButtonDidTap() {
-		viewModel.increaseMetre()
-        updateMetreStepperButtonState()
-	}
-	
-	func decreaseMetreButtonDidTap() {
-		viewModel.decreaseMetre()
-        updateMetreStepperButtonState()
-	}
-	
-	func increaseNoteKindButtonDidTap() {
-		viewModel.increaseNoteKind()
-        updateNoteKindStepperButtonState()
-	}
-	
-	func decreaseNoteKindButtonDidTap() {
-		viewModel.decreaseNoteKind()
-        updateNoteKindStepperButtonState()
-	}
-	
-	fileprivate func updateMetreStepperButtonState() {
-		mainView.metreStepperButton.increaseButton.isEnabled = viewModel.canIncreaseMetre()
-        mainView.metreStepperButton.decreaseButton.isEnabled = viewModel.canDecreaseMetre()
-	}
-	
-	fileprivate func updateNoteKindStepperButtonState() {
-        mainView.noteKingOfStepperButton.increaseButton.isEnabled = viewModel.canIncreaseNoteKind()
-        mainView.noteKingOfStepperButton.decreaseButton.isEnabled = viewModel.canDecreaseNoteKind()
-	}
-    
     func applyButtonDidTap() {
-        viewModel.applyNewMetrum()
-        delegate?.customMetreViewController(self, didSelectAction: .selectMetre(metre: viewModel.currentMetre))
+//        delegate?.customMetreViewController(self, didSelectAction: .selectMetre(metre: viewModel.currentMetre))
         delegate?.customMetreViewController(self, didSelectAction: .dismiss)
     }
     
     func cancelButtonDidTap() {
         delegate?.customMetreViewController(self, didSelectAction: .dismiss)
+    }
+    
+    private func selectMetre(_ metre: Metre) {
+        mainView.segmentedControl.selectedSegmentIndex = buttonIndexForNoteKind(metre.noteKind)
+        mainView.pickerView.selectRow(metre.beat-1, inComponent: 0, animated: false)
+        mainView.pickerView.reloadAllComponents()
+    }
+    
+    @objc private func noteKindSegmentControlDidChange(_ sender: UISegmentedControl) {
+        
+
+        mainView.pickerView.reloadAllComponents()
+    }
+    
+    fileprivate func noteKindForButtonIndex(_ butonIndex: Int) -> NoteKind {
+        return allNotesValues[butonIndex]
+    }
+    
+    private func buttonIndexForNoteKind(_ noteKind: NoteKind) -> Int {
+        return allNotesValues.index(of: noteKind)!
+    }
+}
+
+extension CustomMetreViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let beat = row + 1
+        let noteKind = noteKindForButtonIndex(mainView.segmentedControl.selectedSegmentIndex)
+        let metre = Metre(beat: beat, noteKind: noteKind)
+
+        let label: UILabel
+        if view == nil {
+            label = UILabel()
+            label.textAlignment = .center
+            label.font = UIFont(name: "Helvetica Neue", size: 32)!
+            label.textColor = UIColor.metreButtonNormalStateColor()
+        } else {
+            label = view as! UILabel
+        }
+        
+        label.attributedText = MetreAttributedTextFormater.attributedText(for: metre)
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 60
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 12
     }
 }

@@ -45,7 +45,7 @@ extension FlowController: CustomMetreViewControllerDelegate {
 	func customMetreViewController(_ viewController: CustomMetreViewController, didSelectAction action: CustomMetreViewControllerAction) {
 		switch action {
 		case .dismiss:
-			dialogPresenter.dismissDialogViewControllerFromPresentationViewController(viewController.presentingViewController!, animated: false, completion: nil)
+			dialogPresenter.dismissDialogViewControllerFromPresentationViewController(viewController.presentingViewController!, animated: true, completion: nil)
 		case .selectMetre(let metre):
 			setMetreClosure?(metre)
 			break
