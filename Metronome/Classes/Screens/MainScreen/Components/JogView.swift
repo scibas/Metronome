@@ -19,8 +19,8 @@ enum JogRotationDirection {
 class JogView: UIControl {
 	var sensitivity = 0.1 // radians per event
 
-	fileprivate let backgroundImageView = UIImageView(asset: .Jog_bkg)
-	fileprivate let knobeImageView = UIImageView(asset: .Jog)
+	fileprivate let backgroundImageView = UIImageView(asset: .jogBkg)
+	fileprivate let knobeImageView = UIImageView(asset: .jog)
     fileprivate var tampCumulativeAngle = 0.0
     fileprivate weak var tapGestureRecognizer: UIGestureRecognizer?
 	fileprivate(set) var rotationDirection: JogRotationDirection?

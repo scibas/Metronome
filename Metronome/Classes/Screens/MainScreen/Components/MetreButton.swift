@@ -10,7 +10,7 @@ class MetreButton: UIButton {
 		setTitleColor(UIColor.metreButtonSelectedStateColor(), for: .selected)
         setTitleFromMetre(nil)
         
-		setBackgroundImage(UIImage(asset: .Metre_btn), for: .normal)
+		setBackgroundImage(UIImage(asset: .metreBtn), for: .normal)
 		
 		let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(MetreButton.didLongPress(_:)))
 		longPressGestureRecognizer.allowableMovement = 0

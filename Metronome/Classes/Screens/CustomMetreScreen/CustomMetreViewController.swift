@@ -12,7 +12,6 @@ protocol CustomMetreViewControllerDelegate: class {
 class CustomMetreViewController: UIViewController {
     weak var delegate: CustomMetreViewControllerDelegate?
     private var selectedMetre: Metre
-    private let allNotesValues: [NoteKind] = [.halfNote, .quarterNote, .eighthNote, .sixteenthNotes]
     
     struct Constants {
         static let defaultMetre = Metre.fourByFour()
@@ -41,11 +40,11 @@ class CustomMetreViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        selectMetre(selectedMetre)
+        mainView.selectMetre(selectedMetre)
 	}
 	
     func applyButtonDidTap() {
-//        delegate?.customMetreViewController(self, didSelectAction: .selectMetre(metre: viewModel.currentMetre))
+        delegate?.customMetreViewController(self, didSelectAction: .selectMetre(metre: mainView.selectedMetre))
         delegate?.customMetreViewController(self, didSelectAction: .dismiss)
     }
     
@@ -53,31 +52,15 @@ class CustomMetreViewController: UIViewController {
         delegate?.customMetreViewController(self, didSelectAction: .dismiss)
     }
     
-    private func selectMetre(_ metre: Metre) {
-        mainView.segmentedControl.selectedSegmentIndex = buttonIndexForNoteKind(metre.noteKind)
-        mainView.pickerView.selectRow(metre.beat-1, inComponent: 0, animated: false)
-        mainView.pickerView.reloadAllComponents()
-    }
-    
     @objc private func noteKindSegmentControlDidChange(_ sender: UISegmentedControl) {
-        
-
         mainView.pickerView.reloadAllComponents()
-    }
-    
-    fileprivate func noteKindForButtonIndex(_ butonIndex: Int) -> NoteKind {
-        return allNotesValues[butonIndex]
-    }
-    
-    private func buttonIndexForNoteKind(_ noteKind: NoteKind) -> Int {
-        return allNotesValues.index(of: noteKind)!
     }
 }
 
 extension CustomMetreViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let beat = row + 1
-        let noteKind = noteKindForButtonIndex(mainView.segmentedControl.selectedSegmentIndex)
+        let noteKind = mainView.selectedMetre.noteKind
         let metre = Metre(beat: beat, noteKind: noteKind)
 
         let label: UILabel
@@ -93,11 +76,7 @@ extension CustomMetreViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         label.attributedText = MetreAttributedTextFormater.attributedText(for: metre)
         return label
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-    }
-    
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 60
     }

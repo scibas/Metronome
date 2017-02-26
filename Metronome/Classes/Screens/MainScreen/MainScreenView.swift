@@ -6,10 +6,10 @@ class MainScreenView: UIView {
 	let consoleView = ConsoleView()
     let displayView = LCDDisplay()
     let metreButtonsPanel = MetreButtonsPanel(numberOfButtons: 5)
-    let settingsButton = UIButton(backgroundImageAsset: .Settings_btn)
-    let autoBpmButton = UIButton(backgroundImageAsset: .Autobpm_btn_off)
-    let increaseTempoButton = UIButton(backgroundImageAsset: .Tempo_plus_btn)
-    let decreaseTempoButton = UIButton(backgroundImageAsset: .Tempo_minus_btn)
+    let settingsButton = UIButton(backgroundImageAsset: .settingsBtn)
+    let autoBpmButton = UIButton(backgroundImageAsset: .autobpmBtnOff)
+    let increaseTempoButton = UIButton(backgroundImageAsset: .tempoPlusBtn)
+    let decreaseTempoButton = UIButton(backgroundImageAsset: .tempoMinusBtn)
 	let jogView = JogView()
     
     struct Constants {

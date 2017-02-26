@@ -15,7 +15,12 @@ class CustomMetreView: UIView {
     }()
     
     lazy var segmentedControl: UISegmentedControl = {
-        let items = ["half", "quater", "eighth", "sixteenth"]
+        let items = [
+            UIImage(asset: Asset.halfNote),
+            UIImage(asset: Asset.quaterNote),
+            UIImage(asset: Asset.eightNote),
+            UIImage(asset: Asset.sixteenthNote)
+        ]
         let segmentedControl = UISegmentedControl(items: items)
         return segmentedControl
     }()
@@ -39,7 +44,7 @@ class CustomMetreView: UIView {
     }
     
     func setupCustomConstraints() {
-        let defaultMargin = 10.0
+        let defaultSideMargin = 10.0
         
         toolbar.snp.makeConstraints { make in
             make.leading.equalToSuperview()
@@ -49,16 +54,38 @@ class CustomMetreView: UIView {
         
         pickerView.snp.makeConstraints { make in
             make.top.equalTo(toolbar.snp.bottom)
-            make.leading.equalToSuperview().offset(defaultMargin)
-            make.trailing.equalToSuperview().offset(-defaultMargin)
+            make.leading.equalToSuperview().offset(defaultSideMargin)
+            make.trailing.equalToSuperview().offset(-defaultSideMargin)
         }
         
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(pickerView.snp.bottom)
-            make.leading.equalToSuperview().offset(defaultMargin)
-            make.trailing.equalToSuperview().offset(-defaultMargin)
-            make.bottom.equalToSuperview().offset(-defaultMargin)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-defaultSideMargin)
+            make.height.equalTo(40)
         }
+    }
+    
+    func selectMetre(_ metre: Metre) {
+        segmentedControl.selectedSegmentIndex = buttonIndexForNoteKind(metre.noteKind)
+        pickerView.selectRow(metre.beat-1, inComponent: 0, animated: false)
+        pickerView.reloadAllComponents()
+    }
+    
+    var selectedMetre: Metre {
+        let selectedBeat = pickerView.selectedRow(inComponent: 0) + 1
+        let selectedNoteKind = noteKindForButtonIndex(segmentedControl.selectedSegmentIndex)
+        
+        return Metre(beat: selectedBeat, noteKind: selectedNoteKind)
+    }
+    
+    fileprivate func noteKindForButtonIndex(_ butonIndex: Int) -> NoteKind {
+        return allNotesValues[butonIndex]
+    }
+    
+    private func buttonIndexForNoteKind(_ noteKind: NoteKind) -> Int {
+        return allNotesValues.index(of: noteKind)!
     }
     
     override var intrinsicContentSize: CGSize {

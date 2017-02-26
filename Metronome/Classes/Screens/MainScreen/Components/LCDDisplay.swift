@@ -1,7 +1,7 @@
 import UIKit
 
 class LCDDisplay: UIView {
-	fileprivate let backgroundImageView = UIImageView(asset: .Display_bkg)
+	fileprivate let backgroundImageView = UIImageView(asset: .displayBkg)
     let bpmValueLabel = UILabel()
 	fileprivate let metreBadge = DisplayTextBadge(badgeColor: .yellow)
     
