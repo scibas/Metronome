@@ -71,8 +71,15 @@ class MainScreenViewController: UIViewController {
 	}
 	
 	func metreButtonDidTap(_ sender: MetreButtonsPanel) {
-		let buttonIndex = sender.selectedButtonIndex!
-		viewModel.setMetreFromBankIndex(buttonIndex)
+        let buttonIndex = sender.selectedButtonIndex!
+        
+        if let selectedMetre = viewModel.metreBank.metreForIndex(buttonIndex) {
+            viewModel.metronomeEngine.metre = selectedMetre
+        } else {
+            flowDelegate?.showCustomMetreScreenForMetre(nil, senderViewController: self) { [unowned self] newMetre in
+                self.viewModel.storeMetre(newMetre, forBankIndex: buttonIndex)
+            }
+        }
 	}
 	
 	func metreButtonDidLongTap(_ sender: MetreButtonsPanel) {
