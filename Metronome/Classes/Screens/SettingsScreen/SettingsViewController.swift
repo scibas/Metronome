@@ -2,18 +2,14 @@ import UIKit
 
 enum SettingsViewControllerAction {
 	case showChangeSound
-	case showRateApp
-	case showReportBug
-}
-
-protocol SettingsViewControllerFlowDelegate: class {
-	func settingsViewController(_ settingsViewController: SettingsViewController, didSelectAction action: SettingsViewControllerAction)
+    case close
 }
 
 class SettingsViewController: UITableViewController {
-	weak var flowDelegate: SettingsViewControllerFlowDelegate?
 	fileprivate let viewModel: SettingsViewModel
-	
+
+    var flowActionHandler: ((SettingsViewControllerAction) -> Void)?
+    
 	struct Constants {
 		static let settingsCellReuseIdentifier = "SettingsCellReuseIdentifier"
 	}
@@ -29,7 +25,11 @@ class SettingsViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.register(SettingCell.self, forCellReuseIdentifier: Constants.settingsCellReuseIdentifier)
+		
+        let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeButtonDidTap))
+        navigationItem.leftBarButtonItem = closeButton
+        
+        tableView.register(SettingCell.self, forCellReuseIdentifier: Constants.settingsCellReuseIdentifier)
 		
 		title = "Settings"
 	}
@@ -38,6 +38,10 @@ class SettingsViewController: UITableViewController {
 		super.viewWillAppear(animated)
 		navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
+    
+    @objc private func closeButtonDidTap() {
+        flowActionHandler?(.close)
+    }
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return viewModel.numberOfSections()
@@ -66,11 +70,7 @@ extension SettingsViewController: SettingCellActionDelegate {
         
         switch (settingItemKind, action) {
         case (.changeSound, .didTap):
-            flowDelegate?.settingsViewController(self, didSelectAction: .showChangeSound)
-        case (.rateApp, .didTap):
-            flowDelegate?.settingsViewController(self, didSelectAction: .showRateApp)
-        case (.reportBug, .didTap):
-            flowDelegate?.settingsViewController(self, didSelectAction: .showReportBug)
+            flowActionHandler?(.showChangeSound)
         case (.enableEmphasis, .switchStateDidChange(let switchValue)):
             viewModel.setEmphasisEnabled(switchValue)
         case (.playInBackground, .switchStateDidChange(let switchValue)):

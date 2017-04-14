@@ -3,21 +3,22 @@ import Swinject
 
 class AudioEngineAssembly: Assembly {
 	func assemble(container: Container) {
-		registerAudioEngineInConteiner(container)
-		registerMetronomeEngineInConteiner(container)
-		registerSoundBankInConteiner(container)
-		registerUserSettingsStoregeInConteiner(container) // RefactorMe: Take me out of here! I don't belong here.
+		registerAudioEngine(in: container)
+		registerMetronomeEngine(in: container)
+		registerSoundBank(in: container)
+        registerUserSettingsStorege(in: container) // RefactorMe: Take me out of here! I don't belong here.
+        registerMetreBank(in: container)
 	}
 }
 
 private extension AudioEngineAssembly {
-	func registerAudioEngineInConteiner(_ container: Container) {
+	func registerAudioEngine(in container: Container) {
 		container.register(AudioEngine.self) { r in
 			return AudioEngine()
 		}.inObjectScope(.container)
 	}
 	
-	func registerMetronomeEngineInConteiner(_ container: Container) {
+	func registerMetronomeEngine(in container: Container) {
 		container.register(MetronomeEngine.self) { r in
 			let audioEngine = r.resolve(AudioEngine.self) as! AudioEngineProtocol
 			let soundBank = r.resolve(SoundsBank.self)!
@@ -27,16 +28,21 @@ private extension AudioEngineAssembly {
 		}.inObjectScope(.container)
 	}
 	
-    func registerSoundBankInConteiner(_ container: Container) {
+    func registerSoundBank(in container: Container) {
 		container.register(SoundsBank.self) { r in
 			return SoundsBank()
 		}.inObjectScope(.container)
 	}
 	
-	func registerUserSettingsStoregeInConteiner(_ container: Container) {
+	func registerUserSettingsStorege(in container: Container) {
 		container.register(UserSettingsStorageClass.self) { r in
 			return UserSettingsStorageClass()
 		}.inObjectScope(.container)
 	}
+    
+    func registerMetreBank(in container: Container) {
+        container.register(MetreBank.self) { _ in
+            return MetreBank()
+        }.inObjectScope(.container)
+    }
 }
-

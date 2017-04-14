@@ -11,14 +11,18 @@ protocol CustomMetreViewControllerDelegate: class {
 
 class CustomMetreViewController: UIViewController {
     weak var delegate: CustomMetreViewControllerDelegate?
-    private var selectedMetre: Metre
+    
+    private let selectedMetreBankIndex: Int
+    private let model: CustomMetreModel
     
     struct Constants {
         static let defaultMetre = Metre.fourByFour()
     }
     
-    init(with selectedMetre: Metre?) {
-        self.selectedMetre = selectedMetre ?? Constants.defaultMetre
+    init(with model: CustomMetreModel, and selectedMetreBankIndex: Int) {
+        self.selectedMetreBankIndex = selectedMetreBankIndex
+        self.model = model
+        
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -40,7 +44,7 @@ class CustomMetreViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        mainView.selectMetre(selectedMetre)
+//        mainView.selectMetre(selectedMetre)
 	}
 	
     func applyButtonDidTap() {

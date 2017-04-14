@@ -11,24 +11,25 @@ class MainScreenViewModel {
 
     var metronomeEngine: MetronomeEngineProtocol // fixMe: make private again
 	fileprivate var userSettingsStorage: UserSettingsStorage
-    let metreBank = MetreBank()
-
+    let metreBank: MetreBank
+    
 	struct DefaultSettings {
 		static let metre = Metre.twoByFour()
 		static let tempo = BPM(120)
 		static let emphasisEnabled = true
 	}
 
-	init(metronomeEngine: MetronomeEngineProtocol, userSettingsStorage: UserSettingsStorage) {
+    init(metronomeEngine: MetronomeEngineProtocol, metreBank: MetreBank, userSettingsStorage: UserSettingsStorage) {
 		self.metronomeEngine = metronomeEngine
+        self.metreBank = metreBank
 		self.userSettingsStorage = userSettingsStorage
 
 		restoreUserSettingsFromStorage(userSettingsStorage)
 
-		metreBank.setMetre(.twoByFour(), forIndex: 0)
-		metreBank.setMetre(.threeByFour(), forIndex: 1)
-		metreBank.setMetre(.fourByFour(), forIndex: 2)
-		metreBank.setMetre(.sixByEight(), forIndex: 3)
+		metreBank.set(.twoByFour(), at: 0)
+		metreBank.set(.threeByFour(), at: 1)
+		metreBank.set(.fourByFour(), at: 2)
+		metreBank.set(.sixByEight(), at: 3)
 	}
 
 	func restoreUserSettingsFromStorage(_ storage: UserSettingsStorage) {
@@ -44,14 +45,14 @@ class MainScreenViewModel {
 	}
 
 	func setMetreFromBankIndex(_ bankIndex: Int) {
-		let metre = metreBank.metreForIndex(bankIndex)
+        let metre = metreBank.metre(for: bankIndex)
 		metronomeEngine.metre = metre
 
 		delegate?.viewModel(self, didChangeSelectedBank: bankIndex)
 	}
 
 	func storeMetre(_ metre: Metre, forBankIndex bankIndex: Int) {
-		metreBank.setMetre(metre, forIndex: bankIndex)
+		metreBank.set(metre, at: bankIndex)
 
 		delegate?.viewModel(self, didChangeMetre: metre, forBank: bankIndex)
 	}

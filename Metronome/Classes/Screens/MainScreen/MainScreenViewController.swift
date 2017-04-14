@@ -1,14 +1,12 @@
 import UIKit
 
-typealias SetMetreClosure = (_ newMetre: Metre) -> ()
-
-protocol MainScreenViewControllerFlowDelegate: class {
-	func showSettingsScreen(_ senderViewController: MainScreenViewController)
-	func showCustomMetreScreenForMetre(_ currentMetre: Metre?, senderViewController: MainScreenViewController, setMetreClosure: @escaping SetMetreClosure)
+enum MainScreenViewControllerAction {
+    case showSettingsScreen
+    case showCustomMetreDialog(bankIndex: Int)
 }
 
 class MainScreenViewController: UIViewController {
-	weak var flowDelegate: MainScreenViewControllerFlowDelegate?
+    var flowActionHandler: ((MainScreenViewControllerAction) -> Void)?
 	
 	let viewModel: MainScreenViewModel
 	
@@ -45,12 +43,7 @@ class MainScreenViewController: UIViewController {
         
 		updateViewState()
 	}
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-	
+    	
 	func jogViewDidTap(_ sender: UIView) {
 		do {
 			try viewModel.toggleStartStop()
@@ -71,23 +64,21 @@ class MainScreenViewController: UIViewController {
 	}
 	
 	func metreButtonDidTap(_ sender: MetreButtonsPanel) {
-        let buttonIndex = sender.selectedButtonIndex!
+        let bankIndex = sender.selectedButtonIndex!
         
-        if let selectedMetre = viewModel.metreBank.metreForIndex(buttonIndex) {
+        if viewModel.metreBank.isEmpty(at: bankIndex) {
+            flowActionHandler?(.showCustomMetreDialog(bankIndex: bankIndex))
+            return
+        }
+        
+        if let selectedMetre = viewModel.metreBank.metre(for: bankIndex) {
             viewModel.metronomeEngine.metre = selectedMetre
-        } else {
-            flowDelegate?.showCustomMetreScreenForMetre(nil, senderViewController: self) { [unowned self] newMetre in
-                self.viewModel.storeMetre(newMetre, forBankIndex: buttonIndex)
-            }
         }
 	}
 	
 	func metreButtonDidLongTap(_ sender: MetreButtonsPanel) {
 		let bankIndex = sender.selectedButtonIndex!
-		let currentBankMetre = viewModel.metreBank.metreForIndex(bankIndex)
-		flowDelegate?.showCustomMetreScreenForMetre(currentBankMetre, senderViewController: self) { [unowned self] newMetre in
-			self.viewModel.storeMetre(newMetre, forBankIndex: bankIndex)
-		}
+		flowActionHandler?(.showCustomMetreDialog(bankIndex: bankIndex))
 	}
 	
 	func setMetre(_ metre: Metre, forBankIndex bankIndex: Int) {
@@ -107,12 +98,12 @@ class MainScreenViewController: UIViewController {
 	}
     
     func settingsButtonDidTap() {
-        flowDelegate?.showSettingsScreen(self)
+        flowActionHandler?(.showSettingsScreen)
     }
 	
 	func updateViewState() {
 		for (metreBankButtonIndex, button) in mainView.metreButtonsPanel.buttons.enumerated() {
-			let metre = viewModel.metreBank.metreForIndex(metreBankButtonIndex)
+            let metre = viewModel.metreBank.metre(for: metreBankButtonIndex)
 			button.setTitleFromMetre(metre)
 		}
 	}

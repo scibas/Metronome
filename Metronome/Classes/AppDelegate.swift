@@ -12,16 +12,21 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
     lazy var appLifeCycleEventBroadcaster: AppLifeCycleEventBroadcaster = self.resolver().resolve(AppLifeCycleEventBroadcaster.self)!
 
     @objc var window: UIWindow?
-    var flowController: FlowController?
+    var mainFlowController: FlowController?
     
 	@objc func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         configureAppApperance()
         
         setupDependencyInjectionFramework()
         
+        let mainFlowController = resolver().resolve(MainFlowController.self)!
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        flowController = FlowController(withWindow: window)
-        flowController?.showMainScren()
+        window.rootViewController = mainFlowController.initialViewController
+        window.makeKeyAndVisible()
+
+        self.mainFlowController = mainFlowController
+        self.window = window
         
 		return true
 	}
@@ -30,7 +35,8 @@ private final class AppDelegate: UIResponder, UIApplicationDelegate, WithResolve
 		assembler = try! Assembler(assemblies: [
             GeneralAssembly(),
 			AudioEngineAssembly(),
-			ScreensAssembly()
+			ScreensAssembly(),
+			FlowControllersAssembly()
 		])
 	}
     

@@ -16,14 +16,16 @@ private extension ScreensAssembly {
 			
 			let metreonomeEngine = r.resolve(MetronomeEngine.self) as! MetronomeEngineProtocol
 			let userSettingsStorage = r.resolve(UserSettingsStorageClass.self) as! UserSettingsStorage
-			let viewModel = MainScreenViewModel(metronomeEngine: metreonomeEngine, userSettingsStorage: userSettingsStorage)
+            let metreBank = r.resolve(MetreBank.self)!
+			let viewModel = MainScreenViewModel(metronomeEngine: metreonomeEngine, metreBank: metreBank, userSettingsStorage: userSettingsStorage)
 			return MainScreenViewController(viewModel: viewModel)
 		}
 	}
 	
 	func registerCustomMetreScreenInContainter(_ container: Container) {
-		container.register(CustomMetreViewController.self) { (r, currentMetre: Metre?) in
-			return CustomMetreViewController(with: currentMetre)
+		container.register(CustomMetreViewController.self) { (resolver, selectedBankIndex: Int) in
+            let model = CustomMetreModel(with: MetreBank())//FixMe!!!!!!!!!!!
+			return CustomMetreViewController(with: model, and: selectedBankIndex)
 		}
 	}
 	

@@ -21,8 +21,6 @@ enum SettingItemKind {
     case changeSound
     case enableEmphasis
     case playInBackground
-    case rateApp
-    case reportBug
 }
 
 struct SettingsModel {
@@ -39,14 +37,6 @@ struct SettingsModel {
 			name: nil,
 			items: [
 				SettingItem(title: "Play in background", type: .trueFalse, itemKind: .playInBackground)
-			]
-		),
-		
-		SettingsGroup(
-			name: nil,
-			items: [
-				SettingItem(title: "Rate app", type: .simple, itemKind: .rateApp),
-				SettingItem(title: "Raport bug", type: .simple, itemKind: .reportBug)
 			]
 		)
 	]

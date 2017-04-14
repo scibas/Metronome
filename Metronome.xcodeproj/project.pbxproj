@@ -19,7 +19,6 @@
 		E50227311D733AA300973D9D /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227301D733AA300973D9D /* SettingsModel.swift */; };
 		E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227321D733AB500973D9D /* SettingsViewModel.swift */; };
 		E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227341D733AC200973D9D /* SettingsViewController.swift */; };
-		E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50227361D73526200973D9D /* MetronomeNavigationController.swift */; };
 		E5033F621D0D66A8005193E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F611D0D66A8005193E2 /* Colors.swift */; };
 		E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F641D0D68BB005193E2 /* ConsoleView.swift */; };
 		E5033F671D0D83DE005193E2 /* JogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5033F661D0D83DE005193E2 /* JogView.swift */; };
@@ -32,7 +31,7 @@
 		E50D4D1C1D27E6CE0087CE1E /* MetreButtonsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D1B1D27E6CE0087CE1E /* MetreButtonsPanel.swift */; };
 		E50D4D1E1D286A2A0087CE1E /* MetreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D1D1D286A2A0087CE1E /* MetreButton.swift */; };
 		E50D4D201D297C3E0087CE1E /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D4D1F1D297C3E0087CE1E /* MainScreenViewModel.swift */; };
-		E534C0861D574F8700C05EA6 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534C0851D574F8700C05EA6 /* FlowController.swift */; };
+		E534C0861D574F8700C05EA6 /* MainFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534C0851D574F8700C05EA6 /* MainFlowController.swift */; };
 		E5358C2E1E620D780003C5F7 /* MetreAttributedTextFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5358C2D1E620D780003C5F7 /* MetreAttributedTextFormater.swift */; };
 		E5358C301E621DBB0003C5F7 /* UIBarButtonItemHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5358C2F1E621DBB0003C5F7 /* UIBarButtonItemHelpers.swift */; };
 		E53754111D037E8C003B297B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53754101D037E8C003B297B /* MainScreenView.swift */; };
@@ -51,6 +50,10 @@
 		E55520BC1D0C533F0072B783 /* MetreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55520BA1D0C53350072B783 /* MetreSpecs.swift */; };
 		E55F3C661D07351100402903 /* UserSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F3C651D07351100402903 /* UserSettingsStorage.swift */; };
 		E572067A1D730A3900CDBC23 /* NoteKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57206791D730A3900CDBC23 /* NoteKind.swift */; };
+		E589149F1E9A223D00A58473 /* SettingsFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589149E1E9A223D00A58473 /* SettingsFlowController.swift */; };
+		E58914A31E9A2F9100A58473 /* FlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58914A21E9A2F9100A58473 /* FlowController.swift */; };
+		E58914A51E9A581F00A58473 /* TreeStructureNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58914A41E9A581F00A58473 /* TreeStructureNode.swift */; };
+		E58914A71E9A5BD400A58473 /* FlowControllersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58914A61E9A5BD400A58473 /* FlowControllersAssembly.swift */; };
 		E58D56E71D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D56E61D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift */; };
 		E5A4A1F91D96B8CB00F5D7D4 /* SelectSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A1F81D96B8CB00F5D7D4 /* SelectSoundViewController.swift */; };
 		E5A4A1FD1D96B8F400F5D7D4 /* SelectSoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A4A1FC1D96B8F400F5D7D4 /* SelectSoundViewModel.swift */; };
@@ -66,6 +69,7 @@
 		E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D235001D04317900E567D6 /* MetronomeEngine.swift */; };
 		E5D235031D04567000E567D6 /* metronome.aupreset in Resources */ = {isa = PBXBuildFile; fileRef = E5D235021D04567000E567D6 /* metronome.aupreset */; };
 		E5D235071D04756700E567D6 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E5D235061D04756700E567D6 /* Sounds */; };
+		E5EB22441E9A7D1A0009E983 /* CustomMetreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5EB22431E9A7D1A0009E983 /* CustomMetreModel.swift */; };
 		F0F9848541D6D58784490794 /* Pods_MetronomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA577A07609FDABD186D0593 /* Pods_MetronomeTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +101,6 @@
 		E50227301D733AA300973D9D /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		E50227321D733AB500973D9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E50227341D733AC200973D9D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		E50227361D73526200973D9D /* MetronomeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeNavigationController.swift; sourceTree = "<group>"; };
 		E5033F611D0D66A8005193E2 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = ../Screens/Colors.swift; sourceTree = "<group>"; };
 		E5033F641D0D68BB005193E2 /* ConsoleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
 		E5033F661D0D83DE005193E2 /* JogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JogView.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -110,7 +113,7 @@
 		E50D4D1B1D27E6CE0087CE1E /* MetreButtonsPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreButtonsPanel.swift; sourceTree = "<group>"; };
 		E50D4D1D1D286A2A0087CE1E /* MetreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreButton.swift; sourceTree = "<group>"; };
 		E50D4D1F1D297C3E0087CE1E /* MainScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
-		E534C0851D574F8700C05EA6 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		E534C0851D574F8700C05EA6 /* MainFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFlowController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E5358C2D1E620D780003C5F7 /* MetreAttributedTextFormater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetreAttributedTextFormater.swift; sourceTree = "<group>"; };
 		E5358C2F1E621DBB0003C5F7 /* UIBarButtonItemHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemHelpers.swift; sourceTree = "<group>"; };
 		E53753ED1D036CF0003B297B /* Metronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Metronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,10 @@
 		E55520BA1D0C53350072B783 /* MetreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MetreSpecs.swift; path = ../Metronome/Classes/Engine/MetronomeEngine/MetreSpecs.swift; sourceTree = "<group>"; };
 		E55F3C651D07351100402903 /* UserSettingsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsStorage.swift; sourceTree = "<group>"; };
 		E57206791D730A3900CDBC23 /* NoteKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteKind.swift; sourceTree = "<group>"; };
+		E589149E1E9A223D00A58473 /* SettingsFlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowController.swift; sourceTree = "<group>"; };
+		E58914A21E9A2F9100A58473 /* FlowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowController.swift; sourceTree = "<group>"; };
+		E58914A41E9A581F00A58473 /* TreeStructureNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeStructureNode.swift; sourceTree = "<group>"; };
+		E58914A61E9A5BD400A58473 /* FlowControllersAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowControllersAssembly.swift; sourceTree = "<group>"; };
 		E58D56E61D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleFingerRotationGestureRecognizer.swift; sourceTree = "<group>"; };
 		E5A4A1F81D96B8CB00F5D7D4 /* SelectSoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSoundViewController.swift; sourceTree = "<group>"; };
 		E5A4A1FC1D96B8F400F5D7D4 /* SelectSoundViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSoundViewModel.swift; sourceTree = "<group>"; };
@@ -148,6 +155,7 @@
 		E5D235001D04317900E567D6 /* MetronomeEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetronomeEngine.swift; sourceTree = "<group>"; };
 		E5D235021D04567000E567D6 /* metronome.aupreset */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = metronome.aupreset; sourceTree = "<group>"; };
 		E5D235061D04756700E567D6 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		E5EB22431E9A7D1A0009E983 /* CustomMetreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMetreModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,10 +250,9 @@
 			isa = PBXGroup;
 			children = (
 				E5A4A2021D96BBD300F5D7D4 /* ScreensAssembly.swift */,
-				E5A4A1F71D96B89500F5D7D4 /* SelectSoundScreen */,
-				E50227361D73526200973D9D /* MetronomeNavigationController.swift */,
-				A88155651D311DB8008673B2 /* CustomMetreDialog */,
 				6582BB13E40A18804781DD27 /* MainScreen */,
+				E5A4A1F71D96B89500F5D7D4 /* SelectSoundScreen */,
+				A88155651D311DB8008673B2 /* CustomMetreDialog */,
 				6582BC1888109152F966262D /* SettingsScreen */,
 			);
 			path = Screens;
@@ -290,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				A88155661D311DDD008673B2 /* CustomMetreViewController.swift */,
+				E5EB22431E9A7D1A0009E983 /* CustomMetreModel.swift */,
 				A88155681D311DF5008673B2 /* CustomMetreView.swift */,
 			);
 			name = CustomMetreDialog;
@@ -320,7 +328,10 @@
 		E534C0841D574F6E00C05EA6 /* FlowController */ = {
 			isa = PBXGroup;
 			children = (
-				E534C0851D574F8700C05EA6 /* FlowController.swift */,
+				E58914A61E9A5BD400A58473 /* FlowControllersAssembly.swift */,
+				E58914A21E9A2F9100A58473 /* FlowController.swift */,
+				E534C0851D574F8700C05EA6 /* MainFlowController.swift */,
+				E589149E1E9A223D00A58473 /* SettingsFlowController.swift */,
 			);
 			path = FlowController;
 			sourceTree = "<group>";
@@ -390,6 +401,7 @@
 				E5493F451D98222C006D96F9 /* AppLifeCycleEventBroadcaster.swift */,
 				E5358C2D1E620D780003C5F7 /* MetreAttributedTextFormater.swift */,
 				E5358C2F1E621DBB0003C5F7 /* UIBarButtonItemHelpers.swift */,
+				E58914A41E9A581F00A58473 /* TreeStructureNode.swift */,
 			);
 			path = Helplers;
 			sourceTree = "<group>";
@@ -456,7 +468,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Pawel Scibek";
 				TargetAttributes = {
 					E53753EC1D036CF0003B297B = {
@@ -622,6 +634,7 @@
 				E5493F481D982D1E006D96F9 /* GeneralAssembly.swift in Sources */,
 				E50227331D733AB500973D9D /* SettingsViewModel.swift in Sources */,
 				E53754531D0386BF003B297B /* SoundsBank.swift in Sources */,
+				E5EB22441E9A7D1A0009E983 /* CustomMetreModel.swift in Sources */,
 				E50D4D201D297C3E0087CE1E /* MainScreenViewModel.swift in Sources */,
 				E537544F1D038325003B297B /* MetronomeEngineProtocol.swift in Sources */,
 				E5033F651D0D68BB005193E2 /* ConsoleView.swift in Sources */,
@@ -634,14 +647,17 @@
 				E53754111D037E8C003B297B /* MainScreenView.swift in Sources */,
 				E5D234FD1D04150C00E567D6 /* AudioEngine.swift in Sources */,
 				E537544D1D0382D5003B297B /* AudioEngineProtocol.swift in Sources */,
-				E534C0861D574F8700C05EA6 /* FlowController.swift in Sources */,
+				E58914A51E9A581F00A58473 /* TreeStructureNode.swift in Sources */,
+				E534C0861D574F8700C05EA6 /* MainFlowController.swift in Sources */,
 				E5C3DB331D2EB39D00823FA0 /* MetreBank.swift in Sources */,
 				E5D235011D04317900E567D6 /* MetronomeEngine.swift in Sources */,
 				E5033F621D0D66A8005193E2 /* Colors.swift in Sources */,
 				E5033F671D0D83DE005193E2 /* JogView.swift in Sources */,
 				E5A4A1FF1D96B90A00F5D7D4 /* SelectSoundModel.swift in Sources */,
 				E5358C301E621DBB0003C5F7 /* UIBarButtonItemHelpers.swift in Sources */,
+				E58914A31E9A2F9100A58473 /* FlowController.swift in Sources */,
 				E50227351D733AC200973D9D /* SettingsViewController.swift in Sources */,
+				E58914A71E9A5BD400A58473 /* FlowControllersAssembly.swift in Sources */,
 				E50D4D0D1D27B5AD0087CE1E /* UIKitAdditions.swift in Sources */,
 				E50D4D161D27CABF0087CE1E /* LCDDisplay.swift in Sources */,
 				E572067A1D730A3900CDBC23 /* NoteKind.swift in Sources */,
@@ -649,11 +665,11 @@
 				E53754511D0383A7003B297B /* Metre.swift in Sources */,
 				E54E7A051E61AFB7005635FE /* SlideInAnimator.swift in Sources */,
 				E5A4A2071D970A3500F5D7D4 /* SettingCell.swift in Sources */,
+				E589149F1E9A223D00A58473 /* SettingsFlowController.swift in Sources */,
 				A881556F1D324496008673B2 /* PopupAnimator.swift in Sources */,
 				E50D4D181D27CDCD0087CE1E /* Fonts.swift in Sources */,
 				E5A4A1F91D96B8CB00F5D7D4 /* SelectSoundViewController.swift in Sources */,
 				A88155671D311DDD008673B2 /* CustomMetreViewController.swift in Sources */,
-				E50227371D73526200973D9D /* MetronomeNavigationController.swift in Sources */,
 				E5D234FF1D04222600E567D6 /* AudioSessionConfigurator.swift in Sources */,
 				E58D56E71D26F2E600E11C09 /* SingleFingerRotationGestureRecognizer.swift in Sources */,
 				E5358C2E1E620D780003C5F7 /* MetreAttributedTextFormater.swift in Sources */,
@@ -734,7 +750,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -775,7 +791,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
